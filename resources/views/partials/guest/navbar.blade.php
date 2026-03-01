@@ -11,13 +11,13 @@
                 </a>
             </div>
 
-            @if (!request()->routeIs('login') && !request()->routeIs('attendance.qr') && !request()->routeIs('views.*'))
+            @if (!request()->routeIs('login') && !request()->routeIs('attendance.qr') && !request()->routeIs('views.*') && !request()->routeIs('password.*') && !request()->routeIs('verification.*'))
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-6 text-sm">
+                <div class="hidden md:flex items-center space-x-6">
                     <a href="#features" class="hover:text-accent transition">Fitur</a>
-                    <a href="#how-it-works" class="hover:text-accent transition">Cara Kerja</a>
-                    <a href="#benefits" class="hover:text-accent transition">Keunggulan</a>
-                    <a href="#faqs" class="hover:text-accent transition">FAQ</a>
+                    <a href="#how-it-works" class="hover:text-accent transition">Cara Kerja</a> 
+                    <a href="#benefits" class="hover:text-accent transition">Keunggulan</a> 
+                    <a href="#faqs" class="hover:text-accent transition">FAQ</a>    
                 </div>
             @endif
 
