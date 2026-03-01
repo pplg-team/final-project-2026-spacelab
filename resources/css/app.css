@@ -11,6 +11,12 @@
     --color-accent-foreground: #ffffff;
 }
 
+@layer base {
+  html {
+    font-size: 20px; /* default biasanya 16px */
+  }
+}
+
 /* Mode dark */
 @layer theme {
     .dark {
