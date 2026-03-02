@@ -31,7 +31,8 @@ class DashboardController extends Controller
                 'teacherSubject.subject:id,name',
                 'teacherSubject.teacher.user:id,name',
                 'roomHistory.room:id,name',
-                'template.class:id,name',
+                'template.class:id,level,major_id,rombel',
+                'template.class.major:id,code',
             ])
             ->where('day_of_week', $dayOfWeek)
             ->get();
@@ -54,7 +55,10 @@ class DashboardController extends Controller
 
             $subject = $entry->teacherSubject?->subject?->name ?? null;
             $teacher = $entry->teacherSubject?->teacher?->user?->name ?? null;
-            $className = $entry->template?->class?->name ?? null;
+            $class = $entry->template?->class;
+            $className = $class
+                ? implode(' ', array_filter([$class->level, $class->major?->code, $class->rombel]))
+                : null;
             $room = $entry->roomHistory?->room?->name ?? null;
 
             return [
