@@ -1,39 +1,37 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{
-    DashboardController as AdminDashboardController,
-    ScheduleController as AdminScheduleController,
-    TermController as AdminTermController,
-    MajorController as AdminMajorController,
-    ClassroomController as AdminClassController,
-    TeacherController as AdminTeacherController,
-    StudentController as AdminStudentController,
-    RoomController as AdminRoomController,
-    BuildingController as AdminBuildingController,
-    RoomHistoryController as AdminRoomHistoryController,
-    ReportController as AdminReportController
-};
-use App\Http\Controllers\Admin\Term\BlockController as AdminBlockController;
-use App\Http\Controllers\Admin\Major\CompanyRelationController as AdminCompanyRelationController;
-use App\Http\Controllers\Admin\Major\RoleAssignmentController as AdminRoleAssignmentController;
-use App\Http\Controllers\Admin\Classroom\JsonController as AdminClassJsonController;
+use App\Http\Controllers\Admin\AttendanceSessionController as AdminAttendanceSessionController;
+use App\Http\Controllers\Admin\BuildingController as AdminBuildingController;
 use App\Http\Controllers\Admin\Classroom\GuardianController as AdminClassGuardianController;
-use App\Http\Controllers\Admin\Classroom\StudentController as AdminClassStudentController;
 use App\Http\Controllers\Admin\Classroom\ImportController as AdminClassroomImportController;
+use App\Http\Controllers\Admin\Classroom\JsonController as AdminClassJsonController;
+use App\Http\Controllers\Admin\Classroom\StudentController as AdminClassStudentController;
 use App\Http\Controllers\Admin\Classroom\TemplateController as AdminClassroomTemplateController;
+use App\Http\Controllers\Admin\ClassroomController as AdminClassController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\Major\CompanyRelationController as AdminCompanyRelationController;
+use App\Http\Controllers\Admin\Major\ImportController as AdminMajorImportController;
+use App\Http\Controllers\Admin\Major\RoleAssignmentController as AdminRoleAssignmentController;
+use App\Http\Controllers\Admin\Major\TemplateController as AdminMajorTemplateController;
+use App\Http\Controllers\Admin\MajorController as AdminMajorController;
+use App\Http\Controllers\Admin\ReportController as AdminReportController;
+use App\Http\Controllers\Admin\RoomController as AdminRoomController;
+use App\Http\Controllers\Admin\RoomHistoryController as AdminRoomHistoryController;
+use App\Http\Controllers\Admin\ScheduleController as AdminScheduleController;
+use App\Http\Controllers\Admin\StaffController as AdminStaffController;
 use App\Http\Controllers\Admin\Student\FetchController as AdminStudentFetchController;
 use App\Http\Controllers\Admin\Student\ImportController as AdminStudentImportController;
-use App\Http\Controllers\Admin\Major\ImportController as AdminMajorImportController;
 use App\Http\Controllers\Admin\Student\TemplateController as AdminStudentTemplateController;
-use App\Http\Controllers\Admin\Major\TemplateController as AdminMajorTemplateController;
+use App\Http\Controllers\Admin\StudentController as AdminStudentController;
+use App\Http\Controllers\Admin\SubjectController as AdminSubjectController;
 use App\Http\Controllers\Admin\Teacher\ImportController as AdminTeacherImportController;
 use App\Http\Controllers\Admin\Teacher\TemplateController as AdminTeacherTemplateController;
-use App\Http\Controllers\Admin\SubjectController as AdminSubjectController;
-use App\Http\Controllers\Admin\TimetableTemplateController as AdminTimetableTemplateController;
+use App\Http\Controllers\Admin\TeacherController as AdminTeacherController;
+use App\Http\Controllers\Admin\Term\BlockController as AdminBlockController;
+use App\Http\Controllers\Admin\TermController as AdminTermController;
 use App\Http\Controllers\Admin\TimetableEntryController as AdminTimetableEntryController;
-use App\Http\Controllers\Admin\StaffController as AdminStaffController;
-use App\Http\Controllers\Admin\AttendanceSessionController as AdminAttendanceSessionController;
+use App\Http\Controllers\Admin\TimetableTemplateController as AdminTimetableTemplateController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:Admin'])
     ->prefix('admin')
@@ -64,7 +62,7 @@ Route::middleware(['auth', 'role:Admin'])
         Route::put('/majors/{major}', [AdminMajorController::class, 'update'])->name('majors.update');
         Route::delete('/majors/{major}', [AdminMajorController::class, 'destroy'])->name('majors.destroy');
 
-        Route::get('/majors/{major}', [ AdminMajorController::class, 'show'])->name('majors.show');
+        Route::get('/majors/{major}', [AdminMajorController::class, 'show'])->name('majors.show');
         Route::post('/majors/{major}/company-relation', [AdminCompanyRelationController::class, 'store'])->name('majors.company-relation.store');
         Route::put('/majors/{major}/company-relation/{companyRelation}', [AdminCompanyRelationController::class, 'update'])->name('majors.company-relation.update');
         Route::delete('/majors/{major}/company-relation/{companyRelation}', [AdminCompanyRelationController::class, 'destroy'])->name('majors.company-relation.destroy');
@@ -136,7 +134,7 @@ Route::middleware(['auth', 'role:Admin'])
         Route::get('/schedules/rooms', [AdminScheduleController::class, 'roomsIndex'])->name('schedules.rooms.index');
 
         // TimeTable schedule
-        Route::get('/schedules/timetable', [AdminTimetableEntryController::class, 'index'])->name('schedules.timetable.index');        
+        Route::get('/schedules/timetable', [AdminTimetableEntryController::class, 'index'])->name('schedules.timetable.index');
 
         // Timetable Templates
         Route::get('/schedules/templates', [AdminTimetableTemplateController::class, 'index'])->name('schedules.templates.index');
@@ -176,4 +174,3 @@ Route::middleware(['auth', 'role:Admin'])
         Route::post('/attendance', [AdminAttendanceSessionController::class, 'store'])->name('attendance.store');
         Route::delete('/attendance/{session}', [AdminAttendanceSessionController::class, 'destroy'])->name('attendance.destroy');
     });
-

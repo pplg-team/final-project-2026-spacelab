@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use App\Models\RoomHistory;
-use App\Models\TimetableEntry;
 
 class Room extends Model
 {
     use HasFactory, HasUuids;
 
     public $incrementing = false;
+
     protected $keyType = 'string';
+
     protected $fillable = [
-        'code', 'name', 'building_id', 'floor', 'capacity', 'type', 'is_active', 'notes'
+        'code', 'name', 'building_id', 'floor', 'capacity', 'type', 'is_active', 'notes',
     ];
 
     public function timetableEntries(): HasManyThrough
@@ -31,6 +30,12 @@ class Room extends Model
             'id', // Local key on rooms table
             'id' // Local key on room_history table
         );
+    }
+
+    public function directTimetableEntries(): HasManyThrough
+    {
+        // Alias for timetableEntries for consistency with Teacher model
+        return $this->timetableEntries();
     }
 
     public function scheduleEntries(): HasManyThrough

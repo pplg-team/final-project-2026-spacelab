@@ -57,11 +57,11 @@ class RoomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'ruangan (' . $validated['name'] . ')',
+            'entity' => 'ruangan ('.$validated['name'].')',
             'record_id' => Room::where('code', $validated['code'])->first()->id,
             'action' => 'create',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' menambahkan ruangan baru pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' menambahkan ruangan baru pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -114,11 +114,11 @@ class RoomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'ruangan (' . $room->name . ')',
+            'entity' => 'ruangan ('.$room->name.')',
             'record_id' => $room->id,
             'action' => 'update',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' memperbarui data ruangan pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' memperbarui data ruangan pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -143,11 +143,11 @@ class RoomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'ruangan (' . $room->name . ')',
+            'entity' => 'ruangan ('.$room->name.')',
             'record_id' => $room->id,
             'action' => 'delete',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' menghapus ruangan pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' menghapus ruangan pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],

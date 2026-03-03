@@ -4,28 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
-use Illuminate\Http\Request;
+use App\Models\Classroom;
 use App\Models\Room;
 use App\Models\RoomHistory;
-use App\Models\Classroom;
 use App\Models\Teacher;
 use App\Models\Term;
-use Illuminate\Support\Facades\Auth; // Perbaikan di sini
-use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon; // Perbaikan di sini
+use Illuminate\Support\Facades\Auth;
 
 class RoomHistoryController extends Controller
 {
-
     public function index()
     {
         $dayOfWeek = Carbon::now()->dayOfWeekIso;
 
         $rooms = Room::with(['timetableEntries' => function ($query) use ($dayOfWeek) {
             $query->where('day_of_week', $dayOfWeek)
-                  ->whereHas('template', function ($q) {
-                      $q->where('is_active', true);
-                  })
-                  ->with(['period', 'teacherSubject.subject', 'teacherSubject.teacher', 'roomHistory.classroom']);
+                ->whereHas('template', function ($q) {
+                    $q->where('is_active', true);
+                })
+                ->with(['period', 'teacherSubject.subject', 'teacherSubject.teacher', 'roomHistory.classroom']);
         }])->get();
 
         $rooms = $rooms->map(function ($room) {
@@ -36,6 +35,7 @@ class RoomHistoryController extends Controller
 
             $room->current_status = $currentEntry ? 'Occupied' : 'Empty';
             $room->current_entry = $currentEntry;
+
             return $room;
         });
 
@@ -86,11 +86,11 @@ class RoomHistoryController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'riwayat ruangan (' . $validated['room_id'] . ')',
+            'entity' => 'riwayat ruangan ('.$validated['room_id'].')',
             'record_id' => RoomHistory::where('room_id', $validated['room_id'])->latest()->first()->id,
             'action' => 'create_room_history',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' menambahkan riwayat ruangan pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' menambahkan riwayat ruangan pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -124,11 +124,11 @@ class RoomHistoryController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'riwayat ruangan (' . $history->room_id . ')',
+            'entity' => 'riwayat ruangan ('.$history->room_id.')',
             'record_id' => $history->id,
             'action' => 'update_room_history',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' memperbarui riwayat ruangan pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' memperbarui riwayat ruangan pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
