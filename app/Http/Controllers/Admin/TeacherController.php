@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Teacher;
-use App\Models\User;
 use App\Models\Role;
 use App\Models\Subject;
+use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +21,7 @@ class TeacherController extends Controller
                 'subjects:id,name,code',
                 'guardianClassHistories.class:id,full_name',
                 'roleAssignments.major:id,name',
-                'asCoordinatorAssignments.major:id,name'
+                'asCoordinatorAssignments.major:id,name',
             ])
             ->paginate(15);
 
@@ -61,7 +61,7 @@ class TeacherController extends Controller
 
             // Create User
             $role = Role::where('name', 'Guru')->first();
-            if (!$role) {
+            if (! $role) {
                 $role = Role::create(['name' => 'Guru']);
             }
 
@@ -91,7 +91,8 @@ class TeacherController extends Controller
             return redirect()->back()->with('success', 'Guru berhasil ditambahkan.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Gagal menambahkan guru: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Gagal menambahkan guru: '.$e->getMessage());
         }
     }
 
@@ -108,7 +109,7 @@ class TeacherController extends Controller
                     'roleAssignments:id,teacher_id,major_id',
                     'roleAssignments.major:id,name',
                     'asCoordinatorAssignments:id,teacher_id,major_id',
-                    'asCoordinatorAssignments.major:id,name'
+                    'asCoordinatorAssignments.major:id,name',
                 ])
                 ->findOrFail($id);
 
@@ -119,28 +120,28 @@ class TeacherController extends Controller
                 'code' => $teacher->code,
                 'phone' => $teacher->phone,
                 'avatar' => $teacher->avatar,
-                'subjects' => $teacher->subjects->map(fn($s) => [
+                'subjects' => $teacher->subjects->map(fn ($s) => [
                     'id' => $s->id,
                     'name' => $s->name,
                     'code' => $s->code,
                 ]),
-                'guardian_histories' => $teacher->guardianClassHistories->map(fn($h) => [
+                'guardian_histories' => $teacher->guardianClassHistories->map(fn ($h) => [
                     'classroom' => $h->class->full_name ?? '-',
                     'major' => $h->class->major->name ?? '-',
                     'started_at' => $h->started_at?->format('d M Y') ?? '-',
                     'ended_at' => $h->ended_at?->format('d M Y') ?? 'Sekarang',
                 ]),
-                'role_assignments' => $teacher->roleAssignments->map(fn($r) => [
+                'role_assignments' => $teacher->roleAssignments->map(fn ($r) => [
                     'major' => $r->major->name ?? '-',
                     'role' => 'Kepala Jurusan',
                 ]),
-                'coordinator_assignments' => $teacher->asCoordinatorAssignments->map(fn($r) => [
+                'coordinator_assignments' => $teacher->asCoordinatorAssignments->map(fn ($r) => [
                     'major' => $r->major->name ?? '-',
                     'role' => 'Koordinator Program',
                 ]),
             ]);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Gagal memuat data guru: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Gagal memuat data guru: '.$e->getMessage()], 500);
         }
     }
 
@@ -150,8 +151,8 @@ class TeacherController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $teacher->user_id,
-            'code' => 'nullable|string|unique:teachers,code,' . $id,
+            'email' => 'required|email|unique:users,email,'.$teacher->user_id,
+            'code' => 'nullable|string|unique:teachers,code,'.$id,
             'phone' => 'nullable|string|max:20',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ], [
@@ -195,7 +196,8 @@ class TeacherController extends Controller
             return redirect()->back()->with('success', 'Data guru berhasil diperbarui.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Gagal memperbarui data guru: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Gagal memperbarui data guru: '.$e->getMessage());
         }
     }
 
@@ -236,7 +238,8 @@ class TeacherController extends Controller
             return redirect()->back()->with('success', 'Guru berhasil dihapus.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->back()->with('error', 'Gagal menghapus guru: ' . $e->getMessage());
+
+            return redirect()->back()->with('error', 'Gagal menghapus guru: '.$e->getMessage());
         }
     }
 }

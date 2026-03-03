@@ -3,28 +3,27 @@
 namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Classroom;
 use App\Models\Room;
 use App\Models\RoomHistory;
-use App\Models\Classroom;
 use App\Models\Teacher;
 use App\Models\Term;
-use Illuminate\Support\Facades\Auth; // Perbaikan di sini
-use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon; // Perbaikan di sini
+use Illuminate\Support\Facades\Auth;
 
 class RoomHistoryController extends Controller
 {
-
     public function index()
     {
         $dayOfWeek = Carbon::now()->dayOfWeekIso;
 
         $rooms = Room::with(['timetableEntries' => function ($query) use ($dayOfWeek) {
             $query->where('day_of_week', $dayOfWeek)
-                  ->whereHas('template', function ($q) {
-                      $q->where('is_active', true);
-                  })
-                  ->with(['period', 'teacherSubject.subject', 'teacherSubject.teacher', 'roomHistory.classroom']);
+                ->whereHas('template', function ($q) {
+                    $q->where('is_active', true);
+                })
+                ->with(['period', 'teacherSubject.subject', 'teacherSubject.teacher', 'roomHistory.classroom']);
         }])->get();
 
         $rooms = $rooms->map(function ($room) {
@@ -35,6 +34,7 @@ class RoomHistoryController extends Controller
 
             $room->current_status = $currentEntry ? 'Occupied' : 'Empty';
             $room->current_entry = $currentEntry;
+
             return $room;
         });
 

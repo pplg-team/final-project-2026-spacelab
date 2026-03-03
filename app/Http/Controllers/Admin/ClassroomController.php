@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
-use App\Models\Classroom;
-use App\Models\Major;
-use App\Models\Teacher;
-use App\Models\GuardianClassHistory;
-use App\Models\Term;
-use App\Models\Block;
-use App\Models\Student;
 use App\Models\ClassHistory;
+use App\Models\Classroom;
+use App\Models\GuardianClassHistory;
+use App\Models\Major;
+use App\Models\Student;
+use App\Models\Teacher;
+use App\Models\Term;
 use App\Services\QueryOptimizationService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -23,7 +22,7 @@ class ClassroomController extends Controller
     {
         $majors = Major::select('id', 'name', 'code')
             ->with(['classes' => function ($query) {
-                $query->select('id', 'major_id', 'level', 'rombel', 'full_name')
+                $query->select('id', 'major_id', 'level', 'rombel')
                     ->orderBy('level', 'asc')
                     ->orderBy('rombel', 'asc');
             }])
@@ -59,11 +58,11 @@ class ClassroomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'pengguna (' . Auth::user()->name . ')',
-            'record_id' => $validated['major_id'] . '-' . $validated['level'] . '-' . $validated['rombel'],
+            'entity' => 'pengguna ('.Auth::user()->name.')',
+            'record_id' => $validated['major_id'].'-'.$validated['level'].'-'.$validated['rombel'],
             'action' => 'create_classroom',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' membuat kelas baru pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' membuat kelas baru pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -78,7 +77,7 @@ class ClassroomController extends Controller
         $classroom = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
             ->with('major:id,name,code')
             ->findOrFail($id);
-        
+
         $activeTerm = QueryOptimizationService::getActiveTerm();
 
         // Get current guardian
@@ -162,11 +161,11 @@ class ClassroomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'pengguna (' . Auth::user()->name . ')',
+            'entity' => 'pengguna ('.Auth::user()->name.')',
             'record_id' => $classroom->id,
             'action' => 'update_classroom',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' memperbarui kelas pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' memperbarui kelas pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -183,11 +182,11 @@ class ClassroomController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'pengguna (' . Auth::user()->name . ')',
+            'entity' => 'pengguna ('.Auth::user()->name.')',
             'record_id' => $classroom->id,
             'action' => 'delete_classroom',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' menghapus kelas pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' menghapus kelas pada '.now()->toDateTimeString(),
                 'ip_address' => request()->ip(),
                 'user_agent' => request()->userAgent(),
             ],

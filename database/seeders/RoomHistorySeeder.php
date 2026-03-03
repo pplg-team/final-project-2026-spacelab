@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classroom;
+use App\Models\Room;
+use App\Models\RoomHistory;
+use App\Models\Teacher;
+use App\Models\Term;
 use Illuminate\Database\Seeder;
-use App\Models\{RoomHistory, Room, Classroom, Term, Teacher};
 
 class RoomHistorySeeder extends Seeder
 {
@@ -16,6 +20,7 @@ class RoomHistorySeeder extends Seeder
 
         if ($rooms->isEmpty() || $classes->isEmpty() || $terms->isEmpty() || $teachers->isEmpty()) {
             $this->command->warn('⚠️ Classroom rooms, classes, terms, and teachers required. Seed them first.');
+
             return;
         }
 
@@ -40,14 +45,14 @@ class RoomHistorySeeder extends Seeder
 
                     if (! $exists) {
                         RoomHistory::create([
-                            'room_id'    => $room->id,
+                            'room_id' => $room->id,
                             'event_type' => 'initial',
                             'classes_id' => $class->id,
-                            'terms_id'   => $term->id,
+                            'terms_id' => $term->id,
                             'teacher_id' => $teacher->id,
-                            'user_id'    => $teacher->user_id,
+                            'user_id' => $teacher->user_id,
                             'start_date' => $term->start_date ?? now(),
-                            'end_date'   => $term->end_date ?? now()->addMonths(6),
+                            'end_date' => $term->end_date ?? now()->addMonths(6),
                         ]);
                         $created++;
                     }

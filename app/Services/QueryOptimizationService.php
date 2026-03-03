@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Term;
 use App\Models\AttendanceSession;
-use Illuminate\Support\Facades\Cache;
+use App\Models\Term;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 class QueryOptimizationService
 {
@@ -25,6 +25,7 @@ class QueryOptimizationService
     public static function getActiveAttendanceSession()
     {
         $today = Carbon::today()->toDateString();
+
         return Cache::remember("active_attendance_session_{$today}", now()->addHours(1), function () {
             return AttendanceSession::where('is_active', true)
                 ->whereDate('created_at', Carbon::today())
@@ -45,6 +46,6 @@ class QueryOptimizationService
      */
     public static function clearAttendanceSessionCache()
     {
-        Cache::forget('active_attendance_session_' . Carbon::today()->toDateString());
+        Cache::forget('active_attendance_session_'.Carbon::today()->toDateString());
     }
 }

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Building;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
-use App\Models\{Room, Building};
 
 class RoomSeeder extends Seeder
 {
@@ -189,6 +190,6 @@ class RoomSeeder extends Seeder
             );
         }
 
-        $this->command->info("✅ RoomSeeder: " . count($rooms) . " rooms seeded successfully.");
+        $this->command->info('✅ RoomSeeder: '.count($rooms).' rooms seeded successfully.');
     }
 }

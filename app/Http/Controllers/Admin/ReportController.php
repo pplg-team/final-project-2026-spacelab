@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\ClassHistory;
 use App\Models\Classroom;
 use App\Models\Major;
 use App\Models\Room;
+use App\Models\Student;
 use App\Models\Subject;
-use App\Models\Term;
+use App\Models\Teacher;
 use App\Models\TimetableEntry;
 use App\Models\TimetableTemplate;
-use App\Models\ClassHistory;
-use App\Models\TeacherSubject;
 use App\Services\QueryOptimizationService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
@@ -197,12 +195,12 @@ class ReportController extends Controller
                         'period:id,ordinal,start_time,end_time',
                         'teacherSubject.teacher.user:id,name',
                         'teacherSubject.subject:id,name',
-                        'roomHistory.room:id,name'
+                        'roomHistory.room:id,name',
                     ])
                     ->where('template_id', $template->id)
                     ->get()
                     ->groupBy(function ($entry) {
-                        return $entry->day_of_week . '-' . $entry->period_id;
+                        return $entry->day_of_week.'-'.$entry->period_id;
                     });
 
                 $periods = \App\Models\Period::select('id', 'ordinal', 'start_time', 'end_time')
@@ -270,15 +268,15 @@ class ReportController extends Controller
     public function exportStudents(Request $request)
     {
         $classId = $request->get('class_id');
-        
-        if (!$classId) {
+
+        if (! $classId) {
             return back()->with('error', 'Pilih kelas terlebih dahulu');
         }
 
         $classroom = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
             ->with('major:id,name')
             ->find($classId);
-        
+
         $students = ClassHistory::select('id', 'student_id', 'class_id', 'block_id')
             ->with(['student.user:id,name,email', 'block.term:id,is_active'])
             ->where('class_id', $classId)
@@ -293,19 +291,19 @@ class ReportController extends Controller
             ->unique('id')
             ->sortBy('user.name');
 
-        $filename = 'siswa_' . str_replace(' ', '_', $classroom->full_name) . '_' . date('Y-m-d') . '.csv';
+        $filename = 'siswa_'.str_replace(' ', '_', $classroom->full_name).'_'.date('Y-m-d').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
         ];
 
         $callback = function () use ($students, $classroom) {
             $file = fopen('php://output', 'w');
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
-            
-            fputcsv($file, ['Laporan Siswa Kelas ' . $classroom->full_name]);
-            fputcsv($file, ['Tanggal Export: ' . Carbon::now()->format('d/m/Y H:i')]);
+
+            fputcsv($file, ['Laporan Siswa Kelas '.$classroom->full_name]);
+            fputcsv($file, ['Tanggal Export: '.Carbon::now()->format('d/m/Y H:i')]);
             fputcsv($file, []);
             fputcsv($file, ['No', 'NIS', 'NISN', 'Nama', 'Email']);
 
@@ -316,7 +314,7 @@ class ReportController extends Controller
                     $student->nis ?? '-',
                     $student->nisn ?? '-',
                     $student->user->name ?? '-',
-                    $student->user->email ?? '-'
+                    $student->user->email ?? '-',
                 ]);
             }
 
@@ -337,19 +335,19 @@ class ReportController extends Controller
             ->get()
             ->sortBy('user.name');
 
-        $filename = 'guru_' . date('Y-m-d') . '.csv';
+        $filename = 'guru_'.date('Y-m-d').'.csv';
 
         $headers = [
             'Content-Type' => 'text/csv; charset=UTF-8',
-            'Content-Disposition' => 'attachment; filename="' . $filename . '"',
+            'Content-Disposition' => 'attachment; filename="'.$filename.'"',
         ];
 
         $callback = function () use ($teachers) {
             $file = fopen('php://output', 'w');
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
-            
+
             fputcsv($file, ['Laporan Data Guru']);
-            fputcsv($file, ['Tanggal Export: ' . Carbon::now()->format('d/m/Y H:i')]);
+            fputcsv($file, ['Tanggal Export: '.Carbon::now()->format('d/m/Y H:i')]);
             fputcsv($file, []);
             fputcsv($file, ['No', 'Kode', 'Nama', 'Email', 'Telepon', 'Mata Pelajaran']);
 
@@ -365,7 +363,7 @@ class ReportController extends Controller
                     $teacher->user->name ?? '-',
                     $teacher->user->email ?? '-',
                     $teacher->phone ?? '-',
-                    $subjects ?: '-'
+                    $subjects ?: '-',
                 ]);
             }
 

@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
-use App\Models\TimetableEntry;
-use App\Models\Student;
-use App\Models\Teacher;
+use App\Models\AttendanceSession;
+use App\Models\AuditLog;
 use App\Models\Classroom;
 use App\Models\Room;
+use App\Models\Student;
 use App\Models\Subject;
-use App\Models\AuditLog;
-use App\Models\Term;
-use App\Models\AttendanceSession;
+use App\Models\Teacher;
+use App\Models\TimetableEntry;
 use App\Services\QueryOptimizationService;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -38,7 +36,7 @@ class DashboardController extends Controller
             ->get();
 
         $upcoming = $entries->filter(function ($entry) use ($today) {
-            return !$entry->isPast($today);
+            return ! $entry->isPast($today);
         })->sortBy(function ($entry) {
             return $entry->period?->ordinal ?? 0;
         })->values()->take(3);
@@ -104,7 +102,7 @@ class DashboardController extends Controller
                 };
 
                 return [
-                    'message' => $entityLabel . ' ' . $actionLabel,
+                    'message' => $entityLabel.' '.$actionLabel,
                     'time' => $log->created_at,
                 ];
             });
@@ -112,7 +110,7 @@ class DashboardController extends Controller
         // Optimize: Use cached query
         $activeTerm = QueryOptimizationService::getActiveTerm();
         $termLabel = $activeTerm ? $activeTerm->tahun_ajaran : 'Tidak ada semester aktif';
-        $termPeriod = $activeTerm ? 'Periode: ' . $activeTerm->start_date->format('M d, Y') . ' - ' . $activeTerm->end_date->format('M d, Y') : '';
+        $termPeriod = $activeTerm ? 'Periode: '.$activeTerm->start_date->format('M d, Y').' - '.$activeTerm->end_date->format('M d, Y') : '';
 
         // Optimize: Use exists() instead of checking if result exists
         $attendanceToday = AttendanceSession::select('id')

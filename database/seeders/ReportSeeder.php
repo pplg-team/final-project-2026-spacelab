@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Report;
 use App\Models\Room;
+use Illuminate\Database\Seeder;
 
 class ReportSeeder extends Seeder
 {
-
     public function run(): void
     {
         $room = Room::where('code', 'GBR-LAB1')->first();
@@ -20,10 +19,10 @@ class ReportSeeder extends Seeder
                 'total_usage_hours' => 20,
                 'total_idle_hours' => 10,
                 'utilization_rate' => 66.7,
-                'generated_at' => now()
+                'generated_at' => now(),
             ]);
         }
 
-        $this->command->info("✅ ReportSeeder: Reports seeded successfully.");
+        $this->command->info('✅ ReportSeeder: Reports seeded successfully.');
     }
 }

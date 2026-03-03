@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\SearchStudentController;
 use App\Http\Controllers\SearchTeacherController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index'])->name('welcome');
 Route::get('/attendance-qr', [PagesController::class, 'attendanceQr'])->name('attendance.qr');
@@ -24,6 +24,7 @@ Route::group([
 // Redirect Login
 Route::get('/redirect', function () {
     $role = Auth::user()->role->lower_name;
+
     return match ($role) {
         'admin' => redirect()->route('admin.index'),
         'guru' => redirect()->route('guru.index'),
