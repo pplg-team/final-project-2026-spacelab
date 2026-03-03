@@ -1,21 +1,25 @@
-// Theme Toggle
-const html = document.documentElement;
-let isDark = true;
-document.getElementById('themeToggle').addEventListener('click', () => {
-  isDark = !isDark;
-  html.classList.toggle('dark', isDark);
-  document.getElementById('sunIcon').classList.toggle('hidden', !isDark);
-  document.getElementById('moonIcon').classList.toggle('hidden', isDark);
-});
-
 // FAQ
-function toggleFaq(i) {
+window.toggleFaq = function (i) {
   const body = document.getElementById('faq-' + i);
   const chev = document.getElementById('chevron-' + i);
   const isOpen = body.classList.contains('open');
-  document.querySelectorAll('.faq-body').forEach(el => el.classList.remove('open'));
-  document.querySelectorAll('.faq-chevron').forEach(el => el.classList.remove('rotated'));
-  if (!isOpen) { body.classList.add('open'); chev.classList.add('rotated'); }
+
+  // Close all other FAQs
+  document.querySelectorAll('.faq-body').forEach(el => {
+    if (el !== body) el.classList.remove('open');
+  });
+  document.querySelectorAll('.faq-chevron').forEach(el => {
+    if (el !== chev) el.classList.remove('rotated');
+  });
+
+  // Toggle current FAQ
+  if (isOpen) {
+    body.classList.remove('open');
+    chev.classList.remove('rotated');
+  } else {
+    body.classList.add('open');
+    chev.classList.add('rotated');
+  }
 }
 
 // Smooth scroll

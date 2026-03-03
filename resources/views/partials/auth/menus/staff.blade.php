@@ -1,11 +1,11 @@
 @php
-    $sectionTitleClass = 'px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500';
-    $linkClass = 'flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white';
+    $sectionTitleClass = 'px-3 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 mb-1';
+    $linkClass = 'flex items-center gap-2.5 rounded-xl px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white';
     $activeClass = 'bg-slate-200 text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white';
 @endphp
 
-<div class="space-y-5">
-    <div class="space-y-1.5">
+<div class="space-y-4">
+    <div class="space-y-0.5">
         <p class="{{ $sectionTitleClass }}">Ringkasan</p>
         <a href="{{ route('staff.index') }}" class="{{ $linkClass }} {{ request()->routeIs('staff.index') ? $activeClass : '' }}">
             <x-heroicon-o-home class="h-5 w-5" />
@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <div class="space-y-1.5">
+    <div class="space-y-0.5">
         <p class="{{ $sectionTitleClass }}">Akademik</p>
         <a href="{{ route('staff.terms.index') }}" class="{{ $linkClass }} {{ request()->routeIs('staff.terms.*') ? $activeClass : '' }}">
             <x-heroicon-o-rectangle-stack class="h-5 w-5" />
@@ -37,7 +37,7 @@
         </a>
     </div>
 
-    <div class="space-y-1.5">
+    <div class="space-y-0.5">
         <p class="{{ $sectionTitleClass }}">Pengguna</p>
         <a href="{{ route('staff.students.index') }}" class="{{ $linkClass }} {{ request()->routeIs('staff.students.*') ? $activeClass : '' }}">
             <x-heroicon-o-users class="h-5 w-5" />
@@ -49,7 +49,7 @@
         </a>
     </div>
 
-    <div class="space-y-1.5">
+    <div class="space-y-0.5">
         <p class="{{ $sectionTitleClass }}">Fasilitas & Laporan</p>
         <a href="{{ route('staff.rooms.index') }}" class="{{ $linkClass }} {{ request()->routeIs('staff.rooms.index') ? $activeClass : '' }}">
             <x-heroicon-o-building-office class="h-5 w-5" />

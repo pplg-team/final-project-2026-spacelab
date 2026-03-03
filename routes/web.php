@@ -15,7 +15,7 @@ Route::group([
     'prefix' => 'views',
     'as' => 'views.',
 ], function () {
-    Route::get('/', [PagesController::class, 'views'])->name('views');
+    Route::get('/', [PagesController::class, 'views'])->name('index');
     Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
     Route::get('/rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
     Route::get('/search-student', [SearchStudentController::class, 'index'])->name('search-student');

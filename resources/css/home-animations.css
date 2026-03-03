@@ -24,9 +24,15 @@
 body { background-color: var(--background); color: var(--foreground); transition: background-color 0.3s, color 0.3s; }
 .hero-title { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; }
 /* FAQ */
-.faq-body { display: none; }
-.faq-body.open { display: block; }
-.faq-chevron { transition: transform 0.2s; }
+.faq-body { 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.3s ease-out, padding 0.3s ease; 
+}
+.faq-body.open { 
+  max-height: 500px; /* High enough to fit content */
+}
+.faq-chevron { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .faq-chevron.rotated { transform: rotate(180deg); }
 /* Marquee */
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
