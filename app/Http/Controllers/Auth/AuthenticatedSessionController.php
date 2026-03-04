@@ -20,6 +20,7 @@ class AuthenticatedSessionController extends Controller
     {
         $title = __('Masuk');
         $description = __('Lanjutkan ke akun anda');
+
         return view('auth.login', ['title' => $title, 'description' => $description]);
     }
 
@@ -36,11 +37,11 @@ class AuthenticatedSessionController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'pengguna (' . Auth::user()->name . ')',
+            'entity' => 'pengguna ('.Auth::user()->name.')',
             'record_id' => Auth::id(),
             'action' => 'login',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' masuk ke sistem pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' masuk ke sistem pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],
@@ -59,11 +60,11 @@ class AuthenticatedSessionController extends Controller
 
         AuditLog::create([
             'user_id' => Auth::id(),
-            'entity' => 'pengguna (' . Auth::user()->name . ')',
+            'entity' => 'pengguna ('.Auth::user()->name.')',
             'record_id' => Auth::id(),
             'action' => 'logout',
             'new_data' => [
-                'message' => 'Pengguna ' . Auth::user()->name . ' keluar dari sistem pada ' . now()->toDateTimeString(),
+                'message' => 'Pengguna '.Auth::user()->name.' keluar dari sistem pada '.now()->toDateTimeString(),
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
             ],

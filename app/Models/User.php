@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements CanResetPasswordContract
 {
-    use HasFactory, Notifiable, HasUuids, CanResetPassword;
+    use CanResetPassword, HasFactory, HasUuids, Notifiable;
 
     public $incrementing = false;
+
     protected $keyType = 'string';
 
     protected $fillable = [
@@ -82,7 +83,6 @@ class User extends Authenticatable implements CanResetPasswordContract
         return $this->hasMany(AuditLog::class);
     }
 
-
     public function student()
     {
         return $this->hasOne(Student::class, 'users_id');
@@ -103,14 +103,15 @@ class User extends Authenticatable implements CanResetPasswordContract
         return $this->hasMany(AttendanceRecord::class);
     }
 
-
     /**
      * Return the uppercase initials for the user's display name.
      */
     public function initials(): string
     {
         $name = trim($this->name ?? '');
-        if ($name === '') return '';
+        if ($name === '') {
+            return '';
+        }
 
         $parts = preg_split('/\s+/', $name);
         if (count($parts) === 1) {
@@ -120,6 +121,6 @@ class User extends Authenticatable implements CanResetPasswordContract
         $first = strtoupper(substr($parts[0], 0, 1));
         $last = strtoupper(substr(end($parts), 0, 1));
 
-        return $first . $last;
+        return $first.$last;
     }
 }

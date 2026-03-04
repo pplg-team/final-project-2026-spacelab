@@ -44,7 +44,7 @@
             </div>
 
             <!-- Logo -->
-            <div class="flex items-center justify-center py-6">
+            <div class="flex items-center justify-center py-4">
                 <a href="{{ route(Auth::user()->role->lower_name . '.index') }}" class="flex items-center space-x-2">
                     <x-application-logo class="h-10 w-auto" />
                     <span class="text-lg font-semibold">SpaceLab</span>
@@ -56,7 +56,7 @@
         </div>
 
         <!-- User dropdown -->
-        <div class="border-t border-slate-200 dark:border-slate-700 p-4 transition-all duration-200">
+        <div class="border-t border-slate-200 dark:border-slate-700 p-3.5 transition-all duration-200">
             <div class="flex items-center gap-3">
                     @php
                         $user = Auth::user();
