@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UpdateSiswaPasswordSeeder::class,
             BuildingSeeder::class,
             RoomSeeder::class,
+            CctvCameraPolicySeeder::class,
             SubjectSeeder::class,
             PeriodSeeder::class,
             TermSeeder::class,

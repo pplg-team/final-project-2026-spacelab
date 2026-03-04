@@ -49,7 +49,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('redirect', absolute: false));
+        if (Auth::user()->is_first_login) {
+            return redirect()->route('profile.edit')->with('status', 'first-login');
+        }
+
+        $role = Auth::user()->role->lower_name;
+
+        return redirect()->route($role.'.index');
     }
 
     /**

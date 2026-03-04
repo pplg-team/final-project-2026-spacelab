@@ -21,18 +21,6 @@ Route::group([
     Route::get('/search-student', [SearchStudentController::class, 'index'])->name('search-student');
     Route::get('/search-teacher', [SearchTeacherController::class, 'index'])->name('search-teacher');
 });
-// Redirect Login
-Route::get('/redirect', function () {
-    $role = Auth::user()->role->lower_name;
-
-    return match ($role) {
-        'admin' => redirect()->route('admin.index'),
-        'guru' => redirect()->route('guru.index'),
-        'siswa' => redirect()->route('siswa.index'),
-        'staff' => redirect()->route('staff.index'),
-        default => abort(403, 'Unauthorized role'),
-    };
-})->middleware('auth')->name('redirect');
 
 // Profile
 Route::middleware('auth')->group(function () {

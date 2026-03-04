@@ -1,6 +1,6 @@
 <!-- Sidebar Navigation -->
 <nav class="px-3 pb-4">
-    <div class="space-y-3 rounded-2xl border border-slate-200/80 bg-white/80 p-2.5 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
+    <div class="space-y-3 border-t border-slate-200/80 bg-white/80 p-2.5 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
         {{-- Menu dinamis berdasarkan role --}}
         @switch(Auth::user()->role->lower_name)
             @case('admin')

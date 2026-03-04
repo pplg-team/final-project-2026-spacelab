@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Classroom\StudentController as AdminClassStudentC
 use App\Http\Controllers\Admin\Classroom\TemplateController as AdminClassroomTemplateController;
 use App\Http\Controllers\Admin\ClassroomController as AdminClassController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\CctvEventController as AdminCctvEventController;
 use App\Http\Controllers\Admin\Major\CompanyRelationController as AdminCompanyRelationController;
 use App\Http\Controllers\Admin\Major\ImportController as AdminMajorImportController;
 use App\Http\Controllers\Admin\Major\RoleAssignmentController as AdminRoleAssignmentController;
@@ -175,6 +176,13 @@ Route::middleware(['auth', 'role:Admin'])
 
         // CCTV - Pantau Ruangan
         Route::get('/cctv', [AdminCctvController::class, 'index'])->name('cctv.index');
-        Route::get('/cctv/rooms', [AdminCctvController::class, 'getRooms'])->name('cctv.rooms');
+        Route::get('/cctv/settings', [AdminCctvController::class, 'settings'])->name('cctv.settings.index');
         Route::post('/cctv/settings', [AdminCctvController::class, 'saveSettings'])->name('cctv.settings');
+        Route::get('/cctv/playback', [\App\Http\Controllers\Admin\CctvPlaybackController::class, 'index'])->name('cctv.playback.index');
+        Route::get('/cctv/playback/segments', [\App\Http\Controllers\Admin\CctvPlaybackController::class, 'segments'])->name('cctv.playback.segments');
+        Route::get('/cctv/playback/stream/{segment}', [\App\Http\Controllers\Admin\CctvPlaybackController::class, 'stream'])->name('cctv.playback.stream');
+        Route::get('/cctv/health', [\App\Http\Controllers\Admin\CctvHealthController::class, 'index'])->name('cctv.health.index');
+        Route::get('/cctv/health/summary', [\App\Http\Controllers\Admin\CctvHealthController::class, 'summary'])->name('cctv.health.summary');
+        Route::get('/cctv/events', [AdminCctvEventController::class, 'index'])->name('cctv.events.index');
+        Route::post('/cctv/events/bookmark', [AdminCctvEventController::class, 'bookmark'])->name('cctv.events.bookmark');
     });

@@ -160,7 +160,7 @@
         </header>
 
         <!-- Topbar -->
-        <div class="flex sticky top-0 justify-between items-center py-2 px-4 border-b border-slate-200 dark:border-slate-700 gap-4 bg-neskar-blue-50 dark:bg-slate-900 z-10 transition-all duration-200">
+        <div class="flex sticky top-0 justify-between items-center py-2 px-4 border-b border-slate-200 dark:border-slate-700 gap-4 bg-white dark:bg-slate-900 z-10 transition-all duration-200">
             <button @click="sidebarOpen = true" class="p-2 rounded-md lg:hidden hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200">
                 <x-heroicon-o-bars-3 class="w-6 h-6" />
             </button>

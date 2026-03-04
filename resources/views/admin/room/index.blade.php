@@ -6,6 +6,65 @@
     </x-slot>
 
     <div class="py-6">
+
+        {{-- tambahkan card total gedung dan ruangan di sini--}}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg p-6">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                            <x-heroicon-o-building-office class="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Gedung</h3>
+                        <p class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">{{ $totalBuildings }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg p-6">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                            <x-heroicon-o-cube-transparent class="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Total Ruangan</h3>
+                        <p class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">{{ $totalRooms }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg p-6">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                            <x-heroicon-o-cube class="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Ruangan Aktif</h3>
+                        <p class="text-lg font-semibold text-green-600 dark:text-green-400">{{ $activeRooms }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg p-6">
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                            <x-heroicon-o-cube class="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Ruangan Tidak Aktif</h3>
+                        <p class="text-lg font-semibold text-red-600 dark:text-red-400">{{ $inactiveRooms }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="space-y-6">
             <!-- Header Section -->
             <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">

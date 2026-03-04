@@ -24,6 +24,14 @@ class RoomController extends Controller
             ->orderBy('name')
             ->get();
 
+        $totalRooms = $buildings->sum('rooms_count');
+        $activeRooms = $buildings->sum(function ($building) {
+            return $building->rooms()->where('is_active', true)->count();
+        });
+        $inactiveRooms = $totalRooms - $activeRooms;
+
+        $totalBuildings = $buildings->count();
+
         $undefinedRooms = Room::where('building_id', null)->get();
 
         return view('admin.room.index', [
@@ -32,6 +40,10 @@ class RoomController extends Controller
             'buildings' => $buildings,
             'roomTypes' => ['kelas', 'lab', 'aula', 'lainnya'],
             'undefinedRooms' => $undefinedRooms,
+            'totalRooms' => $totalRooms,
+            'activeRooms' => $activeRooms,
+            'inactiveRooms' => $inactiveRooms,
+            'totalBuildings' => $totalBuildings,
         ]);
     }
 
