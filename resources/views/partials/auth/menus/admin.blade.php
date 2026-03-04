@@ -47,7 +47,6 @@
     Daftar Guru
 </a>
 
-
 <a href="{{ route('admin.staff.index') }}"
     class="flex items-center gap-3 px-4 py-2 text-sm rounded-md hover:bg-slate-200 dark:hover:bg-slate-800
    {{ request()->routeIs('admin.staff.*') ? 'bg-slate-200 dark:bg-slate-800 font-semibold' : '' }}">
@@ -74,6 +73,16 @@
    {{ request()->routeIs('admin.rooms.history') ? 'bg-slate-200 dark:bg-slate-800 font-semibold' : '' }}">
     <x-heroicon-o-document-text class="w-5 h-5" />
     Penggunaan Ruangan
+</a>
+
+<a href="{{ route('admin.cctv.index') }}"
+    class="flex items-center gap-3 px-4 py-2 text-sm rounded-md hover:bg-slate-200 dark:hover:bg-slate-800
+   {{ request()->routeIs('admin.cctv.*') ? 'bg-slate-200 dark:bg-slate-800 font-semibold' : '' }}">
+    <x-heroicon-o-video-camera class="w-5 h-5" />
+    <span>Pantau Ruangan</span>
+    <span class="ml-auto flex items-center">
+        <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+    </span>
 </a>
 
 <a href="{{ route('admin.schedules.index') }}"

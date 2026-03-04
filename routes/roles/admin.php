@@ -12,7 +12,8 @@ use App\Http\Controllers\Admin\{
     RoomController as AdminRoomController,
     BuildingController as AdminBuildingController,
     RoomHistoryController as AdminRoomHistoryController,
-    ReportController as AdminReportController
+    ReportController as AdminReportController,
+    CctvController as AdminCctvController  // ← TAMBAHAN
 };
 use App\Http\Controllers\Admin\Term\BlockController as AdminBlockController;
 use App\Http\Controllers\Admin\Major\CompanyRelationController as AdminCompanyRelationController;
@@ -64,7 +65,7 @@ Route::middleware(['auth', 'role:Admin'])
         Route::put('/majors/{major}', [AdminMajorController::class, 'update'])->name('majors.update');
         Route::delete('/majors/{major}', [AdminMajorController::class, 'destroy'])->name('majors.destroy');
 
-        Route::get('/majors/{major}', [ AdminMajorController::class, 'show'])->name('majors.show');
+        Route::get('/majors/{major}', [AdminMajorController::class, 'show'])->name('majors.show');
         Route::post('/majors/{major}/company-relation', [AdminCompanyRelationController::class, 'store'])->name('majors.company-relation.store');
         Route::put('/majors/{major}/company-relation/{companyRelation}', [AdminCompanyRelationController::class, 'update'])->name('majors.company-relation.update');
         Route::delete('/majors/{major}/company-relation/{companyRelation}', [AdminCompanyRelationController::class, 'destroy'])->name('majors.company-relation.destroy');
@@ -129,14 +130,10 @@ Route::middleware(['auth', 'role:Admin'])
         Route::put('/rooms/{room}', [AdminRoomController::class, 'update'])->name('rooms.update');
         Route::delete('/rooms/{room}', [AdminRoomController::class, 'destroy'])->name('rooms.destroy');
 
-        // Schedules - Main Entry Point
+        // Schedules
         Route::get('/schedules', [AdminScheduleController::class, 'index'])->name('schedules.index');
-        // Room Schedule
-
         Route::get('/schedules/rooms', [AdminScheduleController::class, 'roomsIndex'])->name('schedules.rooms.index');
-
-        // TimeTable schedule
-        Route::get('/schedules/timetable', [AdminTimetableEntryController::class, 'index'])->name('schedules.timetable.index');        
+        Route::get('/schedules/timetable', [AdminTimetableEntryController::class, 'index'])->name('schedules.timetable.index');
 
         // Timetable Templates
         Route::get('/schedules/templates', [AdminTimetableTemplateController::class, 'index'])->name('schedules.templates.index');
@@ -150,7 +147,7 @@ Route::middleware(['auth', 'role:Admin'])
         Route::put('/schedules/entries/{entry}', [AdminTimetableEntryController::class, 'update'])->name('schedules.entries.update');
         Route::delete('/schedules/entries/{entry}', [AdminTimetableEntryController::class, 'destroy'])->name('schedules.entries.destroy');
 
-        // AJAX endpoints for cascading filters
+        // AJAX endpoints
         Route::get('/schedules/classes', [AdminTimetableEntryController::class, 'getClassesByMajor'])->name('schedules.classes');
         Route::get('/schedules/templates-by-class', [AdminTimetableEntryController::class, 'getTemplatesByClass'])->name('schedules.templates-by-class');
 
@@ -163,7 +160,7 @@ Route::middleware(['auth', 'role:Admin'])
         Route::get('/reports/schedules', [AdminReportController::class, 'schedules'])->name('reports.schedules');
         Route::get('/reports/rooms', [AdminReportController::class, 'rooms'])->name('reports.rooms');
 
-        // Staff Management
+        // Staff
         Route::get('/staff', [AdminStaffController::class, 'index'])->name('staff.index');
         Route::post('/staff', [AdminStaffController::class, 'store'])->name('staff.store');
         Route::get('/staff/{id}', [AdminStaffController::class, 'show'])->name('staff.show');
@@ -175,5 +172,12 @@ Route::middleware(['auth', 'role:Admin'])
         Route::get('/attendance', [AdminAttendanceSessionController::class, 'index'])->name('attendance.index');
         Route::post('/attendance', [AdminAttendanceSessionController::class, 'store'])->name('attendance.store');
         Route::delete('/attendance/{session}', [AdminAttendanceSessionController::class, 'destroy'])->name('attendance.destroy');
-    });
 
+        // ========================================
+        // CCTV - Pantau Ruangan
+        // ========================================
+        Route::get('/cctv', [AdminCctvController::class, 'index'])->name('cctv.index');
+        Route::get('/cctv/rooms', [AdminCctvController::class, 'getRooms'])->name('cctv.rooms');
+        Route::post('/cctv/settings', [AdminCctvController::class, 'saveSettings'])->name('cctv.settings');
+
+    });

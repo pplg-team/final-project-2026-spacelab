@@ -22,14 +22,13 @@ class Room extends Model
 
     public function timetableEntries(): HasManyThrough
     {
-        // TimetableEntry is related to Room via RoomHistory
         return $this->hasManyThrough(
             TimetableEntry::class,
             RoomHistory::class,
-            'room_id', // Foreign key on RoomHistory table...
-            'room_history_id', // Foreign key on TimetableEntry table...
-            'id', // Local key on rooms table
-            'id' // Local key on room_history table
+            'room_id',
+            'room_history_id',
+            'id',
+            'id'
         );
     }
 
@@ -41,5 +40,11 @@ class Room extends Model
     public function building()
     {
         return $this->belongsTo(Building::class, 'building_id');
+    }
+
+    // ← TAMBAHAN: relasi langsung ke RoomHistory
+    public function roomHistories(): HasMany
+    {
+        return $this->hasMany(RoomHistory::class, 'room_id');
     }
 }
