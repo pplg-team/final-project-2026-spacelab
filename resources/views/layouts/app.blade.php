@@ -84,7 +84,11 @@
 
                 <div class="flex-1">
                     <div class="text-sm font-semibold">{{ auth()->user()->name }}</div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400 transition-all duration-200">{{ auth()->user()->email }}</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400 transition-all duration-200">{{ auth()->user()->email }}
+                        @if (auth()->user()->staff)
+                        | {{ auth()->user()->staff->type ?? 'N/A' }}                            
+                        @endif
+                    </div>
                 </div>
 
                 <details class="relative group">

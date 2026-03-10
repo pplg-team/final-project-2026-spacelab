@@ -42,7 +42,7 @@
         </div>
       </div>
       <!-- Right: dashboard image -->
-      <div class="hidden lg:flex items-center border-l p-12" style="background-color:color-mix(in srgb,var(--secondary) 30%,transparent);border-color:var(--border)">
+      <div class="hidden lg:flex items-center border-l p-12 pt-0" style="background-color:color-mix(in srgb,var(--secondary) 30%,transparent);border-color:var(--border)">
         <div class="w-full">
           <img src="{{ asset('assets/images/pages/neskar-ats.webp') }}" alt="SpaceLab Dashboard" class="w-full border shadow-lg" style="border-color:var(--border)" onerror="this.style.display='none'" />
         </div>
