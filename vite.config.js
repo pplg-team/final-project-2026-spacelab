@@ -20,7 +20,8 @@ export default defineConfig({
         "resources/js/admin/staff-index.js",
         "resources/js/admin/cctv-index.js",
         "resources/js/admin/cctv-playback.js",
-        "resources/js/admin/cctv-health.js"
+        "resources/js/admin/cctv-health.js",
+        "resources/js/admin/cctv-webcam-upload.js"
       ],
       refresh: true,
     }),

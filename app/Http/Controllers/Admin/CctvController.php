@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\AuditLog;
 use App\Models\Building;
 use App\Models\Room;
+use App\Models\CctvRecordingSegment;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class CctvController extends Controller
 {
@@ -312,6 +315,104 @@ class CctvController extends Controller
             ->all();
 
         return redirect()->route('admin.cctv.settings.index', $redirectParams)->with('success', $message);
+    }
+
+    public function uploadSegment(Request $request)
+    {
+        try {
+            // Check PHP upload limits
+            $maxUpload = ini_get('upload_max_filesize');
+            $maxPost = ini_get('post_max_size');
+            
+            Log::info('Upload attempt', [
+                'php_upload_max' => $maxUpload,
+                'php_post_max' => $maxPost,
+                'request_content_length' => $request->header('Content-Length')
+            ]);
+            
+            $request->validate([
+                'room_id' => 'required|exists:rooms,id',
+                'recording_session_id' => 'required|uuid',
+                'segment' => 'required|file|max:10240', // Max 10MB per segment
+                'segment_index' => 'required|integer',
+                'started_at' => 'nullable|date',
+            ]);
+            
+            $file = $request->file('segment');
+            
+            if (!$file || !$file->isValid()) {
+                Log::error('Invalid file upload', [
+                    'has_file' => $file !== null,
+                    'is_valid' => $file ? $file->isValid() : false,
+                    'error' => $file ? $file->getError() : 'no file'
+                ]);
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid file upload. Check PHP upload_max_filesize and post_max_size settings.'
+                ], 422);
+            }
+            
+            $filename = $request->room_id . '_' . $request->recording_session_id . '_' . $request->segment_index . '.webm';
+            
+            Log::info('Attempting to store file', [
+                'filename' => $filename,
+                'session_id' => $request->recording_session_id,
+                'segment_index' => $request->segment_index
+            ]);
+            
+            $path = $file->storeAs('cctv/recordings', $filename, 'local');
+            
+            if (!$path || !Storage::disk('local')->exists($path)) {
+                Log::error('File storage failed');
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to store file'
+                ], 500);
+            }
+            
+            // Durasi 10 detik per segment
+            $durationSeconds = 10;
+            
+            // Gunakan waktu sekarang dikurangi durasi segment
+            $endedAt = now();
+            $startedAt = $endedAt->copy()->subSeconds($durationSeconds);
+            
+            CctvRecordingSegment::create([
+                'room_id' => $request->room_id,
+                'recording_session_id' => $request->recording_session_id,
+                'camera_type' => 'webcam',
+                'record_mode' => 'continuous',
+                'segment_start_at' => $startedAt,
+                'segment_end_at' => $endedAt,
+                'duration_seconds' => $durationSeconds,
+                'file_path' => $path,
+                'file_size_bytes' => $file->getSize(),
+                'codec' => 'vp9',
+                'resolution' => '1280x720',
+                'has_motion' => false,
+                'integrity_status' => 'ok',
+            ]);
+            
+            Log::info('Segment saved', [
+                'session_id' => $request->recording_session_id,
+                'segment_index' => $request->segment_index,
+                'file_size' => $file->getSize(),
+                'start_at' => $startedAt->toIso8601String()
+            ]);
+            
+            return response()->json(['success' => true]);
+            
+        } catch (\Exception $e) {
+            Log::error('Upload segment error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Server error: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
 }

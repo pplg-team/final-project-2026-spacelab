@@ -16,6 +16,7 @@ class CctvRecordingSegment extends Model
 
     protected $fillable = [
         'room_id',
+        'recording_session_id',
         'camera_type',
         'record_mode',
         'segment_start_at',

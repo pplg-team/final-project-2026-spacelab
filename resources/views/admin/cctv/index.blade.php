@@ -194,8 +194,23 @@
                                         <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate max-w-[170px]">{{ $majorName ?? '-' }}</p>
                                     </td>
                                     <td class="px-3 py-4">
-                                        <p class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[170px]">{{ $teacherName }}</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate max-w-[170px]">{{ $subjectName }}</p>
+                                        <div class="flex items-center gap-2">
+                                            @if ($teacher)
+                                                <img src="{{ $teacher->avatar ? (Str::startsWith($teacher->avatar, 'http') ? $teacher->avatar : Storage::url($teacher->avatar)) : asset('assets/images/avatar/default-profile.png') }}"
+                                                    alt="{{ $teacherName }}"
+                                                    class="w-12 h-12 rounded-full object-cover flex-shrink-0 border border-gray-200 dark:border-gray-600">
+                                            @else
+                                                <div class="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-600 flex items-center justify-center flex-shrink-0">
+                                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                                                    </svg>
+                                                </div>
+                                            @endif
+                                            <div class="min-w-0">
+                                                <p class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[130px]">{{ $teacherName }}</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate max-w-[130px]">{{ $subjectName }}</p>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td class="px-3 py-4 text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">
                                         {{ $timeRange }}
@@ -223,14 +238,49 @@
                                             </div>
                                         @elseif ($hasWebcamPreview)
                                             <div class="relative w-[170px] h-[96px] rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-black">
-                                                <video
-                                                    class="webcam-preview-video w-full h-full object-cover"
+                                                {{-- Video element dengan ID unik --}}
+                                                <video 
+                                                    id="webcam-card-{{ $room->id }}"
+                                                    class="w-full h-full object-cover"
                                                     autoplay
                                                     muted
                                                     playsinline
-                                                ></video>
-                                                <div class="webcam-preview-overlay absolute inset-0 flex items-center justify-center text-[11px] text-white/80 text-center px-2 bg-black/40">
-                                                    Mengaktifkan webcam...
+                                                    style="display:none;">
+                                                </video>
+                                                
+                                                {{-- REC badge --}}
+                                                <div 
+                                                    id="rec-badge-{{ $room->id }}" 
+                                                    class="absolute top-1 left-1 flex items-center gap-1 px-1.5 py-0.5 bg-red-600 rounded text-white text-[10px] font-bold" 
+                                                    style="display:none;z-index:20">
+                                                    <span class="w-1 h-1 rounded-full bg-white animate-pulse inline-block"></span> REC
+                                                </div>
+                                                
+                                                {{-- Stop button --}}
+                                                <button 
+                                                    id="stop-btn-{{ $room->id }}" 
+                                                    onclick="stopCardWebcam('{{ $room->id }}')"
+                                                    class="absolute top-1 right-1 px-2 py-0.5 bg-red-600 hover:bg-red-700 text-white text-[10px] font-semibold rounded transition-colors flex items-center gap-1"
+                                                    style="display:none;z-index:20">
+                                                    <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                                                        <rect x="6" y="6" width="8" height="8" rx="1"/>
+                                                    </svg>
+                                                    Stop
+                                                </button>
+                                                
+                                                {{-- Placeholder dengan tombol Aktifkan --}}
+                                                <div 
+                                                    id="webcam-card-placeholder-{{ $room->id }}" 
+                                                    class="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/40">
+                                                    <svg class="w-6 h-6 text-blue-400 opacity-60" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                                                    </svg>
+                                                    <span class="text-[10px] text-blue-400 font-mono opacity-80">WEBCAM READY</span>
+                                                    <button 
+                                                        onclick="startCardWebcam('{{ $room->id }}')"
+                                                        class="mt-1 px-2 py-0.5 bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-semibold rounded transition-colors">
+                                                        Aktifkan
+                                                    </button>
                                                 </div>
                                             </div>
                                         @else
@@ -387,4 +437,5 @@
     </div>
 
     @vite('resources/js/admin/cctv-index.js')
+    @vite('resources/js/admin/cctv-webcam-upload.js')
 </x-app-layout>

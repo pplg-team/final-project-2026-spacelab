@@ -185,4 +185,5 @@ Route::middleware(['auth', 'role:Admin'])
         Route::get('/cctv/health/summary', [\App\Http\Controllers\Admin\CctvHealthController::class, 'summary'])->name('cctv.health.summary');
         Route::get('/cctv/events', [AdminCctvEventController::class, 'index'])->name('cctv.events.index');
         Route::post('/cctv/events/bookmark', [AdminCctvEventController::class, 'bookmark'])->name('cctv.events.bookmark');
+        Route::post('/cctv/upload-segment', [AdminCctvController::class, 'uploadSegment'])->name('cctv.uploadSegment');
     });

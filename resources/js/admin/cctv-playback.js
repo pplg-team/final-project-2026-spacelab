@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let segments = [];
     let events = [];
     let selectedHour = null;
+    let currentSegmentIndex = 0;
+    let currentHourSegments = [];
 
     // Load segments and events
     function loadTimeline() {
@@ -106,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
             hourBlock.addEventListener('click', () => {
                 if (hourSegments.length > 0) {
                     selectedHour = hour;
+                    currentHourSegments = hourSegments;
+                    currentSegmentIndex = 0;
                     renderTimeline();
                     playSegment(hourSegments[0]);
                 } else {
@@ -165,8 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Play selected segment
     function playSegment(segment) {
-        // In real implementation, you would fetch the actual video file
-        // For now, we'll just show segment info
+        console.log('Playing segment:', segment.id, 'Index:', currentSegmentIndex);
         
         playerPlaceholder.classList.add('hidden');
         playbackVideo.classList.remove('hidden');
@@ -175,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
             segmentEmptyHint.classList.add('hidden');
         }
         if (segmentStateBadge) {
-            segmentStateBadge.textContent = 'Segmen dipilih';
+            segmentStateBadge.textContent = `Segmen ${currentSegmentIndex + 1}/${currentHourSegments.length}`;
             segmentStateBadge.className = 'inline-flex items-center px-2 py-1 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300';
         }
 
@@ -193,11 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (segmentIntegrity) segmentIntegrity.textContent = segment.integrity_status || '-';
 
         if (segment.playback_url) {
+            console.log('Loading video from:', segment.playback_url);
             playbackVideo.src = segment.playback_url;
             playbackVideo.load();
-            playbackVideo.play().catch(() => {
-                // Browser autoplay policy may block playback before user interaction.
+            playbackVideo.play().catch((err) => {
+                console.error('Error playing video:', err);
             });
+        } else {
+            console.error('No playback_url for segment:', segment.id);
         }
     }
 
@@ -222,4 +228,22 @@ document.addEventListener('DOMContentLoaded', function() {
     clearSegmentInfo();
     renderHourLabels();
     loadTimeline();
+    
+    // Auto-play next segment when current segment ends
+    if (playbackVideo) {
+        playbackVideo.addEventListener('ended', function() {
+            console.log(`Video ended. Current index: ${currentSegmentIndex}, Total: ${currentHourSegments.length}`);
+            currentSegmentIndex++;
+            if (currentSegmentIndex < currentHourSegments.length) {
+                console.log(`Playing next segment: ${currentSegmentIndex + 1}/${currentHourSegments.length}`);
+                playSegment(currentHourSegments[currentSegmentIndex]);
+            } else {
+                console.log('All segments played');
+                if (segmentStateBadge) {
+                    segmentStateBadge.textContent = 'Selesai diputar';
+                    segmentStateBadge.className = 'inline-flex items-center px-2 py-1 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300';
+                }
+            }
+        });
+    }
 });
