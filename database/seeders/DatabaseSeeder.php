@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             UpdateSiswaPasswordSeeder::class,
+            StaffSeeder::class,
             BuildingSeeder::class,
             RoomSeeder::class,
             CctvCameraPolicySeeder::class,

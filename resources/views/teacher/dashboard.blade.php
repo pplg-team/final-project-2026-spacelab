@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-        {{-- Alert absen pojok kanan bawah --}}
+    {{-- Alert absen pojok kanan bawah --}}
     @if ($isAbsensiActive && !$attendanceRecord)
         <div
             class="bg-white shadow-lg 2xl overflow-hidden
@@ -13,19 +13,20 @@
                     hover:shadow-xl transition-all duration-150 fixed right-0 bottom-0 w-full max-w-sm z-10 ring-2 ring-blue-100 dark:ring-blue-500/30">
             <div class="flex items-center justify-between gap-4">
                 <div class="flex-1">
-                    <p class="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">Absensi Hari Ini</p>
-                        <h3 class="text-2xl font-extrabold text-red-600 dark:text-red-400 mb-2">Belum Absen</h3>
-                        <a href="{{ route('guru.attendance.index') }}"
-                            class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold lg transition-colors duration-200">
-                            Absen Sekarang
-                            <x-heroicon-o-arrow-right class="w-4 h-4 inline-block ml-1" />
-                        </a>
+                    <p
+                        class="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">
+                        Absensi Hari Ini</p>
+                    <h3 class="text-2xl font-extrabold text-red-600 dark:text-red-400 mb-2">Belum Absen</h3>
+                    <a href="{{ route('guru.attendance.index') }}"
+                        class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold lg transition-colors duration-200">
+                        Absen Sekarang
+                        <x-heroicon-o-arrow-right class="w-4 h-4 inline-block ml-1" />
+                    </a>
                 </div>
                 <div
                     class="flex-shrink-0 w-16 h-16 bg-gradient-to-br {{ $attendanceRecord ? 'from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/20' : 'from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/20' }} xl flex items-center justify-center
                             border-2 {{ $attendanceRecord ? 'border-green-300 dark:border-green-600' : 'border-red-300 dark:border-red-600' }} shadow-md">
-                        <x-heroicon-o-exclamation-circle
-                            class="w-8 h-8 text-red-600 dark:text-red-400" />
+                    <x-heroicon-o-exclamation-circle class="w-8 h-8 text-red-600 dark:text-red-400" />
                 </div>
             </div>
         </div>
@@ -103,7 +104,7 @@
                         <div class="min-w-0">
                             <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Nama</p>
                             <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">
-                                {{ optional(optional($teacher)->user)->name ?? (optional($teacher)->name ?? 'Nama Guru') }}
+                                {{ Auth::user()->name ?? 'Guru' }}
                             </h3>
                             <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">
                                 {{ optional($teacher)->code ?? 'Guru' }}</p>
@@ -112,8 +113,7 @@
                             <div
                                 class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
                                 <img src="{{ Storage::url(optional($teacher)->avatar) ?? asset('images/default-teacher.png') }}"
-                                    alt="Avatar Guru"
-                                    class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
+                                    alt="Avatar Guru" class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
                             </div>
                         </div>
                     </div>
@@ -293,8 +293,7 @@
                                                     <span class="relative flex h-2.5 w-2.5">
                                                         <span
                                                             class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
-                                                        <span
-                                                            class="relative inline-flex h-2.5 w-2.5 bg-white"></span>
+                                                        <span class="relative inline-flex h-2.5 w-2.5 bg-white"></span>
                                                     </span>
                                                     <span class="text-xs font-bold tracking-wide">BERLANGSUNG</span>
                                                 </div>
@@ -428,5 +427,3 @@
         </div>
     </div>
 </x-app-layout>
-
-

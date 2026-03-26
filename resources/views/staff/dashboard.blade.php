@@ -7,7 +7,7 @@
         </div>
     </x-slot>
 
-        {{-- Alert absen pojok kanan bawah --}}
+        {{-- Alert absen pojok kanan bawah --}} 
     @if ($isAbsensiActive && !$attendanceRecord)
         <div
             class="bg-white shadow-lg 2xl overflow-hidden
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif  
 
     <div class="py-8">
         <div>

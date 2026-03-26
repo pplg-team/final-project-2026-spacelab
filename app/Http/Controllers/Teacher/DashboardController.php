@@ -19,6 +19,22 @@ class DashboardController extends Controller
         $user->loadMissing('teacher.user');
         $teacher = $user->teacher ?? null;
 
+        if (! $teacher) {
+            return view('teacher.dashboard', [
+                'teacher' => null,
+                'schedulesToday' => collect(),
+                'currentTime' => Carbon::now(),
+                'currentDayIndex' => (int) Carbon::now()->format('N'),
+                'lessonsCount' => 0,
+                'roomsCount' => 0,
+                'uniqueSubjectsCount' => 0,
+                'isAbsensiActive' => false,
+                'attendanceRecord' => null,
+                'title' => 'Dashboard Guru',
+                'description' => 'Halaman dashboard guru',
+            ]);
+        }
+
         $currentTime = Carbon::now();
         $currentDayIndex = (int) $currentTime->format('N');
 
