@@ -30,7 +30,7 @@
             </div>
 
             {{-- Filter Bar --}}
-            <div class="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-4 mb-8">
+            <div class="bg-white dark:bg-slate-950 xl border border-slate-200 dark:border-slate-800 p-4 mb-8">
                 <div class="flex flex-col sm:flex-row gap-3">
                     {{-- Search --}}
                     <div class="flex-1 relative">
@@ -38,12 +38,12 @@
                             class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                         <input type="text" x-model="search" @keydown.enter="applyFilter()"
                             placeholder="Cari nama ruangan..."
-                            class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition" />
+                            class="w-full pl-10 pr-4 py-2.5 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition" />
                     </div>
 
-                    {{-- Building Filter --}}
+                    {{-- Building Filter --}}   
                     <select x-model="selectedBuilding" @change="applyFilter()"
-                        class="px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition">
+                        class="px-4 py-2.5 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition">
                         <option value="">Semua Gedung</option>
                         @foreach ($buildings as $building)
                             <option value="{{ $building->id }}">{{ $building->name }}</option>
@@ -52,7 +52,7 @@
 
                     {{-- Type Filter --}}
                     <select x-model="selectedType" @change="applyFilter()"
-                        class="px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition">
+                        class="px-4 py-2.5 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition">
                         <option value="">Semua Tipe</option>
                         @foreach ($roomTypes as $type)
                             <option value="{{ $type }}">{{ ucfirst($type) }}</option>
@@ -61,7 +61,7 @@
 
                     {{-- Reset --}}
                     <a href="{{ route('views.rooms') }}"
-                        class="px-4 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-sm hover:bg-slate-50 dark:hover:bg-slate-900 transition text-center">
+                        class="px-4 py-2.5 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-sm hover:bg-slate-50 dark:hover:bg-slate-900 transition text-center">
                         Reset
                     </a>
                 </div>
@@ -96,7 +96,7 @@
                     {{-- Building Header --}}
                     <div class="flex items-center gap-3 mb-4">
                         <div
-                            class="w-10 h-10 bg-slate-200 dark:bg-slate-800 rounded-lg flex items-center justify-center">
+                            class="w-10 h-10 bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
                             <x-heroicon-o-building-office class="w-5 h-5 text-slate-600 dark:text-slate-400" />
                         </div>
                         <div>
@@ -116,21 +116,21 @@
                                 $isOccupied = $usage !== null;
                             @endphp
                             <a href="{{ route('views.rooms.show', $room) }}"
-                                class="group bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-5 hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-200 hover:shadow-md">
+                                class="group bg-white dark:bg-slate-950 xl border border-slate-200 dark:border-slate-800 p-5 hover:border-slate-400 dark:hover:border-slate-600 transition-all duration-200 hover:shadow-md">
                                 {{-- Status Badge --}}
                                 <div class="flex items-start justify-between mb-3">
                                     <div class="flex items-center gap-2">
                                         <span
-                                            class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{{ $room->code }}</span>
+                                            class="text-xs font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 ">{{ $room->code }}</span>
                                         @if ($room->type)
                                             <span
-                                                class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">{{ ucfirst($room->type) }}</span>
+                                                class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 ">{{ ucfirst($room->type) }}</span>
                                         @endif
                                     </div>
                                     <span
                                         class="flex items-center gap-1 text-xs font-medium {{ $isOccupied ? 'text-amber-600 dark:text-amber-400' : 'text-emerald-600 dark:text-emerald-400' }}">
                                         <span
-                                            class="w-2 h-2 rounded-full {{ $isOccupied ? 'bg-amber-500' : 'bg-emerald-500' }}"></span>
+                                            class="w-2 h-2 {{ $isOccupied ? 'bg-amber-500' : 'bg-emerald-500' }}"></span>
                                         {{ $isOccupied ? 'Terpakai' : 'Kosong' }}
                                     </span>
                                 </div>

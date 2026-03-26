@@ -8,13 +8,13 @@
     <!-- 1. Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
         <!-- Hari Ini -->
-        <div class="bg-indigo-600 rounded-lg shadow-md p-4 text-white">
+        <div class="bg-indigo-600 lg shadow-md p-4 text-white">
             <div class="text-xs font-semibold uppercase tracking-wider mb-1">Hari Ini</div>
             <div class="text-xl font-bold">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</div>
         </div>
 
         <!-- Staff -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-blue-500">
             <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Staff Hadir
             </div>
             <div class="flex items-end gap-2">
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Guru -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border-l-4 border-green-500">
+        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-green-500">
             <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Guru Hadir
             </div>
             <div class="flex items-end gap-2">
@@ -34,7 +34,7 @@
         </div>
 
         <!-- Siswa -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border-l-4 border-purple-500">
+        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-purple-500">
             <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Siswa
                 Hadir</div>
             <div class="flex items-end gap-2">
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Total -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 border-l-4 border-gray-500">
+        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-gray-500">
             <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Total
                 Hadir</div>
             <div class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['total'] }}</div>
@@ -54,7 +54,7 @@
     <!-- 2. Chart & Activation -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <!-- Weekly Chart -->
-        <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <div class="lg:col-span-2 bg-white dark:bg-gray-800 lg shadow-md p-6">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-4">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Grafik Status Absensi Mingguan
@@ -69,10 +69,10 @@
                     <input type="hidden" name="search" value="{{ request('search') }}">
 
                     <input type="date" name="chart_week" value="{{ $chartFilters['week'] }}"
-                        class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
 
                     <select name="chart_role"
-                        class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
                         <option value="">Semua Role</option>
                         <option value="Staff" {{ $chartFilters['role'] === 'Staff' ? 'selected' : '' }}>Staff</option>
                         <option value="Guru" {{ $chartFilters['role'] === 'Guru' ? 'selected' : '' }}>Guru</option>
@@ -80,7 +80,7 @@
                     </select>
 
                     <select name="chart_status"
-                        class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
                         <option value="">Semua Status</option>
                         <option value="hadir" {{ $chartFilters['status'] === 'hadir' ? 'selected' : '' }}>Hadir</option>
                         <option value="izin" {{ $chartFilters['status'] === 'izin' ? 'selected' : '' }}>Izin</option>
@@ -89,7 +89,7 @@
                     </select>
 
                     <button type="submit"
-                        class="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
+                        class="bg-gray-200 dark:bg-gray-700 px-3 py-2 md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
                         Filter Grafik
                     </button>
                 </form>
@@ -101,7 +101,7 @@
         </div>
 
         <!-- Activation Card -->
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex flex-col justify-between">
+        <div class="bg-white dark:bg-gray-800 lg shadow-md p-6 flex flex-col justify-between">
             <div>
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Aktivasi Absensi Hari Ini</h3>
                 <div class="space-y-3">
@@ -109,10 +109,10 @@
                         <span class="text-gray-600 dark:text-gray-400">Status Absensi</span>
                         @if ($isAbsensiActive)
                             <span
-                                class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">AKTIF</span>
+                                class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold">AKTIF</span>
                         @else
                             <span
-                                class="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-semibold">NONAKTIF</span>
+                                class="px-2 py-1 bg-gray-100 text-gray-800 text-xs font-semibold">NONAKTIF</span>
                         @endif
                     </div>
                     <div class="flex justify-between items-center">
@@ -139,22 +139,22 @@
                         @csrf
                         <input type="hidden" name="timetable_entry_id" value="0">
                         <button type="submit"
-                            class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 shadow-lg transition transform hover:-translate-y-1">
+                            class="w-full bg-indigo-600 text-white py-3 lg font-bold hover:bg-indigo-700 shadow-lg transition transform hover:-translate-y-1">
                             BUKA ABSENSI HARI INI
                         </button>
                     </form>
                 @elseif ($sessionTodayExists && !$isAbsensiActive)
                     <button disabled
-                        class="w-full bg-gray-400 text-white py-3 rounded-lg font-bold cursor-not-allowed shadow-lg"
+                        class="w-full bg-gray-400 text-white py-3 lg font-bold cursor-not-allowed shadow-lg"
                         title="Sesi absensi sudah dibuat hari ini">
                         SESI ABSENSI SUDAH DIBUAT
                     </button>
                 @elseif ($sessionTodayExists && $isAbsensiActive)
                     <div class="space-y-4">
                         <div
-                            class="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg flex flex-col items-center border border-gray-100 dark:border-gray-700">
-                            <div id="qrcode" class="bg-white p-2 rounded shadow-sm mb-3"></div>
-                            <div class="bg-indigo-50 dark:bg-indigo-900/30 p-2 rounded w-full text-center">
+                            class="bg-gray-50 dark:bg-gray-900/50 p-4 lg flex flex-col items-center border border-gray-100 dark:border-gray-700">
+                            <div id="qrcode" class="bg-white p-2  shadow-sm mb-3"></div>
+                            <div class="bg-indigo-50 dark:bg-indigo-900/30 p-2  w-full text-center">
                                 <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 italic">Token Harian
                                     Aktif</p>
                                 <p class="text-sm font-bold text-indigo-700 dark:text-indigo-300 break-all font-mono"
@@ -169,7 +169,7 @@
                             @method('DELETE')
                             <button type="submit"
                                 onclick="return confirm('Apakah Anda yakin ingin menutup semua sesi absensi?')"
-                                class="w-full bg-red-600 text-white py-3 rounded-lg font-bold hover:bg-red-700 shadow-lg transition transform hover:-translate-y-1">
+                                class="w-full bg-red-600 text-white py-3 lg font-bold hover:bg-red-700 shadow-lg transition transform hover:-translate-y-1">
                                 TUTUP SEMUA SESI
                             </button>
                         </form>
@@ -180,7 +180,7 @@
     </div>
 
     <!-- 3. Monitoring Table -->
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 lg shadow-md overflow-hidden">
         <div
             class="p-6 border-b border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
             <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Monitoring Absensi</h3>
@@ -192,10 +192,10 @@
                 <input type="hidden" name="chart_status" value="{{ $chartFilters['status'] }}">
 
                 <input type="date" name="date" value="{{ request('date', date('Y-m-d')) }}"
-                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
 
                 <select name="role"
-                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
                     <option value="">Semua Role</option>
                     <option value="Staff" {{ request('role') == 'Staff' ? 'selected' : '' }}>Staff</option>
                     <option value="Guru" {{ request('role') == 'Guru' ? 'selected' : '' }}>Guru</option>
@@ -203,7 +203,7 @@
                 </select>
 
                 <select name="status"
-                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
                     <option value="">Semua Status</option>
                     <option value="hadir" {{ request('status') == 'hadir' ? 'selected' : '' }}>Hadir</option>
                     <option value="izin" {{ request('status') == 'izin' ? 'selected' : '' }}>Izin</option>
@@ -212,10 +212,10 @@
                 </select>
 
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama..."
-                    class="rounded-md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
 
                 <button type="submit"
-                    class="bg-gray-200 dark:bg-gray-700 px-3 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
+                    class="bg-gray-200 dark:bg-gray-700 px-3 py-2 md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
                     Filter
                 </button>
             </form>
@@ -253,7 +253,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold 
                                     {{ $record->user->role->name == 'Guru' ? 'bg-green-100 text-green-800' : '' }}
                                     {{ $record->user->role->name == 'Staff' ? 'bg-blue-100 text-blue-800' : '' }}
                                     {{ $record->user->role->name == 'Siswa' ? 'bg-purple-100 text-purple-800' : '' }}">
@@ -269,7 +269,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span
-                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold full
                                     {{ $record->status == 'hadir' ? 'bg-green-100 text-green-800' : '' }}
                                     {{ $record->status == 'izin' ? 'bg-yellow-100 text-yellow-800' : '' }}
                                     {{ $record->status == 'sakit' ? 'bg-red-100 text-red-800' : '' }}
@@ -339,7 +339,7 @@
         <!-- Modal -->
         <div x-show="open" x-transition @click.outside="open = false"
             class="fixed inset-0 flex items-center justify-center p-4">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full p-6">
+            <div class="bg-white dark:bg-gray-800 lg shadow-xl max-w-md w-full p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100" x-text="'Detail Absensi: ' + name">
                     </h3>
@@ -355,11 +355,11 @@
                     <div>
                         <p class="text-sm font-medium text-gray-500 mb-2">Foto Selfie:</p>
                         <template x-if="photo">
-                            <img :src="'/storage/' + photo" alt="Selfie" class="w-full rounded-lg shadow-sm">
+                            <img :src="'/storage/' + photo" alt="Selfie" class="w-full lg shadow-sm">
                         </template>
                         <template x-if="!photo">
                             <div
-                                class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
+                                class="w-full h-48 bg-gray-200 lg flex items-center justify-center text-gray-500">
                                 Tidak ada foto
                             </div>
                         </template>
@@ -368,7 +368,7 @@
 
                 <div class="mt-6 flex justify-end">
                     <button @click="open = false"
-                        class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+                        class="bg-gray-200 text-gray-800 px-4 py-2 lg hover:bg-gray-300 transition">
                         Tutup
                     </button>
                 </div>

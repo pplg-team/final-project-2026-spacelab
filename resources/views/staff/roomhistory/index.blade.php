@@ -11,7 +11,7 @@
         <div class="mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
             <!-- Section 2: Room Summary Table -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <div class="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center justify-between">
                         <div>
@@ -19,7 +19,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5">Daftar ruangan dengan status terkini dan akses ke kalender</p>
                         </div>
                         <button onclick="openModal('create')"
-                            class="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+                            class="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium lg shadow-sm transition-all duration-200 hover:shadow-md">
                             <x-heroicon-o-plus class="w-5 h-5" />
                             <span>Tambah Alokasi</span>
                         </button>
@@ -47,7 +47,7 @@
                                         {{ $room->name }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold {{ $room->current_status === 'Occupied' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' }}">
+                                        <span class="inline-flex items-center px-2 py-1 text-xs font-semibold {{ $room->current_status === 'Occupied' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' }}">
                                             {{ $room->current_status }}
                                         </span>
                                     </td>
@@ -93,7 +93,7 @@
 
             <div class="px-6 py-5 space-y-5 max-h-[65vh] overflow-y-auto">
                 <!-- Date & Time (moved up) -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 lg border border-gray-200 dark:border-gray-700">
                     <!-- Start DateTime -->
                     <div>
                         <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -105,7 +105,7 @@
                             </div>
                         </x-input-label>
                         <input id="start_datetime" name="start_date" type="datetime-local" required
-                            class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
                     </div>
 
@@ -120,7 +120,7 @@
                             </div>
                         </x-input-label>
                         <input id="end_datetime" name="end_date" type="datetime-local" required
-                            class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <x-input-error :messages="$errors->get('end_date')" class="mt-2" />
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         </div>
                     </x-input-label>
                     <select name="room_id" id="room_id" required disabled
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Ruangan setelah memilih tanggal & jam</option>
                     </select>
                     <x-input-error :messages="$errors->get('room_id')" class="mt-2" />
@@ -153,7 +153,7 @@
                         </div>
                     </x-input-label>
                     <select name="classes_id" id="classes_id" disabled
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Kelas setelah memilih Ruangan</option>
                     </select>
                 </div>
@@ -169,7 +169,7 @@
                         </div>
                     </x-input-label>
                     <select name="teacher_id" id="teacher_id" disabled
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Guru setelah memilih Kelas</option>
                     </select>
                 </div>
@@ -185,7 +185,7 @@
                         </div>
                     </x-input-label>
                     <select name="terms_id" id="terms_id" required
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Tahun Ajaran</option>
                         @foreach ($terms as $term)
                             <option value="{{ $term->id }}" {{ $term->is_active ? 'selected' : '' }}>
@@ -207,7 +207,7 @@
                         </div>
                     </x-input-label>
                         <x-text-input id="event_type" name="event_type" type="text" disabled
-                            class="mt-2 block w-full rounded-lg"
+                            class="mt-2 block w-full lg"
                             placeholder="Contoh: KBM, Rapat, Ujian, Workshop" />
                         <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Kategori kegiatan yang dilakukan di ruangan</p>
                 </div>
@@ -219,14 +219,14 @@
                 </p>
                 <div class="flex gap-3">
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                         Batal
                     </button>
                     <button type="submit"
-                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 border border-transparent rounded-lg font-medium text-sm text-white shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                        class="inline-flex items-center gap-2 px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 border border-transparent lg font-medium text-sm text-white shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>

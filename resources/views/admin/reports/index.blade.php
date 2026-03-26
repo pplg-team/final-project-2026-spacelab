@@ -16,7 +16,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 <!-- Total Students -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -24,7 +24,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_students']) }}</p>
                         </div>
-                        <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-xl">
+                        <div class="p-3 bg-blue-100 dark:bg-blue-900/50 xl">
                             <x-heroicon-o-academic-cap class="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
                     </div>
@@ -32,7 +32,7 @@
 
                 <!-- Total Teachers -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -40,7 +40,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_teachers']) }}</p>
                         </div>
-                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl">
+                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 xl">
                             <x-heroicon-o-user-group class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                         </div>
                     </div>
@@ -48,7 +48,7 @@
 
                 <!-- Total Classes -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -56,7 +56,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_classes']) }}</p>
                         </div>
-                        <div class="p-3 bg-violet-100 dark:bg-violet-900/50 rounded-xl">
+                        <div class="p-3 bg-violet-100 dark:bg-violet-900/50 xl">
                             <x-heroicon-o-rectangle-group class="w-6 h-6 text-violet-600 dark:text-violet-400" />
                         </div>
                     </div>
@@ -64,7 +64,7 @@
 
                 <!-- Total Majors -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -72,7 +72,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_majors']) }}</p>
                         </div>
-                        <div class="p-3 bg-amber-100 dark:bg-amber-900/50 rounded-xl">
+                        <div class="p-3 bg-amber-100 dark:bg-amber-900/50 xl">
                             <x-heroicon-o-building-library class="w-6 h-6 text-amber-600 dark:text-amber-400" />
                         </div>
                     </div>
@@ -80,7 +80,7 @@
 
                 <!-- Total Rooms -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -88,7 +88,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_rooms']) }}</p>
                         </div>
-                        <div class="p-3 bg-rose-100 dark:bg-rose-900/50 rounded-xl">
+                        <div class="p-3 bg-rose-100 dark:bg-rose-900/50 xl">
                             <x-heroicon-o-home-modern class="w-6 h-6 text-rose-600 dark:text-rose-400" />
                         </div>
                     </div>
@@ -96,7 +96,7 @@
 
                 <!-- Total Subjects -->
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5 hover:shadow-md transition-shadow">
                     <div class="flex items-center justify-between">
                         <div>
                             <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -104,7 +104,7 @@
                             <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">
                                 {{ number_format($stats['total_subjects']) }}</p>
                         </div>
-                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/50 rounded-xl">
+                        <div class="p-3 bg-cyan-100 dark:bg-cyan-900/50 xl">
                             <x-heroicon-o-book-open class="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
                         </div>
                     </div>
@@ -112,7 +112,7 @@
             </div>
 
             <!-- Report Categories -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                 <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Pilih Jenis Laporan</h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Klik pada jenis laporan untuk melihat
@@ -123,12 +123,12 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <!-- Student Report Card -->
                         <a href="{{ route('admin.reports.students') }}"
-                            class="group relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl p-6 border border-blue-200 dark:border-blue-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                            class="group relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30 xl p-6 border border-blue-200 dark:border-blue-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                             <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                 <x-heroicon-s-academic-cap class="w-16 h-16 text-blue-600" />
                             </div>
                             <div class="relative">
-                                <div class="p-3 bg-blue-500 dark:bg-blue-600 rounded-xl w-fit mb-4">
+                                <div class="p-3 bg-blue-500 dark:bg-blue-600 xl w-fit mb-4">
                                     <x-heroicon-o-academic-cap class="w-6 h-6 text-white" />
                                 </div>
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Laporan Siswa</h4>
@@ -145,12 +145,12 @@
 
                         <!-- Teacher Report Card -->
                         <a href="{{ route('admin.reports.teachers') }}"
-                            class="group relative bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30 rounded-xl p-6 border border-emerald-200 dark:border-emerald-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                            class="group relative bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900/30 dark:to-emerald-800/30 xl p-6 border border-emerald-200 dark:border-emerald-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                             <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                 <x-heroicon-s-user-group class="w-16 h-16 text-emerald-600" />
                             </div>
                             <div class="relative">
-                                <div class="p-3 bg-emerald-500 dark:bg-emerald-600 rounded-xl w-fit mb-4">
+                                <div class="p-3 bg-emerald-500 dark:bg-emerald-600 xl w-fit mb-4">
                                     <x-heroicon-o-user-group class="w-6 h-6 text-white" />
                                 </div>
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Laporan Guru</h4>
@@ -166,12 +166,12 @@
 
                         <!-- Schedule Report Card -->
                         <a href="{{ route('admin.reports.schedules') }}"
-                            class="group relative bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-900/30 dark:to-violet-800/30 rounded-xl p-6 border border-violet-200 dark:border-violet-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                            class="group relative bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-900/30 dark:to-violet-800/30 xl p-6 border border-violet-200 dark:border-violet-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                             <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                 <x-heroicon-s-calendar-days class="w-16 h-16 text-violet-600" />
                             </div>
                             <div class="relative">
-                                <div class="p-3 bg-violet-500 dark:bg-violet-600 rounded-xl w-fit mb-4">
+                                <div class="p-3 bg-violet-500 dark:bg-violet-600 xl w-fit mb-4">
                                     <x-heroicon-o-calendar-days class="w-6 h-6 text-white" />
                                 </div>
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Laporan Jadwal</h4>
@@ -187,12 +187,12 @@
 
                         <!-- Room Report Card -->
                         <a href="{{ route('admin.reports.rooms') }}"
-                            class="group relative bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-900/30 dark:to-rose-800/30 rounded-xl p-6 border border-rose-200 dark:border-rose-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                            class="group relative bg-gradient-to-br from-rose-50 to-rose-100 dark:from-rose-900/30 dark:to-rose-800/30 xl p-6 border border-rose-200 dark:border-rose-800 hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
                             <div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                 <x-heroicon-s-home-modern class="w-16 h-16 text-rose-600" />
                             </div>
                             <div class="relative">
-                                <div class="p-3 bg-rose-500 dark:bg-rose-600 rounded-xl w-fit mb-4">
+                                <div class="p-3 bg-rose-500 dark:bg-rose-600 xl w-fit mb-4">
                                     <x-heroicon-o-home-modern class="w-6 h-6 text-white" />
                                 </div>
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Laporan Ruangan
@@ -211,7 +211,7 @@
             </div>
 
             <!-- Student Distribution per Major -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                 <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Distribusi Siswa per Jurusan</h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Ringkasan jumlah siswa berdasarkan jurusan
@@ -222,7 +222,7 @@
                     @if ($studentDistribution->count() > 0)
                         <div class="space-y-6">
                             @foreach ($studentDistribution as $majorCode => $classes)
-                                <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                                <div class="border border-gray-200 dark:border-gray-700 lg overflow-hidden">
                                     <div
                                         class="bg-gray-50 dark:bg-gray-900 px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                                         <h4 class="font-medium text-gray-900 dark:text-white flex items-center gap-2">
@@ -237,7 +237,7 @@
                                         <div
                                             class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                                             @foreach ($classes->sortBy(['level', 'rombel']) as $class)
-                                                <div class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3 text-center">
+                                                <div class="bg-gray-50 dark:bg-gray-900 lg p-3 text-center">
                                                     <p class="text-sm font-medium text-gray-900 dark:text-white">
                                                         {{ $class->full_name }}</p>
                                                     <p

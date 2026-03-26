@@ -75,7 +75,7 @@
                             : asset('assets/images/avatar/default-profile.png');
                     @endphp
 
-                    <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+                    <div class="relative flex h-10 w-10 shrink-0 overflow-hidden lg">
                         <img
                             src="{{ $avatarUrl }}"
                             alt="{{ $user->name }}"
@@ -96,7 +96,7 @@
                     <summary class="cursor-pointer list-none">
                         <x-heroicon-o-chevron-up-down class="w-5 h-5 text-gray-600 dark:text-gray-300 transition-all duration-200" />
                     </summary>
-                    <ul class="absolute bottom-full right-0 mb-2 w-48 bg-white dark:bg-slate-800 shadow-lg rounded-md border border-gray-200 dark:border-slate-700 transition-all duration-200">
+                    <ul class="absolute bottom-full right-0 mb-2 w-48 bg-white dark:bg-slate-800 shadow-lg md border border-gray-200 dark:border-slate-700 transition-all duration-200">
                         <li>
                             <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-200">
                                 <x-heroicon-o-cog-6-tooth class="w-5 h-5" />
@@ -134,7 +134,7 @@
                 <p>Selamat Datang {{ Auth::user()->name }}</p>
             </div>
             <div class="flex items-center gap-3">
-                <div class="relative flex h-8 w-8 overflow-hidden rounded-lg bg-neutral-200 dark:bg-neutral-700 transition-all duration-200">
+                <div class="relative flex h-8 w-8 overflow-hidden lg bg-neutral-200 dark:bg-neutral-700 transition-all duration-200">
                     <span class="flex h-full w-full items-center justify-center text-black dark:text-white transition-all duration-200">
                         {{ auth()->user()->initials() }}
                     </span>
@@ -143,7 +143,7 @@
                     <summary class="cursor-pointer list-none">
                         <x-heroicon-o-chevron-down class="w-5 h-5" />
                     </summary>
-                    <ul class="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 shadow-lg rounded-md border border-gray-200 dark:border-slate-700 z-50 transition-all duration-200">
+                    <ul class="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 shadow-lg md border border-gray-200 dark:border-slate-700 z-50 transition-all duration-200">
                         <li>
                             <a href="{{ route('profile.edit') }}" class="flex items-center gap-2 px-3 py-2 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-200">
                                 <x-heroicon-o-cog-6-tooth class="w-5 h-5" />
@@ -166,7 +166,7 @@
 
         <!-- Topbar -->
         <div class="flex sticky top-0 justify-between items-center py-2 px-4 border-b border-slate-200 dark:border-slate-700 gap-4 bg-white dark:bg-slate-900 z-10 transition-all duration-200">
-            <button @click="sidebarOpen = true" class="p-2 rounded-md lg:hidden hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200">
+            <button @click="sidebarOpen = true" class="p-2 md lg:hidden hover:bg-slate-200 dark:hover:bg-slate-800 transition-all duration-200">
                 <x-heroicon-o-bars-3 class="w-6 h-6" />
             </button>
 
@@ -176,9 +176,9 @@
 
             <div class="flex items-center">
                 <!-- Notification -->
-                <button class="relative p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200" aria-label="Notifications">
+                <button class="relative p-2 md hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200" aria-label="Notifications">
                     <x-heroicon-o-bell class="w-6 h-6 text-gray-800 dark:text-gray-200 transition-all duration-200" />
-                    <span class="absolute top-0 right-0 inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+                    <span class="absolute top-0 right-0 inline-flex h-2 w-2 bg-red-500"></span>
                 </button>
 
                 <!-- Dark Mode Toggle -->
@@ -194,7 +194,7 @@
                     });
                     document.documentElement.classList.toggle('dark', darkMode);"
                     @click="darkMode = !darkMode"
-                    class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
+                    class="p-2 md hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
                     aria-label="Toggle Dark Mode"
                 >
                     <template x-if="!darkMode">

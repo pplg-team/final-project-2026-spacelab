@@ -45,7 +45,7 @@ $otherUser = App\Models\User::where('role_id', $studentRole->id)->where('id', '!
 
 if ($otherUser) {
     // Ensure this student is in the class
-    // This part is tricky to mock without full factory setup.
+    // This part is tricky to mock without factory setup.
     // We'll just run the command and check output.
     echo "Running MarkAlphaAttendance command...\n";
     Artisan::call('app:mark-alpha-attendance');

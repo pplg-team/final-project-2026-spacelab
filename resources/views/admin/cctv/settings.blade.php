@@ -11,7 +11,7 @@
         <div class="space-y-6">
             <div class="flex items-center justify-between gap-3 flex-wrap">
                 <a href="{{ route('admin.cctv.index') }}"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                     <x-heroicon-o-arrow-left class="w-4 h-4 mr-2" />
                     Kembali
                 </a>
@@ -22,7 +22,7 @@
             </div>
 
             @if (session('success'))
-                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-green-800 dark:text-green-200">{{ session('success') }}</p>
@@ -31,7 +31,7 @@
             @endif
 
             @if (session('error'))
-                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -40,7 +40,7 @@
             @endif
 
             @if ($errors->any())
-                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5 flex-shrink-0" />
                         <div class="flex-1">
@@ -55,7 +55,7 @@
                 </div>
             @endif
 
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                 <div class="p-6 border-b border-gray-200 dark:border-gray-700">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Daftar Kamera per Ruangan</h3>
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Data diambil langsung dari database ruangan.</p>
@@ -63,19 +63,19 @@
 
                 <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/40">
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
-                        <div class="rounded-xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 p-4">
+                        <div class="xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 p-4">
                             <p class="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">Total Hasil Filter</p>
                             <p class="mt-2 text-2xl font-bold text-blue-900 dark:text-blue-100">{{ $totalFiltered }}</p>
                         </div>
-                        <div class="rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-4">
+                        <div class="xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-4">
                             <p class="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">Kamera Aktif</p>
                             <p class="mt-2 text-2xl font-bold text-green-900 dark:text-green-100">{{ $activeCount }}</p>
                         </div>
-                        <div class="rounded-xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/20 p-4">
+                        <div class="xl border border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-900/20 p-4">
                             <p class="text-xs font-semibold uppercase tracking-wider text-indigo-700 dark:text-indigo-300">IP Camera</p>
                             <p class="mt-2 text-2xl font-bold text-indigo-900 dark:text-indigo-100">{{ $ipCameraCount }}</p>
                         </div>
-                        <div class="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-4">
+                        <div class="xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 p-4">
                             <p class="text-xs font-semibold uppercase tracking-wider text-amber-700 dark:text-amber-300">Tanpa Kamera</p>
                             <p class="mt-2 text-2xl font-bold text-amber-900 dark:text-amber-100">{{ $noCameraCount }}</p>
                         </div>
@@ -86,10 +86,10 @@
                 <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/70 dark:bg-gray-900/40">
                     <form method="GET" action="{{ route('admin.cctv.settings.index') }}" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-3">
                         <input type="text" name="search" value="{{ $search }}" placeholder="Cari nama ruangan, kode, atau gedung..."
-                            class="xl:col-span-2 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                            class="xl:col-span-2 md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
 
                         <select name="camera_type"
-                            class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                            class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                             <option value="all" @selected($cameraType === 'all')>Semua Tipe Kamera</option>
                             <option value="none" @selected($cameraType === 'none')>Tidak Ada</option>
                             <option value="webcam" @selected($cameraType === 'webcam')>Webcam Laptop</option>
@@ -97,14 +97,14 @@
                         </select>
 
                         <select name="camera_status"
-                            class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                            class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                             <option value="all" @selected($cameraStatus === 'all')>Semua Status</option>
                             <option value="active" @selected($cameraStatus === 'active')>Aktif</option>
                             <option value="inactive" @selected($cameraStatus === 'inactive')>Nonaktif</option>
                         </select>
 
                         <select name="building_id"
-                            class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                            class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                             <option value="all" @selected($buildingId === 'all')>Semua Gedung</option>
                             @foreach ($buildings as $building)
                                 <option value="{{ $building->id }}" @selected($buildingId === (string) $building->id)>
@@ -114,7 +114,7 @@
                         </select>
 
                         <select name="per_page"
-                            class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                            class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                             <option value="10" @selected($perPage === 10)>10 / halaman</option>
                             <option value="15" @selected($perPage === 15)>15 / halaman</option>
                             <option value="25" @selected($perPage === 25)>25 / halaman</option>
@@ -123,7 +123,7 @@
 
                         <div class="xl:col-span-6 flex items-center gap-2">
                             <button type="submit"
-                                class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 active:bg-gray-900 dark:active:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 active:bg-gray-900 dark:active:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                 Terapkan Filter
                             </button>
 
@@ -134,7 +134,7 @@
                                     $buildingId !== 'all' ||
                                     $perPage !== 10)
                                 <a href="{{ route('admin.cctv.settings.index') }}"
-                                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                     Reset
                                 </a>
                             @endif
@@ -187,7 +187,7 @@
                                     </td>
                                     <td class="px-4 py-4">
                                         <select name="camera_type" form="{{ $formId }}"
-                                            class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                            class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                                             <option value="none" @selected($roomCameraType === 'none')>Tidak Ada</option>
                                             <option value="webcam" @selected($roomCameraType === 'webcam')>Webcam Laptop</option>
                                             <option value="ip_camera" @selected($roomCameraType === 'ip_camera')>IP Camera</option>
@@ -195,19 +195,19 @@
                                     </td>
                                     <td class="px-4 py-4">
                                         <input type="url" name="stream_url" form="{{ $formId }}" value="{{ $roomStreamUrl }}" placeholder="http://192.168.1.x/stream"
-                                            class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                            class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                                         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Wajib untuk tipe IP Camera.</p>
                                     </td>
                                     <td class="px-4 py-4">
                                         <label class="inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
                                             <input type="checkbox" name="is_camera_active" value="1" form="{{ $formId }}" @checked($roomIsCameraActive)
-                                                class="rounded border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700">
+                                                class=" border-gray-300 text-blue-600 shadow-sm focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700">
                                             Aktif
                                         </label>
                                     </td>
                                     <td class="px-4 py-4 text-right">
                                         <button type="submit" form="{{ $formId }}"
-                                            class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                            class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                                             Simpan
                                         </button>
                                     </td>
@@ -240,29 +240,29 @@
 
                             <div class="flex items-center flex-wrap gap-2">
                                 <a href="{{ $rooms->url(1) }}"
-                                    class="{{ $rooms->onFirstPage() ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    class="{{ $rooms->onFirstPage() ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                                     Pertama
                                 </a>
 
                                 <a href="{{ $rooms->previousPageUrl() ?? '#' }}"
-                                    class="{{ $rooms->onFirstPage() ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    class="{{ $rooms->onFirstPage() ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                                     Sebelumnya
                                 </a>
 
                                 @for ($page = $startPage; $page <= $endPage; $page++)
                                     <a href="{{ $rooms->url($page) }}"
-                                        class="{{ $page === $currentPage ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700' }} inline-flex items-center justify-center w-9 h-9 rounded-md border text-xs font-semibold">
+                                        class="{{ $page === $currentPage ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700' }} inline-flex items-center justify-center w-9 h-9 md border text-xs font-semibold">
                                         {{ $page }}
                                     </a>
                                 @endfor
 
                                 <a href="{{ $rooms->nextPageUrl() ?? '#' }}"
-                                    class="{{ $rooms->hasMorePages() ? '' : 'pointer-events-none opacity-50' }} inline-flex items-center px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    class="{{ $rooms->hasMorePages() ? '' : 'pointer-events-none opacity-50' }} inline-flex items-center px-3 py-1.5 md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                                     Berikutnya
                                 </a>
 
                                 <a href="{{ $rooms->url($lastPage) }}"
-                                    class="{{ $currentPage === $lastPage ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
+                                    class="{{ $currentPage === $lastPage ? 'pointer-events-none opacity-50' : '' }} inline-flex items-center px-3 py-1.5 md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
                                     Terakhir
                                 </a>
                             </div>

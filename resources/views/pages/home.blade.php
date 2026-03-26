@@ -23,7 +23,7 @@
             Mulai Sekarang
             <svg xmlns="http://www.w3.org/2000/svg" class="i4 gh-tx" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
           </a>
-          <a href="{{ route('views.index') }}" class="inline-flex items-center gap-2 px-6 py-3 border text-sm font-semibold transition-colors hover:opacity-80" style="border-color:var(--border)">Lihat Fitur</a>
+          <a href="{{ route('views.index') }}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 border text-sm font-semibold transition-colors hover:opacity-80" style="border-color:var(--border)">Lihat Fitur</a>
         </div>
         <!-- Stats -->
         <div class="flex gap-0 border-t" style="border-color:var(--border)">

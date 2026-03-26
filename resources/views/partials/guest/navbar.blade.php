@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
-            <div class="flex items-center space-x-3 bg-white/80 dark:bg-slate-900/80 px-3 py-1 rounded-md">
+            <div class="flex items-center space-x-3 bg-white/80 dark:bg-slate-900/80 px-3 py-1 md">
                 <a href="/" class="flex items-center space-x-2">
                     <x-application-logo />
                     <span class="text-lg font-bold bg-gradient-to-r from-blue-500 to-blue-800 bg-clip-text text-transparent">SpaceLab</span>
@@ -28,14 +28,13 @@
                     <!-- Auth Links -->
                     @auth
                         <a href="{{ route(Auth::user()->role->lower_name . '.index') }}"
-                        class="hover:text-accent transition px-5 py-1.5 rounded-sm text-sm leading-normal border">
+                        class="hover:text-accent transition px-5 py-1.5 sm text-sm leading-normal border">
                             Dashboard
                         </a>
                     @else
-                        <a href="{{ route('login') }}"
-                        class="hover:text-accent transition px-5 py-1.5 rounded-sm text-sm leading-normal border">
-                            Masuk
-                        </a>
+                        <x-primary-button :width="'w-auto'">
+                            <a href="{{ route('login') }}">Masuk</a>
+                        </x-primary-button>
                     @endauth
                 @endif
 
@@ -53,7 +52,7 @@
                     // Set class sesuai initial value
                     document.documentElement.classList.toggle('dark', darkMode);"
                     @click="darkMode = !darkMode"
-                    class="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                    class="p-2 md hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                     aria-label="Toggle Dark Mode"
                 >
                     <template x-if="!darkMode">
@@ -70,7 +69,7 @@
                         @click="mobileOpen = !mobileOpen"
                         :aria-expanded="mobileOpen"
                         aria-controls="mobile-menu"
-                        class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                        class="md:hidden p-2 md hover:bg-slate-100 dark:hover:bg-slate-800 transition"
                         aria-label="Toggle mobile menu"
                     >
                         <template x-if="!mobileOpen">
@@ -100,10 +99,10 @@
                 class="md:hidden bg-white/95 dark:bg-slate-900 border-t border-gray-100 dark:border-slate-700 z-40">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="pt-3 pb-4 space-y-1">
-                        <a href="#features" @click="mobileOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent">Fitur</a>
-                        <a href="#how-it-works" @click="mobileOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent">Cara Kerja</a>
-                        <a href="#benefits" @click="mobileOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent">Keunggulan</a>
-                        <a href="#faqs" @click="mobileOpen = false" class="block px-3 py-2 rounded-md text-base font-medium hover:text-accent">FAQ</a>
+                        <a href="#features" @click="mobileOpen = false" class="block px-3 py-2 md text-base font-medium hover:text-accent">Fitur</a>
+                        <a href="#how-it-works" @click="mobileOpen = false" class="block px-3 py-2 md text-base font-medium hover:text-accent">Cara Kerja</a>
+                        <a href="#benefits" @click="mobileOpen = false" class="block px-3 py-2 md text-base font-medium hover:text-accent">Keunggulan</a>
+                        <a href="#faqs" @click="mobileOpen = false" class="block px-3 py-2 md text-base font-medium hover:text-accent">FAQ</a>
                    </div>
                 </div>
             </div>

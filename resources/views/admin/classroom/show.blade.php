@@ -7,7 +7,7 @@
 
     <div class="mb-6">
         <a href="{{ redirect()->back()->getTargetUrl() }}"
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl
+            class="inline-flex items-center gap-2 px-4 py-2 xl
                 bg-gradient-to-r from-gray-800 to-gray-700">
             <x-heroicon-o-arrow-left class="w-5 h-5 text-gray-100" />
             <span class="text-sm font-medium text-gray-100">Kembali</span>
@@ -19,7 +19,7 @@
             <!-- Messages -->
             @if (session('success'))
                 <div id="successAlert"
-                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 rounded-r">
+                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 r">
                         <div class="flex items-center">
                             <x-heroicon-o-check-circle
                                 class="w-5 h-5 text-gray-900 dark:text-gray-100 mr-3 flex-shrink-0" />
@@ -30,7 +30,7 @@
 
                 @if (session('error'))
                     <div id="errorAlert"
-                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 rounded-r">
+                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 r">
                         <div class="flex items-center">
                             <x-heroicon-o-exclamation-circle
                                 class="w-5 h-5 text-gray-900 dark:text-gray-100 mr-3 flex-shrink-0" />
@@ -41,7 +41,7 @@
 
                 @if (session('info'))
                     <div id="infoAlert"
-                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 rounded-r">
+                        class="mb-6 bg-gray-50 dark:bg-gray-900/50 border-l-4 border-gray-900 dark:border-gray-100 p-4 r">
                         <div class="flex items-center">
                             <x-heroicon-o-information-circle
                                 class="w-5 h-5 text-gray-900 dark:text-gray-100 mr-3 flex-shrink-0" />
@@ -81,7 +81,7 @@
                 <div class="mb-4">
                     <p>
                         <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                            class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
 
                             {{ $activeTerm
                                 ? 'Semester ' . ucfirst($activeTerm->kind) . ' Tahun Ajaran ' . $activeTerm->tahun_ajaran
@@ -106,13 +106,13 @@
 
                     @if ($guardian)
                         <div
-                            class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 sm:p-6 bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+                            class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 sm:p-6 bg-gray-50 dark:bg-gray-900/30 lg">
                             @if ($guardian->teacher->avatar)
                                 <img src="{{ Storage::url($guardian->teacher->avatar) }}" alt="{{ $guardian->teacher->user->name }}"
-                                    class="h-14 w-14 sm:h-16 sm:w-16 object-cover rounded-lg flex-shrink-0">
+                                    class="h-14 w-14 sm:h-16 sm:w-16 object-cover lg flex-shrink-0">
                             @else
                                 <div
-                                    class="h-14 w-14 sm:h-16 sm:w-16 bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-lg font-medium rounded-lg flex-shrink-0">
+                                    class="h-14 w-14 sm:h-16 sm:w-16 bg-gray-200 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-lg font-medium lg flex-shrink-0">
                                     {{ substr($guardian->teacher->user->name, 0, 1) }}
                                 </div>
                             @endif
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                     @else
-                        <div class="p-8 sm:p-12 bg-gray-50 dark:bg-gray-900/30 text-center rounded-lg">
+                        <div class="p-8 sm:p-12 bg-gray-50 dark:bg-gray-900/30 text-center lg">
                             <p class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-3">Belum ditentukan</p>
                             <button onclick="openGuardianModal()"
                                 class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors">
@@ -153,7 +153,7 @@
                     </div>
 
                     @if ($students->count() > 0)
-                        <div class="space-y-2 sm:space-y-1 bg-gray-100 dark:bg-gray-900/30 rounded-lg overflow-hidden">
+                        <div class="space-y-2 sm:space-y-1 bg-gray-100 dark:bg-gray-900/30 lg overflow-hidden">
                             @foreach ($students as $index => $student)
                                 <div
                                     class="bg-white dark:bg-gray-900 p-4 sm:p-6 group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
@@ -163,11 +163,11 @@
                                             <div class="text-xs font-medium text-gray-400 dark:text-gray-500 mt-1">
                                                 {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</div>
                                             @if ($student->avatar)
-                                                <img class="h-12 w-12 object-cover rounded-lg flex-shrink-0"
+                                                <img class="h-12 w-12 object-cover lg flex-shrink-0"
                                                     src="{{ Storage::url($student->avatar) }}" alt="">
                                             @else
                                                 <div
-                                                    class="h-12 w-12 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm font-medium rounded-lg flex-shrink-0">
+                                                    class="h-12 w-12 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm font-medium lg flex-shrink-0">
                                                     {{ substr($student->user->name, 0, 2) }}
                                                 </div>
                                             @endif
@@ -209,11 +209,11 @@
 
                                         <div class="flex items-center gap-4 flex-1 min-w-0">
                                             @if ($student->avatar)
-                                                <img class="h-12 w-12 object-cover rounded-lg flex-shrink-0"
+                                                <img class="h-12 w-12 object-cover lg flex-shrink-0"
                                                     src="{{ Storage::url($student->avatar) }}" alt="">
                                             @else
                                                 <div
-                                                    class="h-12 w-12 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm font-medium rounded-lg flex-shrink-0">
+                                                    class="h-12 w-12 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm font-medium lg flex-shrink-0">
                                                     {{ substr($student->user->name, 0, 2) }}
                                                 </div>
                                             @endif
@@ -252,7 +252,7 @@
                             @endforeach
                         </div>
                     @else
-                        <div class="text-center py-16 sm:py-24 bg-gray-50 dark:bg-gray-900/30 rounded-lg">
+                        <div class="text-center py-16 sm:py-24 bg-gray-50 dark:bg-gray-900/30 lg">
                             <div class="mb-4">
                                 <x-heroicon-o-users
                                     class="w-10 h-10 sm:w-12 sm:h-12 text-gray-300 dark:text-gray-700 mx-auto" />
@@ -299,7 +299,7 @@
                         Batal
                     </button>
                     <button type="submit"
-                        class="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors rounded">
+                        class="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors ">
                         Simpan
                     </button>
                 </div>
@@ -313,7 +313,7 @@
             <h2 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Tambah Siswa</h2>
 
             @if ($availableStudents->isEmpty())
-                <div class="p-4 sm:p-6 bg-gray-50 dark:bg-gray-900/30 mb-6 rounded-lg">
+                <div class="p-4 sm:p-6 bg-gray-50 dark:bg-gray-900/30 mb-6 lg">
                     <p class="text-xs sm:text-sm font-normal text-gray-600 dark:text-gray-400">
                         Tidak ada siswa yang tersedia untuk ditambahkan saat ini.
                     </p>
@@ -331,7 +331,7 @@
                         <label for="student_id"
                             class="block text-xs font-semibold text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wider">Siswa</label>
                         <select id="student_id" name="student_id"
-                            class="block w-full text-sm font-normal border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus:border-gray-900 dark:focus:border-gray-100 focus:ring-0 py-2 px-3 rounded"
+                            class="block w-full text-sm font-normal border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus:border-gray-900 dark:focus:border-gray-100 focus:ring-0 py-2 px-3 "
                             required size="8">
                             @foreach ($availableStudents as $student)
                                 <option value="{{ $student->id }}" class="py-2">
@@ -348,7 +348,7 @@
                             Batal
                         </button>
                         <button type="submit"
-                            class="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors rounded">
+                            class="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-gray-900 dark:bg-gray-100 dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors ">
                             Tambahkan
                         </button>
                     </div>

@@ -76,14 +76,14 @@
 
                     <div class="mt-4 mb-2 flex items-center gap-2 scroll-mt-28" id="day-{{ $day }}">
                         <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
-                        <h3 class="text-base md:text-xl font-semibold tracking-wide px-3 py-1 bg-gray-800 rounded-full text-white shadow-sm">
+                        <h3 class="text-base md:text-xl font-semibold tracking-wide px-3 py-1 bg-gray-800 text-white shadow-sm">
                             {{ $dayNames[$day] ?? 'Hari' }}
                         </h3>
                         <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
                     </div>
 
                     @if(empty($processedSchedules) || count($processedSchedules) === 0)
-                        <div class="p-3 mb-3 border rounded-lg bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 text-center">
+                        <div class="p-3 mb-3 border lg bg-gray-50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 text-center">
                             <div class="mx-auto mb-3 text-gray-400 dark:text-gray-600 inline-block">
                                 <x-heroicon-o-book-open class="w-8 h-8 text-gray-400 dark:text-gray-600" />
                             </div>
@@ -129,7 +129,7 @@
                                     {{-- PERIOD CARD (Break Time) --}}
                                     <div class="group relative text-sm">
                                         <div class="
-                                            relative rounded-lg overflow-hidden transition-all duration-150 h-full
+                                            relative lg overflow-hidden transition-all duration-150 h-full
                                             {{ $isOngoing
                                                 ? 'bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-200 dark:border-amber-800 shadow-lg'
                                                 : ($isPast
@@ -143,7 +143,7 @@
                                             {{-- Status Badge --}}
                                             @if ($isOngoing)
                                                 <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-amber-500 text-white px-2.5 py-1 rounded-full shadow text-[10px] font-semibold">
+                                                    <div class="bg-amber-500 text-white px-2.5 py-1 shadow text-[10px] font-semibold">
                                                         BERLANGSUNG
                                                     </div>
                                                 </div>
@@ -152,7 +152,7 @@
                                             <div class="p-4">
                                                 {{-- Break Icon & Label --}}
                                                 <div class="flex items-center justify-center mb-3">
-                                                    <div class="bg-slate-200 dark:bg-slate-700 p-3 rounded-full">
+                                                    <div class="bg-slate-200 dark:bg-slate-700 p-3 full">
                                                         <svg class="w-6 h-6 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                                         </svg>
@@ -164,7 +164,7 @@
                                                 </h4>
 
                                                 {{-- Time Display --}}
-                                                <div class="bg-white/50 dark:bg-gray-900/30 rounded-lg p-3 border border-slate-200 dark:border-gray-700">
+                                                <div class="bg-white/50 dark:bg-gray-900/30 lg p-3 border border-slate-200 dark:border-gray-700">
                                                     <div class="flex items-center justify-center gap-3 text-slate-700 dark:text-slate-300">
                                                         <div class="text-center">
                                                             <div class="text-lg font-bold">
@@ -194,7 +194,7 @@
 
                                                 @if($schedule->period?->ordinal)
                                                     <div class="mt-3 text-center">
-                                                        <span class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
+                                                        <span class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">
                                                             Jam ke {{ $schedule->period->ordinal }}
                                                         </span>
                                                     </div>
@@ -206,7 +206,7 @@
                                     {{-- CLASS CARD (Timetable Entry) --}}
                                     <div class="group relative text-sm">
                                         <div class="
-                                            relative rounded-lg overflow-hidden transition-all duration-150 h-full
+                                            relative lg overflow-hidden transition-all duration-150 h-full
                                             {{ $isOngoing
                                                 ? 'bg-gray-50 dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 shadow-lg shadow-gray-200/40 dark:shadow-gray-800/30 scale-105'
                                                 : ($isPast
@@ -220,17 +220,17 @@
                                             {{-- Status Badge --}}
                                             @if ($isOngoing)
                                                 <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-gray-800 text-white px-3 py-1 rounded-full shadow flex items-center gap-2 animate-bounce ">
+                                                    <div class="bg-gray-800 text-white px-3 py-1 shadow flex items-center gap-2 animate-bounce ">
                                                         <span class="relative flex h-2.5 w-2.5">
-                                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                                                            <span class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
+                                                            <span class="relative inline-flex h-2.5 w-2.5 bg-white"></span>
                                                         </span>
                                                         <span class="text-[11px] font-semibold">BERLANGSUNG</span>
                                                     </div>
                                                 </div>
                                             @elseif ($isPast)
                                                 <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-gray-400 dark:bg-gray-700 text-white px-3 py-1 rounded-full shadow">
+                                                    <div class="bg-gray-400 dark:bg-gray-700 text-white px-3 py-1 shadow">
                                                         <span class="text-[11px] font-semibold">SELESAI</span>
                                                     </div>
                                                 </div>
@@ -239,7 +239,7 @@
                                             <div class="p-2">
                                                 {{-- Time Display - Horizontal Layout --}}
                                                 <div class="
-                                                    flex items-center justify-between mb-2 px-2 py-1 rounded-md
+                                                    flex items-center justify-between mb-2 px-2 py-1 md
                                                     {{ $isOngoing
                                                         ? 'bg-gray-800 text-white shadow-sm'
                                                         : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
@@ -276,7 +276,7 @@
                                                 <div class="mb-2 pb-2 border-b border-gray-200 dark:border-gray-700">
                                                     @if($schedule->period?->ordinal)
                                                         <div class="mb-2">
-                                                            <span class="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full text-[11px] font-semibold text-gray-700 dark:text-gray-300">
+                                                            <span class="inline-block px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-[11px] font-semibold text-gray-700 dark:text-gray-300">
                                                                 Jam ke {{ $schedule->period->ordinal }}
                                                             </span>
                                                         </div>
@@ -285,21 +285,21 @@
                                                         {{ $schedule->subject?->name ?? 'Mata Pelajaran' }}
                                                     </h4>
                                                     @if($schedule->subject?->code)
-                                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300">
+                                                        <span class="inline-flex items-center px-2 py-0.5  text-[11px] font-semibold bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-300">
                                                             {{ $schedule->subject->code }}
                                                         </span>
                                                     @endif
                                                 </div>
 
                                                 {{-- Teacher Info with Avatar --}}
-                                                <div class="mb-2 flex items-center gap-2 p-2 rounded-lg border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+                                                <div class="mb-2 flex items-center gap-2 p-2 lg border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
                                                     @php
                                                         $teacherAvatar = $schedule->teacher?->user?->avatar ?? $schedule->teacher?->avatar ?? asset('images/default-teacher.png');
                                                         $teacherName = $schedule->teacher?->user?->name ?? $schedule->teacher?->name ?? 'Guru';
                                                     @endphp
                                                     <img src="{{ $teacherAvatar }}"
                                                         alt="Guru"
-                                                        class="w-8 h-8 rounded-full object-cover border-2 shadow-sm
+                                                        class="w-8 h-8 object-cover border-2 shadow-sm
                                                         {{ $isOngoing ? 'border-gray-300 ring-1 ring-gray-200 dark:ring-gray-700' : 'border-gray-200 dark:border-gray-600' }}"
                                                         onerror="this.src='{{ asset('images/default-teacher.png') }}'">
                                                     <div class="flex-1">
@@ -311,8 +311,8 @@
                                                 </div>
 
                                                 {{-- Room Info --}}
-                                                <div class="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700">
-                                                    <div class="flex-shrink-0 w-8 h-8 bg-gray-600 rounded-lg flex items-center justify-center shadow">
+                                                <div class="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 lg border border-gray-100 dark:border-gray-700">
+                                                    <div class="flex-shrink-0 w-8 h-8 bg-gray-600 lg flex items-center justify-center shadow">
                                                         <x-heroicon-o-building-office-2 class="w-5 h-5 text-white" />
                                                     </div>
                                                     <div class="flex-1">
@@ -340,13 +340,13 @@
 
         {{-- Desktop: Right sidebar --}}
         <aside class="hidden xl:block w-56 lg:sticky lg:top-28 lg:h-[calc(100vh-7rem)] lg:overflow-auto lg:flex-shrink-0" style="height: calc(100vh - 10rem);">
-            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-2 shadow-md h-full">
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 lg p-2 shadow-md h-full">
                 @for ($d = 1; $d <= 7; $d++)
                     @php
                         $hasSchedule = isset($allSchedules[$d]) && $allSchedules[$d]->isNotEmpty();
                     @endphp
                     <a href="#day-{{ $d }}"
-                       class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors duration-150 hover:bg-gray-100 dark:hover:bg-gray-800 {{ $d === $currentDayIndex ? 'bg-gray-100 dark:bg-gray-900/20' : '' }} {{ !$hasSchedule ? 'opacity-50' : '' }}"
+                       class="flex items-center gap-2 px-3 py-2 md transition-colors duration-150 hover:bg-gray-100 dark:hover:bg-gray-800 {{ $d === $currentDayIndex ? 'bg-gray-100 dark:bg-gray-900/20' : '' }} {{ !$hasSchedule ? 'opacity-50' : '' }}"
                        title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
                         <x-heroicon-o-book-open class="w-4 h-4 {{ $hasSchedule ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500' }}" />
                         <span class="text-sm {{ $hasSchedule ? 'text-gray-700 dark:text-gray-200' : 'text-gray-500 dark:text-gray-400' }}">{{ $dayNames[$d] }}</span>
@@ -363,17 +363,17 @@
     @if(!empty($allSchedules) && count($allSchedules) > 0)
         <div class="xl:hidden fixed bottom-4 right-4 z-50 flex items-end justify-end">
             <div class="relative">
-                <button id="dayToggleBtn" aria-expanded="false" aria-controls="dayMenu" class="bg-gray-800 p-3 rounded-full shadow-lg text-white focus:outline-none">
+                <button id="dayToggleBtn" aria-expanded="false" aria-controls="dayMenu" class="bg-gray-800 p-3 shadow-lg text-white focus:outline-none">
                     <x-heroicon-o-book-open class="w-5 h-5 text-white" />
                 </button>
-                <div id="dayMenu" class="hidden absolute right-0 bottom-14 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-2">
+                <div id="dayMenu" class="hidden absolute right-0 bottom-14 w-44 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 lg shadow-md p-2">
                     @for ($d = 1; $d <= 7; $d++)
                         @php
                             $hasSchedule = isset($allSchedules[$d]) && $allSchedules[$d]->isNotEmpty();
                         @endphp
                         <a href="#day-{{ $d }}"
                            onclick="document.getElementById('dayMenu').classList.add('hidden')"
-                           class="flex items-center gap-2 px-2 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 {{ !$hasSchedule ? 'opacity-50' : '' }}"
+                           class="flex items-center gap-2 px-2 py-2 md hover:bg-gray-100 dark:hover:bg-gray-800 {{ !$hasSchedule ? 'opacity-50' : '' }}"
                            title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
                             <x-heroicon-o-book-open class="w-4 h-4 {{ $hasSchedule ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500' }}" />
                             <span class="text-sm {{ $hasSchedule ? 'text-gray-700 dark:text-gray-200' : 'text-gray-500 dark:text-gray-400' }}">{{ $dayNames[$d] }}</span>

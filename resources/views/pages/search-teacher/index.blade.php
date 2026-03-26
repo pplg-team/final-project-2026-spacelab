@@ -24,11 +24,10 @@
                         class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                     <input type="text" name="q" value="{{ $query }}"
                         placeholder="Ketik nama atau kode guru..." autofocus
-                        class="w-full pl-12 pr-24 py-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base shadow-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition" />
-                    <button type="submit"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 bg-slate-800 dark:bg-slate-700 text-white text-sm font-medium rounded-lg hover:bg-slate-900 dark:hover:bg-slate-600 transition">
+                        class="w-full pl-12 pr-24 py-4 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base shadow-sm focus:ring-2 focus:ring-slate-400 focus:border-transparent outline-none transition" />
+                    <x-primary-button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2" :width="'w-auto'">
                         Cari
-                    </button>
+                    </x-primary-button>
                 </div>
             </form>
 
@@ -44,12 +43,12 @@
 
                         @foreach ($results as $result)
                             <div
-                                class="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-5 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
+                                class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-5 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
                                 <div class="flex flex-col sm:flex-row sm:items-start gap-4">
                                     {{-- Avatar --}}
                                     <div class="flex-shrink-0">
                                         <div
-                                            class="w-14 h-14 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-lg font-semibold text-slate-600 dark:text-slate-300">
+                                            class="w-14 h-14 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-lg font-semibold text-slate-600 dark:text-slate-300">
                                             {{ $result['user']->initials() }}
                                         </div>
                                     </div>
@@ -73,12 +72,12 @@
 
                                             {{-- Attendance --}}
                                             <span
-                                                class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
+                                                class="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium
                                                 {{ $result['attendanceStatus'] === 'hadir'
                                                     ? 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
                                                     : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700' }}">
                                                 <span
-                                                    class="w-1.5 h-1.5 rounded-full {{ $result['attendanceStatus'] === 'hadir' ? 'bg-emerald-500' : 'bg-slate-400' }}"></span>
+                                                    class="w-1.5 h-1.5 {{ $result['attendanceStatus'] === 'hadir' ? 'bg-emerald-500' : 'bg-slate-400' }}"></span>
                                                 {{ $result['attendanceStatus'] === 'hadir' ? 'Hadir' : 'Belum Hadir' }}
                                             </span>
                                         </div>
@@ -86,7 +85,7 @@
                                         {{-- Current Location --}}
                                         @if ($result['currentEntry'])
                                             <div
-                                                class="mt-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-100 dark:border-slate-800">
+                                                class="mt-3 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                                                 <p
                                                     class="text-xs text-slate-500 dark:text-slate-400 mb-2 font-medium uppercase tracking-wider">
                                                     Sedang Mengajar</p>
@@ -121,7 +120,7 @@
                                             </div>
                                         @else
                                             <div
-                                                class="mt-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-lg border border-slate-100 dark:border-slate-800">
+                                                class="mt-3 p-3 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800">
                                                 <p class="text-xs text-slate-400 dark:text-slate-500 italic">Tidak
                                                     sedang mengajar saat ini</p>
                                             </div>

@@ -12,7 +12,7 @@
 
     <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden p-6">
+            <div class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden p-6">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{{ $room->code }} - {{ $room->name }}</h3>
                 <div id="calendar"></div>
             </div>
@@ -33,7 +33,7 @@
 
             <div class="px-6 py-5 space-y-5 max-h-[65vh] overflow-y-auto">
                 <!-- Date & Time fields copied from index with slight modifications -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 lg border border-gray-200 dark:border-gray-700">
                     <div>
                         <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
                             <div class="flex items-center gap-2">
@@ -44,7 +44,7 @@
                             </div>
                         </x-input-label>
                         <input id="start_datetime" name="start_date" type="datetime-local" required
-                            class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
                     </div>
 
@@ -58,7 +58,7 @@
                             </div>
                         </x-input-label>
                         <input id="end_datetime" name="end_date" type="datetime-local" required
-                            class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <x-input-error :messages="$errors->get('end_date')" class="mt-2" />
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         </div>
                     </x-input-label>
                     <select name="classes_id" id="classes_id"
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Kelas</option>
                         @foreach($classrooms as $classroom)
                             <option value="{{ $classroom->id }}">{{ $classroom->full_name }}</option>
@@ -92,7 +92,7 @@
                         </div>
                     </x-input-label>
                     <select name="teacher_id" id="teacher_id"
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Guru</option>
                         @foreach($teachers as $teacher)
                             <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
@@ -110,7 +110,7 @@
                         </div>
                     </x-input-label>
                     <select name="terms_id" id="terms_id" required
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                         <option value="">Pilih Tahun Ajaran</option>
                         @foreach ($terms as $term)
                             <option value="{{ $term->id }}" {{ $term->is_active ? 'selected' : '' }}>
@@ -132,13 +132,13 @@
                         </div>
                     </x-input-label>
                     <input type="text" name="event_type" id="event_type"
-                        class="mt-2 block w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
                 </div>
             </div>
 
             <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 text-right">
-                <button type="button" class="px-4 py-2 mr-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300" onclick="closeModal('historyModal')">Batal</button>
-                <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+                <button type="button" class="px-4 py-2 mr-2 lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300" onclick="closeModal('historyModal')">Batal</button>
+                <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium lg shadow-sm transition-all duration-200 hover:shadow-md">
                     <span id="modalSubmit">Simpan</span>
                 </button>
             </div>

@@ -8,7 +8,7 @@
     <div class="py-6">
         <div class="space-y-6">
             <!-- Header Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-6">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -36,7 +36,7 @@
             <!-- Alert Messages -->
             @if (session('success'))
                 <div id="successAlert"
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle
                             class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
@@ -47,7 +47,7 @@
 
             @if (session('error'))
                 <div id="errorAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -57,7 +57,7 @@
 
             @if ($errors->any())
                 <div id="validationAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle
                             class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -75,16 +75,16 @@
             @endif
 
             <!-- Filter & Search Bar -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-4">
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="flex-1">
                             <input type="text" id="searchInput" placeholder="Cari nama, email, atau kode guru..."
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                         </div>
                         <div class="flex gap-2">
                             <select id="subjectFilter"
-                                class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                                 <option value="">Semua Mata Pelajaran</option>
                                 @foreach ($subjects as $subject)
                                     <option value="{{ $subject->id }}">{{ $subject->name }}</option>
@@ -96,7 +96,7 @@
             </div>
 
             <!-- Teachers Table -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-900">
@@ -139,12 +139,12 @@
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 @if ($teacher->avatar)
-                                                    <img class="h-10 w-10 rounded-full object-cover"
+                                                    <img class="h-10 w-10 object-cover"
                                                         src="{{ asset('storage/' . $teacher->avatar) }}"
                                                         alt="">
                                                 @else
                                                     <div
-                                                        class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                                        class="h-10 w-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                                                         <span
                                                             class="text-sm font-medium text-gray-600 dark:text-gray-400">
                                                             {{ strtoupper(substr($teacher->user->name ?? 'G', 0, 1)) }}
@@ -172,7 +172,7 @@
                                         <div class="flex flex-wrap gap-1">
                                             @forelse($teacher->subjects->take(3) as $subject)
                                                 <span
-                                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                                                    class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
                                                     {{ $subject->code }}
                                                 </span>
                                             @empty
@@ -180,7 +180,7 @@
                                             @endforelse
                                             @if ($teacher->subjects->count() > 3)
                                                 <span
-                                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                                                    class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                                     +{{ $teacher->subjects->count() - 3 }}
                                                 </span>
                                             @endif
@@ -189,18 +189,18 @@
                                     <td class="px-4 py-3 whitespace-nowrap">
                                         <div class="flex items-center gap-2">
                                             <button onclick="viewTeacher('{{ $teacher->id }}')"
-                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 md transition-colors"
                                                 title="Lihat Detail">
                                                 <x-heroicon-o-eye class="w-5 h-5" />
                                             </button>
                                             <button onclick="editTeacher('{{ $teacher->id }}')"
-                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 md transition-colors"
                                                 title="Edit">
                                                 <x-heroicon-o-pencil class="w-5 h-5" />
                                             </button>
                                             <button
                                                 onclick="deleteTeacher('{{ $teacher->id }}', '{{ $teacher->user->name ?? 'Guru' }}')"
-                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 md transition-colors"
                                                 title="Hapus">
                                                 <x-heroicon-o-trash class="w-5 h-5" />
                                             </button>
@@ -301,7 +301,7 @@
                     <input type="file" name="avatar" id="addAvatar" accept="image/*"
                         class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400
                             file:mr-4 file:py-2 file:px-4
-                            file:rounded-md file:border-0
+                            file:md file:border-0
                             file:text-sm file:font-semibold
                             file:bg-gray-100 file:text-gray-700
                             hover:file:bg-gray-200
@@ -309,7 +309,7 @@
                             dark:hover:file:bg-gray-600">
                     <div id="addAvatarPreview" class="mt-2 hidden">
                         <img id="addAvatarPreviewImg" src="" alt="Preview"
-                            class="h-20 w-20 rounded object-cover">
+                            class="h-20 w-20  object-cover">
                     </div>
                     <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
                 </div>
@@ -317,11 +317,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -348,7 +348,7 @@
 
             <div class="mb-4">
                 <a href="{{ route('admin.teachers.template') }}" target="_blank"
-                    class="inline-flex items-center px-3 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                    class="inline-flex items-center px-3 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                     <x-heroicon-o-arrow-down-tray class="w-4 h-4 mr-2" />
                     Download Template
                 </a>
@@ -361,18 +361,18 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">File CSV</label>
                     <input type="file" name="file" accept=".csv, .txt" required
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                        class="block w-full text-sm text-gray-900 border border-gray-300 lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     <x-input-error class="mt-2" :messages="$errors->get('file')" />
                 </div>
 
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Import
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -446,7 +446,7 @@
                     <input type="file" name="avatar" id="editAvatar" accept="image/*"
                         class="mt-1 block w-full text-sm text-gray-500 dark:text-gray-400
                             file:mr-4 file:py-2 file:px-4
-                            file:rounded-md file:border-0
+                            file:md file:border-0
                             file:text-sm file:font-semibold
                             file:bg-gray-100 file:text-gray-700
                             hover:file:bg-gray-200
@@ -454,18 +454,18 @@
                             dark:hover:file:bg-gray-600">
                     <div id="editAvatarPreview" class="mt-2 hidden">
                         <img id="editAvatarPreviewImg" src="" alt="Preview"
-                            class="h-20 w-20 rounded object-cover">
+                            class="h-20 w-20  object-cover">
                     </div>
                 </div>
 
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan Perubahan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -499,11 +499,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>

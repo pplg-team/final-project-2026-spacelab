@@ -8,7 +8,7 @@
         {{-- Alert absen pojok kanan bawah --}}
     @if ($isAbsensiActive && !$attendanceRecord)
         <div
-            class="bg-white shadow-lg rounded-2xl overflow-hidden
+            class="bg-white shadow-lg 2xl overflow-hidden
                     border-2 border-blue-200 dark:border-blue-600 p-5 md:p-6
                     hover:shadow-xl transition-all duration-150 fixed right-0 bottom-0 w-full max-w-sm z-10 ring-2 ring-blue-100 dark:ring-blue-500/30">
             <div class="flex items-center justify-between gap-4">
@@ -16,13 +16,13 @@
                     <p class="text-xs md:text-sm font-semibold text-blue-600 dark:text-blue-400 mb-2 uppercase tracking-wide">Absensi Hari Ini</p>
                         <h3 class="text-2xl font-extrabold text-red-600 dark:text-red-400 mb-2">Belum Absen</h3>
                         <a href="{{ route('guru.attendance.index') }}"
-                            class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors duration-200">
+                            class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold lg transition-colors duration-200">
                             Absen Sekarang
                             <x-heroicon-o-arrow-right class="w-4 h-4 inline-block ml-1" />
                         </a>
                 </div>
                 <div
-                    class="flex-shrink-0 w-16 h-16 bg-gradient-to-br {{ $attendanceRecord ? 'from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/20' : 'from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/20' }} rounded-xl flex items-center justify-center
+                    class="flex-shrink-0 w-16 h-16 bg-gradient-to-br {{ $attendanceRecord ? 'from-green-100 to-green-50 dark:from-green-900/30 dark:to-green-800/20' : 'from-red-100 to-red-50 dark:from-red-900/30 dark:to-red-800/20' }} xl flex items-center justify-center
                             border-2 {{ $attendanceRecord ? 'border-green-300 dark:border-green-600' : 'border-red-300 dark:border-red-600' }} shadow-md">
                         <x-heroicon-o-exclamation-circle
                             class="w-8 h-8 text-red-600 dark:text-red-400" />
@@ -39,7 +39,7 @@
 
                 <!-- Card 1: Pelajaran Hari Ini -->
                 <article role="article" aria-label="Pelajaran Hari Ini"
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
                         <div class="min-w-0">
                             <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Pelajaran Hari Ini</p>
@@ -49,7 +49,7 @@
                                 {{ $uniqueSubjectsCount ?? 0 }} mata pelajaran • {{ $lessonsCount ?? 0 }} jadwal</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                             <span class="sr-only">Icon</span>
                             <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
                                 aria-hidden="true" />
@@ -59,7 +59,7 @@
 
                 <!-- Card 2: Hari Ini -->
                 <article role="article" aria-label="Hari Ini"
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
                         <div class="min-w-0">
                             <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Hari Ini</p>
@@ -69,7 +69,7 @@
                                 {{ $currentTime->format('d M Y') }}</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                             <span class="sr-only">Icon</span>
                             <x-heroicon-o-calendar class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
                                 aria-hidden="true" />
@@ -79,7 +79,7 @@
 
                 <!-- Card 3: Jumlah Ruangan -->
                 <article role="article" aria-label="Jumlah Ruangan"
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
                         <div class="min-w-0">
                             <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Jumlah ruangan</p>
@@ -88,7 +88,7 @@
                             <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">ruangan hari ini</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                             <span class="sr-only">Icon</span>
                             <x-heroicon-o-building-office-2
                                 class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
@@ -98,7 +98,7 @@
 
                 <!-- Card 4: Nama Guru -->
                 <article role="article" aria-label="Nama Guru"
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
                         <div class="min-w-0">
                             <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Nama</p>
@@ -110,10 +110,10 @@
                         </div>
                         <div class="flex-shrink-0">
                             <div
-                                class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 rounded-full border border-gray-100 dark:border-gray-700">
+                                class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
                                 <img src="{{ Storage::url(optional($teacher)->avatar) ?? asset('images/default-teacher.png') }}"
                                     alt="Avatar Guru"
-                                    class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover shadow" />
+                                    class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
                             </div>
                         </div>
                     </div>
@@ -121,11 +121,11 @@
             </div>
 
             <div
-                class="bg-white dark:bg-gray-900 shadow rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 my-5">
+                class="bg-white dark:bg-gray-900 shadow 2xl overflow-hidden border border-gray-100 dark:border-gray-800 my-5">
                 <div class="bg-gray-100 dark:bg-gray-800 px-6 py-5">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-3">
-                            <div class="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
+                            <div class="bg-white/20 backdrop-blur-sm p-2 lg">
                                 <x-heroicon-o-clock class="w-6 h-6 text-gray-600 dark:text-gray-100" />
                             </div>
                             <div>
@@ -139,17 +139,17 @@
                         @if (!$schedulesToday->isEmpty())
                             <div class="hidden sm:flex items-center gap-2 text-xs text-gray-600 dark:text-white/90">
                                 <span class="flex items-center gap-1.5">
-                                    <span class="w-2.5 h-2.5 bg-blue-300 rounded-full animate-pulse"></span>
+                                    <span class="w-2.5 h-2.5 bg-blue-300 animate-pulse"></span>
                                     <span class="hidden md:inline">Berlangsung</span>
                                 </span>
                                 <span class="text-gray-300 dark:text-gray-500">•</span>
                                 <span class="flex items-center gap-1.5">
-                                    <span class="w-2.5 h-2.5 bg-gray-300/40 rounded-full"></span>
+                                    <span class="w-2.5 h-2.5 bg-gray-300/40 full"></span>
                                     <span class="hidden md:inline">Selesai</span>
                                 </span>
                                 <span class="text-gray-300 dark:text-gray-500">•</span>
                                 <span class="flex items-center gap-1.5">
-                                    <span class="w-2.5 h-2.5 bg-white rounded-full"></span>
+                                    <span class="w-2.5 h-2.5 bg-white full"></span>
                                     <span class="hidden md:inline">Akan Datang</span>
                                 </span>
                             </div>
@@ -161,7 +161,7 @@
                     @if ($schedulesToday->isEmpty())
                         <div class="text-center py-16">
                             <div
-                                class="inline-flex items-center justify-center w-24 h-24 bg-gray-100 dark:bg-gray-800 rounded-full mb-5 shadow">
+                                class="inline-flex items-center justify-center w-24 h-24 bg-gray-100 dark:bg-gray-800 mb-5 shadow">
                                 <span class="text-5xl">🎉</span>
                             </div>
                             <h4 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Tidak ada pelajaran
@@ -194,12 +194,12 @@
                                     <div class="relative group">
                                         @if ($isOngoing)
                                             <div
-                                                class="absolute -left-6 top-0 bottom-0 w-1.5 bg-amber-400 rounded-full shadow animate-pulse">
+                                                class="absolute -left-6 top-0 bottom-0 w-1.5 bg-amber-400 shadow animate-pulse">
                                             </div>
                                         @endif
 
                                         <div
-                                            class="relative overflow-hidden rounded-xl border-2 transition-all duration-300
+                                            class="relative overflow-hidden xl border-2 transition-all duration-300
                                             {{ $isOngoing
                                                 ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-300 dark:border-amber-600 shadow scale-[1.01]'
                                                 : ($isPast
@@ -208,7 +208,7 @@
                                         ">
                                             @if ($isOngoing)
                                                 <div
-                                                    class="absolute top-0 right-0 bg-amber-500 text-white px-4 py-1.5 rounded-bl-xl shadow z-10">
+                                                    class="absolute top-0 right-0 bg-amber-500 text-white px-4 py-1.5 bl-xl shadow z-10">
                                                     <span class="text-xs font-bold tracking-wide">BERLANGSUNG</span>
                                                 </div>
                                             @endif
@@ -218,7 +218,7 @@
                                                     {{-- Break Icon --}}
                                                     <div class="flex-shrink-0">
                                                         <div
-                                                            class="inline-flex items-center justify-center rounded-xl p-4 bg-slate-200 dark:bg-slate-700 shadow">
+                                                            class="inline-flex items-center justify-center xl p-4 bg-slate-200 dark:bg-slate-700 shadow">
                                                             <svg class="w-8 h-8 text-slate-600 dark:text-slate-300"
                                                                 fill="none" stroke="currentColor"
                                                                 viewBox="0 0 24 24">
@@ -257,7 +257,7 @@
                                                         @if ($schedule->period?->ordinal)
                                                             <div class="mt-3 text-center lg:text-left">
                                                                 <span
-                                                                    class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
+                                                                    class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">
                                                                     {{ $schedule->period->ordinal }}
                                                                 </span>
                                                             </div>
@@ -273,13 +273,13 @@
                                         {{-- Ongoing Side Indicator --}}
                                         @if ($isOngoing)
                                             <div
-                                                class="absolute -left-6 top-0 bottom-0 w-1.5 bg-blue-300 rounded-full shadow animate-pulse">
+                                                class="absolute -left-6 top-0 bottom-0 w-1.5 bg-blue-300 shadow animate-pulse">
                                             </div>
                                         @endif
 
                                         <div
                                             class="
-                                            relative overflow-hidden rounded-xl border-2 transition-all duration-300
+                                            relative overflow-hidden xl border-2 transition-all duration-300
                                             {{ $isOngoing
                                                 ? 'bg-blue-50 dark:bg-gray-900/10 border-blue-300 dark:border-blue-400 shadow scale-[1.01]'
                                                 : ($isPast
@@ -289,12 +289,12 @@
                                             {{-- Ongoing Badge --}}
                                             @if ($isOngoing)
                                                 <div
-                                                    class="absolute top-0 right-0 bg-blue-300 text-gray-900 px-4 py-1.5 rounded-bl-xl shadow flex items-center gap-2 z-10">
+                                                    class="absolute top-0 right-0 bg-blue-300 text-gray-900 px-4 py-1.5 bl-xl shadow flex items-center gap-2 z-10">
                                                     <span class="relative flex h-2.5 w-2.5">
                                                         <span
-                                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                                            class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
                                                         <span
-                                                            class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+                                                            class="relative inline-flex h-2.5 w-2.5 bg-white"></span>
                                                     </span>
                                                     <span class="text-xs font-bold tracking-wide">BERLANGSUNG</span>
                                                 </div>
@@ -302,7 +302,7 @@
 
                                             @if ($isPast)
                                                 <div
-                                                    class="absolute top-3 right-3 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-full shadow-sm z-10">
+                                                    class="absolute top-3 right-3 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-3 py-1 shadow-sm z-10">
                                                     <span class="text-xs font-semibold">SELESAI</span>
                                                 </div>
                                             @endif
@@ -313,7 +313,7 @@
                                                     <div class="flex-shrink-0">
                                                         <div
                                                             class="
-                                                            inline-flex flex-col items-center justify-center rounded-xl p-4 min-w-[100px] shadow
+                                                            inline-flex flex-col items-center justify-center xl p-4 min-w-[100px] shadow
                                                             {{ $isOngoing
                                                                 ? 'bg-blue-300 text-gray-900 ring-2 ring-blue-100 dark:ring-blue-400'
                                                                 : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100' }}
@@ -327,7 +327,7 @@
                                                             </div>
                                                             @if ($schedule->period?->ordinal)
                                                                 <div
-                                                                    class="mt-2.5 px-3 py-1 bg-white/25 backdrop-blur-sm rounded-full">
+                                                                    class="mt-2.5 px-3 py-1 bg-white/25 backdrop-blur-sm full">
                                                                     <span class="text-xs font-bold">Jam
                                                                         {{ $schedule->period->ordinal }}</span>
                                                                 </div>
@@ -345,7 +345,7 @@
                                                             </h4>
                                                             @if ($schedule->teacherSubject?->subject?->code)
                                                                 <span
-                                                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                                                                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
                                                                     {{ $schedule->teacherSubject->subject->code }}
                                                                 </span>
                                                             @endif
@@ -355,9 +355,9 @@
                                                         <div class="grid md:grid-cols-3 gap-4">
                                                             {{-- Class --}}
                                                             <div
-                                                                class="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm border border-gray-100 dark:border-gray-700">
+                                                                class="flex items-center gap-3 bg-white dark:bg-gray-800 lg p-3 shadow-sm border border-gray-100 dark:border-gray-700">
                                                                 <div
-                                                                    class="flex-shrink-0 w-11 h-11 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center shadow">
+                                                                    class="flex-shrink-0 w-11 h-11 bg-gray-200 dark:bg-gray-800 flex items-center justify-center shadow">
                                                                     <x-heroicon-o-user-group
                                                                         class="w-6 h-6 text-white" />
                                                                 </div>
@@ -374,10 +374,10 @@
 
                                                             {{-- Teacher (who teaches this) --}}
                                                             <div
-                                                                class="flex items-center gap-3 bg-white dark:bg-gray-900 rounded-lg p-3 shadow border border-gray-100 dark:border-gray-800">
+                                                                class="flex items-center gap-3 bg-white dark:bg-gray-900 lg p-3 shadow border border-gray-100 dark:border-gray-800">
                                                                 <img src="{{ Storage::url(optional(optional($schedule->teacherSubject)->teacher)->user?->avatar) ?? (Storage::url(optional(optional($schedule->teacherSubject)->teacher)?->avatar) ?? asset('images/default-teacher.png')) }}"
                                                                     alt="Guru"
-                                                                    class="w-11 h-11 rounded-full object-cover border-2 shadow
+                                                                    class="w-11 h-11 object-cover border-2 shadow
                                                                     {{ $isOngoing ? 'border-blue-300 ring-2 ring-blue-100 dark:ring-blue-400' : 'border-gray-200 dark:border-gray-700' }}">
                                                                 <div class="flex-1 min-w-0">
                                                                     <p
@@ -392,9 +392,9 @@
 
                                                             {{-- Room --}}
                                                             <div
-                                                                class="flex items-center gap-3 bg-white dark:bg-gray-800 rounded-lg p-3 shadow-sm border border-gray-100 dark:border-gray-700">
+                                                                class="flex items-center gap-3 bg-white dark:bg-gray-800 lg p-3 shadow-sm border border-gray-100 dark:border-gray-700">
                                                                 <div
-                                                                    class="flex-shrink-0 w-11 h-11 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center shadow">
+                                                                    class="flex-shrink-0 w-11 h-11 bg-gray-200 dark:bg-gray-800 flex items-center justify-center shadow">
                                                                     <x-heroicon-o-map-pin class="w-6 h-6 text-white" />
                                                                 </div>
                                                                 <div class="flex-1 min-w-0">

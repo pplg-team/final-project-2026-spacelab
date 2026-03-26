@@ -9,14 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             @if (session('success'))
-                <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
+                <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3  relative"
                     role="alert">
                     <strong class="font-bold">Berhasil!</strong>
                     <span class="block sm:inline">{{ session('success') }}</span>
                 </div>
             @endif
             @if (session('error'))
-                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3  relative"
                     role="alert">
                     <strong class="font-bold">Error!</strong>
                     <span class="block sm:inline">{{ session('error') }}</span>
@@ -30,7 +30,7 @@
                     <h3 class="text-lg font-medium mb-4">1. Scan QR Code</h3>
                     
                     @if (request()->getScheme() !== 'https' && request()->getHost() !== 'localhost' && request()->getHost() !== '127.0.0.1')
-                        <div class="mb-4 p-3 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 rounded">
+                        <div class="mb-4 p-3 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 ">
                             <p class="text-sm text-yellow-800 dark:text-yellow-200">
                                 ⚠️ <strong>Peringatan:</strong> Fitur kamera memerlukan koneksi HTTPS. Kamera mungkin tidak berfungsi di HTTP.
                             </p>
@@ -38,7 +38,7 @@
                     @endif
 
                     <button id="btn-start-scan"
-                        class="mb-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">
+                        class="mb-4 w-full bg-indigo-600 text-white py-2 lg hover:bg-indigo-700">
                         Mulai Scan QR
                     </button>
 
@@ -51,7 +51,7 @@
 
 
                 <!-- Form Section -->
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <h3 class="text-lg font-medium mb-4">2. Konfirmasi Kehadiran</h3>
 
@@ -61,7 +61,7 @@
 
                             <!-- Error Display -->
                             @if ($errors->any())
-                                <div class="mb-4 p-3 bg-red-50 dark:bg-red-900 border border-red-300 dark:border-red-700 rounded">
+                                <div class="mb-4 p-3 bg-red-50 dark:bg-red-900 border border-red-300 dark:border-red-700 ">
                                     <p class="text-sm font-medium text-red-800 dark:text-red-200 mb-2">❌ Ada kesalahan:</p>
                                     <ul class="text-sm text-red-700 dark:text-red-300 list-disc list-inside">
                                         @foreach ($errors->all() as $error)
@@ -77,7 +77,7 @@
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">Token
                                     Sesi</label>
                                 <input type="text" name="token" id="token" readonly
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
+                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
                                     placeholder="Scan QR terlebih dahulu">
                             </div>
 
@@ -87,7 +87,7 @@
                                     Selfie</label>
 
                                 <div id="selfie-container"
-                                    class="relative w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center border-2 border-gray-300" style="background: #000;">
+                                    class="relative w-full h-64 bg-gray-200 dark:bg-gray-700 lg overflow-hidden flex items-center justify-center border-2 border-gray-300" style="background: #000;">
                                     <video id="selfie-video" style="display: block; width: 100%; height: 100%; object-fit: cover;"
                                         autoplay muted playsinline></video>
                                     <canvas id="selfie-canvas"
@@ -96,11 +96,11 @@
                                     <!-- Camera Controls -->
                                     <div id="camera-controls" class="absolute bottom-4 flex gap-2">
                                         <button type="button" id="btn-take-photo"
-                                            class="bg-indigo-600 text-white px-6 py-2 rounded-full shadow-lg font-medium hover:bg-indigo-700">
+                                            class="bg-indigo-600 text-white px-6 py-2 shadow-lg font-medium hover:bg-indigo-700">
                                             Ambil Foto
                                         </button>
                                         <button type="button" id="btn-retake-photo"
-                                            class="hidden bg-red-600 text-white px-6 py-2 rounded-full shadow-lg font-medium hover:bg-red-700">
+                                            class="hidden bg-red-600 text-white px-6 py-2 shadow-lg font-medium hover:bg-red-700">
                                             Ulangi
                                         </button>
                                     </div>
@@ -110,7 +110,7 @@
                                     </div>
                                     
                                     <!-- Video Debug Info (Hidden) -->
-                                    <div id="video-debug" class="absolute top-2 left-2 text-xs bg-black bg-opacity-50 text-white p-2 rounded hidden max-w-xs">
+                                    <div id="video-debug" class="absolute top-2 left-2 text-xs bg-black bg-opacity-50 text-white p-2  hidden max-w-xs">
                                         <p id="debug-ready">Ready: -</p>
                                         <p id="debug-playing">Playing: -</p>
                                         <p id="debug-width">Size: -</p>
@@ -125,12 +125,12 @@
 
                             <!-- Native File Fallback (Optional) -->
                             <div id="fallback-section" class="mb-4 hidden">
-                                <div id="fallback-input" class="hidden bg-blue-50 dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 p-4 rounded-lg">
+                                <div id="fallback-input" class="hidden bg-blue-50 dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 p-4 lg">
                                     <p class="text-sm font-medium text-blue-900 dark:text-blue-300 mb-3">
                                         📷 Alternatif: Unggah Foto
                                     </p>
                                     <input type="file" name="selfie_photo" id="selfie_photo_file" accept="image/*" capture="user"
-                                        class="block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-500 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-600 focus:outline-none"
+                                        class="block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-500 lg cursor-pointer bg-gray-50 dark:bg-gray-600 focus:outline-none"
                                         onchange="checkReadyToSubmit()">
                                     <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Pilih foto selfie dari galeri atau ambil foto baru</p>
                                 </div>
@@ -146,7 +146,7 @@
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status
                                     Kehadiran</label>
                                 <select name="status" id="status"
-                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
+                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
                                     onchange="toggleAttachment()">
                                     <option value="hadir">Hadir</option>
                                     <option value="izin">Izin</option>
@@ -161,20 +161,20 @@
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Keterangan /
                                         Alasan</label>
                                     <textarea name="note" id="note" rows="2"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"></textarea>
+                                        class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"></textarea>
                                 </div>
                                 <div>
                                     <label for="attachment"
                                         class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bukti (Surat
                                         Dokter/Izin)</label>
                                     <input type="file" name="attachment" id="attachment"
-                                        class="mt-1 block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none">
+                                        class="mt-1 block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none">
                                 </div>
                             </div>
 
                             <div class="mt-6">
                                 <button type="submit" id="btn-submit" disabled
-                                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                    class="w-full flex justify-center py-2 px-4 border border-transparent md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-gray-400 disabled:cursor-not-allowed">
                                     <span id="submit-text">Kirim Absensi</span>
                                 </button>
                             </div>
@@ -421,8 +421,8 @@
             hiddenBase64.value = '';
             video.style.display = 'block';
             canvas.style.display = 'none';
-            btnTake.className = 'bg-indigo-600 text-white px-6 py-2 rounded-full shadow-lg font-medium hover:bg-indigo-700';
-            btnRetake.className = 'hidden bg-red-600 text-white px-6 py-2 rounded-full shadow-lg font-medium hover:bg-red-700';
+            btnTake.className = 'bg-indigo-600 text-white px-6 py-2 shadow-lg font-medium hover:bg-indigo-700';
+            btnRetake.className = 'hidden bg-red-600 text-white px-6 py-2 shadow-lg font-medium hover:bg-red-700';
             startCamera();
             checkReadyToSubmit();
         });

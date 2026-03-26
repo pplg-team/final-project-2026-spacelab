@@ -11,13 +11,13 @@
             </p>
         </div>
 
-        <div class="w-full max-w-md bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-8 border border-gray-200 dark:border-gray-800">
+        <div class="w-full max-w-md bg-white dark:bg-gray-900 shadow-lg 2xl p-8 border border-gray-200 dark:border-gray-800">
             <form method="POST" action="{{ route('password.confirm') }}" class="space-y-6">
                 @csrf
 
                 <div class="space-y-1">
                     <x-input-label for="password" :value="__('Password')" />
-                    <x-text-input id="password" class="w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-950 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring focus:ring-indigo-400 focus:ring-opacity-30 transition" type="password" name="password" required />
+                    <x-text-input id="password" class="w-full xl border-gray-300 dark:border-gray-700 dark:bg-gray-950 text-gray-900 dark:text-gray-100 focus:border-indigo-500 focus:ring focus:ring-indigo-400 focus:ring-opacity-30 transition" type="password" name="password" required />
                     <x-input-error :messages="$errors->get('password')" class="text-red-500 text-sm mt-1" />
                 </div>
 

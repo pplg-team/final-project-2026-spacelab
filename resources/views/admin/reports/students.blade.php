@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-4">
             <a href="{{ route('admin.reports.index') }}"
-                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors">
                 <x-heroicon-o-arrow-left class="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </a>
             <div>
@@ -17,7 +17,7 @@
     <div class="py-6">
         <div class="space-y-6">
             <!-- Filter Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                 <div class="p-6">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Filter Data</h3>
                     <form method="GET" action="{{ route('admin.reports.students') }}"
@@ -27,7 +27,7 @@
                             <label
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jurusan</label>
                             <select name="major_id" id="majorFilter"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                                class="w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
                                 onchange="this.form.submit()">
                                 <option value="">Pilih Jurusan</option>
                                 @foreach ($majors as $major)
@@ -43,7 +43,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kelas</label>
                             <select name="class_id" id="classFilter"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                                class="w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
                                 onchange="this.form.submit()" {{ !$selectedMajorId ? 'disabled' : '' }}>
                                 <option value="">Pilih Kelas</option>
                                 @foreach ($classes as $class)
@@ -58,13 +58,13 @@
                         <!-- Actions -->
                         <div class="flex items-end gap-2">
                             <a href="{{ route('admin.reports.students') }}"
-                                class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                                class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition">
                                 <x-heroicon-o-arrow-path class="w-4 h-4 mr-2" />
                                 Reset
                             </a>
                             @if ($selectedClassId)
                                 <a href="{{ route('admin.reports.students.export', ['class_id' => $selectedClassId]) }}"
-                                    class="inline-flex items-center px-4 py-2.5 bg-blue-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-blue-700 transition">
+                                    class="inline-flex items-center px-4 py-2.5 bg-blue-600 border border-transparent lg font-medium text-sm text-white hover:bg-blue-700 transition">
                                     <x-heroicon-o-arrow-down-tray class="w-4 h-4 mr-2" />
                                     Export CSV
                                 </a>
@@ -77,7 +77,7 @@
             <!-- Students Table -->
             @if ($selectedClassId && $students->count() > 0)
                 <div
-                    class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700 overflow-hidden">
                     <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                         <div class="flex items-center justify-between">
                             <div>
@@ -90,7 +90,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <span
-                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                                    class="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
                                     {{ $selectedClass->major->name ?? '-' }}
                                 </span>
                             </div>
@@ -142,11 +142,11 @@
                                             <div class="flex items-center">
                                                 <div class="flex-shrink-0 h-10 w-10">
                                                     @if ($student->avatar)
-                                                        <img class="h-10 w-10 rounded-full object-cover"
+                                                        <img class="h-10 w-10 object-cover"
                                                             src="{{ Storage::url($student->avatar) }}" alt="">
                                                     @else
                                                         <div
-                                                            class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                                            class="h-10 w-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                                                             <span
                                                                 class="text-sm font-medium text-gray-500 dark:text-gray-400">
                                                                 {{ strtoupper(substr($student->user->name ?? 'S', 0, 1)) }}
@@ -177,7 +177,7 @@
                                 Menampilkan {{ $students->count() }} siswa
                             </p>
                             <a href="{{ route('admin.reports.students.export', ['class_id' => $selectedClassId]) }}"
-                                class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-blue-700 transition">
+                                class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent lg font-medium text-sm text-white hover:bg-blue-700 transition">
                                 <x-heroicon-o-arrow-down-tray class="w-4 h-4 mr-2" />
                                 Download CSV
                             </a>
@@ -186,7 +186,7 @@
                 </div>
             @elseif($selectedClassId && $students->count() == 0)
                 <!-- No Students Found -->
-                <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+                <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                     <div class="p-12 text-center">
                         <x-heroicon-o-user-group class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                         <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Tidak ada siswa</h3>
@@ -197,7 +197,7 @@
                 </div>
             @else
                 <!-- Empty State -->
-                <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+                <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                     <div class="p-12 text-center">
                         <x-heroicon-o-funnel class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                         <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Pilih Filter</h3>

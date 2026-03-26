@@ -22,7 +22,7 @@
             <!-- Success Message -->
             @if (session('success'))
                 <div id="successAlert"
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle class="w-5 h-5 text-green-600 dark:text-green-400 mr-3" />
                         <p class="text-sm font-medium text-green-800 dark:text-green-200">{{ session('success') }}</p>
@@ -33,7 +33,7 @@
             <!-- Error Message -->
             @if (session('error'))
                 <div id="errorAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -44,7 +44,7 @@
             <!-- Validation Errors -->
             @if ($errors->any())
                 <div id="validationAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5" />
                         <div class="flex-1">
@@ -61,11 +61,11 @@
             @endif
 
             <!-- Terms List -->
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:lg">
                 <div class="p-6">
                     <div class="space-y-4">
                         @forelse($terms as $term)
-                            <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                            <div class="border border-gray-200 dark:border-gray-700 lg overflow-hidden">
                                 <!-- Term Header -->
                                 <div class="bg-gray-50 dark:bg-gray-900 px-6 py-4 flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
@@ -82,7 +82,7 @@
                                         </div>
                                         @if ($term->is_active)
                                             <span
-                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                                                class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                                 Aktif
                                             </span>
                                         @endif
@@ -125,7 +125,7 @@
                                         <div class="flex justify-between items-center mb-4">
                                             <h5 class="text-sm font-medium text-gray-700 dark:text-gray-300">Block</h5>
                                             <button onclick="openBlockModal('{{ $term->id }}')"
-                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                                                class="inline-flex items-center px-3 py-1.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 md text-xs font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                                                 <x-heroicon-o-plus class="w-3 h-3 mr-1" />
                                                 Tambah Block
                                             </button>
@@ -135,7 +135,7 @@
                                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                                 @foreach ($term->blocks as $block)
                                                     <div
-                                                        class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
+                                                        class="p-4 border border-gray-200 dark:border-gray-700 lg hover:border-gray-300 dark:hover:border-gray-600 transition-colors">
                                                         <div class="flex justify-between items-start">
                                                             <div class="flex-1">
                                                                 <h6
@@ -235,11 +235,11 @@
             </div>
             <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button type="submit" id="termSubmitBtn"
-                    class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                    class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                     Simpan
                 </button>
                 <button type="button" x-on:click="$dispatch('close')"
-                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                    class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                     Batal
                 </button>
             </div>
@@ -287,11 +287,11 @@
             </div>
             <div class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                 <button type="submit"
-                    class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                    class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                     Simpan
                 </button>
                 <button type="button" x-on:click="$dispatch('close')"
-                    class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                    class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                     Batal
                 </button>
             </div>

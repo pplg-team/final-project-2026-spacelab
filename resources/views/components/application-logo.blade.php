@@ -1,4 +1,4 @@
-<div class="w-8 h-8 rounded-md bg-white flex items-center justify-center">
+<div class="w-8 h-8 md bg-white flex items-center justify-center">
     <img 
         src="{{ asset('assets/images/logo/spacelab-logo.svg') }}" 
         alt="Logo Spacelab" 

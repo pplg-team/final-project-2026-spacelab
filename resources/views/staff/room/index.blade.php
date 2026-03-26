@@ -8,7 +8,7 @@
     <div class="py-6">
         <div class="space-y-6">
             <!-- Header Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-6">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -37,7 +37,7 @@
             <!-- Alert Messages -->
             @if (session('success'))
                 <div id="successAlert"
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle
                             class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
@@ -48,7 +48,7 @@
 
             @if (session('error'))
                 <div id="errorAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -58,7 +58,7 @@
 
             @if ($errors->any())
                 <div id="validationAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle
                             class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -76,16 +76,16 @@
             @endif
 
             <!-- Filter & Search Bar -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-4">
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="flex-1">
                             <input type="text" id="searchInput" placeholder="Cari nama gedung atau ruangan..."
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                         </div>
                         <div class="flex gap-2">
                             <select id="typeFilter"
-                                class="rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                class="md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                                 <option value="">Semua Tipe</option>
                                 @foreach ($roomTypes as $type)
                                     <option value="{{ $type }}">{{ ucfirst($type) }}</option>
@@ -99,7 +99,7 @@
             <!-- Buildings with Rooms -->
             <div class="space-y-4">
                 @forelse($buildings as $building)
-                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg overflow-hidden building-card"
+                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg overflow-hidden building-card"
                         data-building-name="{{ strtolower($building->name) }}"
                         data-building-code="{{ strtolower($building->code) }}">
                         <!-- Building Header -->
@@ -109,7 +109,7 @@
                                 <div class="flex items-center space-x-4">
                                     <div class="flex-shrink-0">
                                         <div
-                                            class="h-12 w-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                                            class="h-12 w-12 lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
                                             <x-heroicon-o-building-office
                                                 class="h-6 w-6 text-gray-600 dark:text-gray-400" />
                                         </div>
@@ -133,13 +133,13 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <button onclick="event.stopPropagation(); editBuilding('{{ $building->id }}')"
-                                        class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded-md transition-colors"
+                                        class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 md transition-colors"
                                         title="Edit Gedung">
                                         <x-heroicon-o-pencil class="w-5 h-5" />
                                     </button>
                                     <button
                                         onclick="event.stopPropagation(); deleteBuilding('{{ $building->id }}', '{{ $building->name }}')"
-                                        class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md transition-colors"
+                                        class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 md transition-colors"
                                         title="Hapus Gedung">
                                         <x-heroicon-o-trash class="w-5 h-5" />
                                     </button>
@@ -212,19 +212,19 @@
                                                     </td>
                                                     <td class="px-4 py-3 whitespace-nowrap">
                                                         <span
-                                                            class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                                                            class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
                                                             {{ ucfirst($room->type) }}
                                                         </span>
                                                     </td>
                                                     <td class="px-4 py-3 whitespace-nowrap">
                                                         @if ($room->is_active)
                                                             <span
-                                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
+                                                                class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
                                                                 Aktif
                                                             </span>
                                                         @else
                                                             <span
-                                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                                                                class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                                                 Nonaktif
                                                             </span>
                                                         @endif
@@ -232,18 +232,18 @@
                                                     <td class="px-4 py-3 whitespace-nowrap">
                                                         <div class="flex items-center gap-2">
                                                             <button onclick="viewRoom('{{ $room->id }}')"
-                                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-md transition-colors"
+                                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 md transition-colors"
                                                                 title="Lihat Detail">
                                                                 <x-heroicon-o-eye class="w-5 h-5" />
                                                             </button>
                                                             <button onclick="editRoom('{{ $room->id }}')"
-                                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded-md transition-colors"
+                                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 md transition-colors"
                                                                 title="Edit">
                                                                 <x-heroicon-o-pencil class="w-5 h-5" />
                                                             </button>
                                                             <button
                                                                 onclick="deleteRoom('{{ $room->id }}', '{{ $room->name }}')"
-                                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md transition-colors"
+                                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 md transition-colors"
                                                                 title="Hapus">
                                                                 <x-heroicon-o-trash class="w-5 h-5" />
                                                             </button>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                 @empty
-                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                         <div class="p-12 text-center">
                             <x-heroicon-o-building-office class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                             <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Belum ada data gedung</h3>
@@ -272,7 +272,7 @@
                             <div class="mt-6">
                                 <button x-data=""
                                     x-on:click.prevent="$dispatch('open-modal', 'add-building-modal')"
-                                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                    class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium md text-white bg-gray-800 hover:bg-gray-700 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                                     <x-heroicon-o-plus class="h-5 w-5 mr-2" />
                                     Tambah Gedung
                                 </button>
@@ -327,7 +327,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Deskripsi</label>
                     <textarea name="description" rows="2"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"
                         placeholder="Deskripsi gedung (opsional)">{{ old('description') }}</textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('description')" />
                 </div>
@@ -335,11 +335,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -388,17 +388,17 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Deskripsi</label>
                     <textarea id="editBuildingDescription" name="description" rows="2"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"></textarea>
+                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"></textarea>
                 </div>
 
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan Perubahan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -432,11 +432,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -522,7 +522,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Catatan</label>
                     <textarea name="notes" rows="2"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"
                         placeholder="Catatan tambahan (opsional)">{{ old('notes') }}</textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('notes')" />
                 </div>
@@ -530,7 +530,7 @@
                 <div class="flex items-center">
                     <input type="checkbox" name="is_active" id="addIsActive" value="1"
                         {{ old('is_active', true) ? 'checked' : '' }}
-                        class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:bg-gray-900">
+                        class=" border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:bg-gray-900">
                     <label for="addIsActive" class="ml-2 text-sm text-gray-600 dark:text-gray-400">Ruangan
                         aktif</label>
                 </div>
@@ -538,11 +538,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -639,12 +639,12 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Catatan</label>
                     <textarea id="editRoomNotes" name="notes" rows="2"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"></textarea>
+                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"></textarea>
                 </div>
 
                 <div class="flex items-center">
                     <input type="checkbox" name="is_active" id="editIsActive" value="1"
-                        class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:bg-gray-900">
+                        class=" border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:bg-gray-900">
                     <label for="editIsActive" class="ml-2 text-sm text-gray-600 dark:text-gray-400">Ruangan
                         aktif</label>
                 </div>
@@ -652,11 +652,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan Perubahan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -690,11 +690,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>

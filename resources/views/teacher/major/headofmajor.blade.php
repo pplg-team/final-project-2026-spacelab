@@ -7,15 +7,15 @@
     <div class="py-12">
         <div>
             <!-- Header Card with Avatar -->
-            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150 mb-6">
-                <div class="relative h-40 overflow-hidden rounded-xl
+            <div class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150 mb-6">
+                <div class="relative h-40 overflow-hidden xl
                     bg-gradient-to-r from-gray-50 to-gray-100
                     dark:from-gray-700 dark:to-gray-800
                     shadow-sm">
 
                     <div class="absolute -bottom-10 -right-10 w-44 h-44
                         bg-gray-200/60 dark:bg-gray-600/40
-                        blur-3xl rounded-full"></div>
+                        blur-3xl full"></div>
 
                     <!-- Subtle bottom border glow -->
                     <div class="absolute bottom-0 left-0 right-0 h-px
@@ -28,7 +28,7 @@
                         <div class="relative mb-4 sm:mb-0">
                                   <img src="{{ Storage::url($major && $major->logo) ? asset($major->logo) : asset('assets/images/avatar/default-profile.png') }}"
                                      alt="Avatar of username"
-                                     class="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg">
+                                     class="w-32 h-32 object-cover border-4 border-white dark:border-gray-800 shadow-lg">
                         </div>
 
                         <!-- Name and Role -->
@@ -40,7 +40,7 @@
                                 {{ $major?->code ?? '' }}
                             </p>
                             <div class="mt-2">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                                <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
                                     {{ $major?->slogan ?? 'Tidak ada deskripsi.' }}
                                 </span>
                             </div>
@@ -49,7 +49,7 @@
                         <!-- Action Button -->
                         <div class="mt-4 sm:mt-0">
                             <a href="#"
-                               class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-150 shadow-sm">
+                               class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-transparent lg font-medium text-sm text-white hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-150 shadow-sm">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                 </svg>
@@ -72,14 +72,14 @@
 
         <!-- Card 2: Hari Ini -->
         <article role="article" aria-label="Hari Ini"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Hari Ini</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white capitalize">{{  now()->translatedFormat('l') }} </h3>
                     <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">{{  now()->translatedFormat('d F Y H:i') }}</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-calendar class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -88,14 +88,14 @@
 
         <!-- Card 1: Pelajaran Hari Ini -->
         <article role="article" aria-label="Pelajaran Hari Ini"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Total Kelas</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">{{ $stats['class_count'] ?? 0 }}</h3>
                     {{-- <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2"></p> --}}
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -104,14 +104,14 @@
 
         {{-- Card 2: Total Siswa di jurusan --}}
         <article role="article" aria-label="Pelajaran Hari Ini"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Total Siswa</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">{{ $stats['student_count'] ?? 0 }}</h3>
                     <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Siswa</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -120,14 +120,14 @@
 
         <!-- Card 3: Jumlah Ruangan -->
         <article role="article" aria-label="Jumlah Ruangan"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Jumlah ruangan</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">{{ $stats['room_count'] ?? 0 }}</h3>
                     <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">jurusan</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-building-office-2 class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -136,14 +136,14 @@
 
         <!-- Card 5: Total Pelajaran Jurusan -->
         <article role="article" aria-label="Total Pelajaran Jurusan"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Pelajaran Jurusan</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">{{ $subjectCount ?? ($majorSubjects->count() ?? 0) }}</h3>
                     <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Mapel</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-academic-cap class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -152,14 +152,14 @@
 
         <!-- Card 6: Jumlah Guru Jurusan -->
         <article role="article" aria-label="Jumlah Guru Jurusan"
-            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Guru Jurusan</p>
                     <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">{{ $teacherCount ?? (is_countable($teachers) ? count($teachers) : 0) }}</h3>
                     <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Guru</p>
                 </div>
-                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                <div class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
                     <span class="sr-only">Icon</span>
                     <x-heroicon-o-user-group class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" aria-hidden="true" />
                 </div>
@@ -172,7 +172,7 @@
         <!-- Class List - 2/3 width -->
         <div class="lg:col-span-2">
             <div>
-                <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                <div class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
                     <div class="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-800">
                         <div class="flex items-center justify-between">
                             <h3 class="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
@@ -206,7 +206,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                <div class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
                     <div class="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-800">
                         <div class="flex items-center justify-between">
                             <h3 class="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
@@ -222,7 +222,7 @@
                                     @foreach($teachers as $t)
                                         <li class="py-3 flex items-center justify-between">
                                             <div class="flex items-center gap-3">
-                                                <img src="{{ Storage::url($t->teacher?->avatar) ?? asset($t->avatar) ?? asset('assets/images/avatar/default-profile.png') }}" alt="{{ $t->user?->name ?? 'Guru' }}" class="w-10 h-10 rounded-full object-cover border border-gray-200 dark:border-gray-700 shadow-sm" />
+                                                <img src="{{ Storage::url($t->teacher?->avatar) ?? asset($t->avatar) ?? asset('assets/images/avatar/default-profile.png') }}" alt="{{ $t->user?->name ?? 'Guru' }}" class="w-10 h-10 object-cover border border-gray-200 dark:border-gray-700 shadow-sm" />
                                                 <div class="min-w-0">
                                                     <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $t->user?->name ?? '—' }}</div>
                                                     <div class="text-xs text-gray-500 dark:text-gray-400">{{ $t->code ?? '' }}</div>
@@ -245,11 +245,11 @@
             </div>
             <div class="lg:col-span-1">
                 <div class="space-y-6">
-                    <div class="bg-white  dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                    <div class="bg-white  dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
                         <!-- Current Day Info -->
                         <div class="p-3 mb-5 sm:p-5 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center shadow-sm">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-700 lg flex items-center justify-center shadow-sm">
                                     <x-heroicon-o-calendar class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-200" />
                                 </div>
                             <div>
@@ -262,7 +262,7 @@
                             </div>
                         </div>
                         <article role="article" aria-label="Kepala Jurusan"
-                            class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                             <div class="flex items-center justify-between gap-4">
                                 <div class="min-w-0">
                                     <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Kepala Jurusan</p>
@@ -270,14 +270,14 @@
                                     {{-- <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2"></p> --}}
                                 </div>
                                 <div class="flex-shrink-0">
-                                    <div class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 rounded-full border border-gray-100 dark:border-gray-700">
-                                    <img src="{{ Storage::url($major && $major->logo) ? asset($major->logo) : asset('assets/images/avatar/default-profile.png') }}" alt="Avatar Guru" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover shadow" />
+                                    <div class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
+                                    <img src="{{ Storage::url($major && $major->logo) ? asset($major->logo) : asset('assets/images/avatar/default-profile.png') }}" alt="Avatar Guru" class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
                                 </div>
                             </div>
                         </div>
                     </article>
                     <article role="article" aria-label="Kepala Jurusan"
-                        class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                        class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
                         <div class="flex items-center justify-between gap-4">
                             <div class="min-w-0">
                                 <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Kepala Program</p>
@@ -285,17 +285,17 @@
                                 {{-- <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2"></p> --}}
                             </div>
                             <div class="flex-shrink-0">
-                                <div class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 rounded-full border border-gray-100 dark:border-gray-700">
-                                    <img src="{{ Storage::url($major && $major->logo) ? asset($major->logo) : asset('assets/images/avatar/default-profile.png') }}" alt="Avatar Guru" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover shadow" />
+                                <div class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
+                                    <img src="{{ Storage::url($major && $major->logo) ? asset($major->logo) : asset('assets/images/avatar/default-profile.png') }}" alt="Avatar Guru" class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
                                 </div>
                             </div>
                         </div>
                     </article>
                     <!-- Perusahaan -->
-                    <div class="mt-10 bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                    <div class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
                         <div class="p-3 sm:p-5 border-b border-gray-100 dark:border-gray-800">
                             <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide flex items-center gap-2">
-                                <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                                <div class="w-2 h-2 bg-gray-400 animate-pulse"></div>
                                 Perusahaan
                             </h3>
                         </div>
@@ -310,7 +310,7 @@
                                         <a href="{{ $company?->website ?? '#' }}" target="_blank" class="block hover:opacity-90">
                                             <img src="{{ $company && $company->logo ? asset($company->logo) : asset('assets/images/company/default.png') }}"
                                                 alt="{{ $company?->name ?? 'Perusahaan' }}"
-                                                class="w-16 h-16 object-contain rounded-md border bg-white"
+                                                class="w-16 h-16 object-contain md border bg-white"
                                                 title="{{ $company?->name ?? 'Perusahaan' }}" />
                                         </a>
                                     @endforeach
@@ -319,7 +319,7 @@
                         </div>
                     </div>
                     {{-- Daftar Mapel Jurusan --}}
-                    <div class="mt-10 bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                    <div class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
                         <div class="p-3 sm:p-5 border-b border-gray-100 dark:border-gray-800">
                             <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide flex items-center gap-2">
                                 Pelajaran Jurusan

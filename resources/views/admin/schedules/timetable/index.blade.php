@@ -6,7 +6,7 @@
             </h2>
             <div class="flex items-center gap-2">
                 <a href="{{ route('admin.schedules.templates.index') }}"
-                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                    class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                     <x-heroicon-o-document-duplicate class="w-4 h-4 mr-2" />
                     Kelola Template
                 </a>
@@ -17,7 +17,7 @@
     <div class="py-2 flex items-center justify-between ml-4">
         {{-- Kembali --}}
         <div>
-            <a href="{{ route('admin.schedules.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+            <a href="{{ route('admin.schedules.index') }}" class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                 <x-heroicon-o-arrow-left class="w-4 h-4 mr-2" />
                 Kembali
             </a>
@@ -36,7 +36,7 @@
             <!-- Alert Messages -->
             @if (session('success'))
                 <div
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle
                             class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
@@ -46,7 +46,7 @@
             @endif
 
             @if (session('error'))
-                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -55,7 +55,7 @@
             @endif
 
             @if ($errors->any())
-                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle
                             class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -72,7 +72,7 @@
             @endif
 
             <!-- Filter Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-6">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Filter Jadwal</h3>
                     <form method="GET" action="{{ route('admin.schedules.timetable.index') }}"
@@ -82,7 +82,7 @@
                             <label
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jurusan</label>
                             <select name="major_id" id="majorFilter"
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
                                 onchange="this.form.submit()">
                                 <option value="">Pilih Jurusan</option>
                                 @foreach ($majors as $major)
@@ -98,7 +98,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kelas</label>
                             <select name="class_id" id="classFilter"
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
                                 onchange="this.form.submit()" {{ !$selectedMajorId ? 'disabled' : '' }}>
                                 <option value="">Pilih Kelas</option>
                                 @foreach ($classes as $class)
@@ -115,7 +115,7 @@
                             <label
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Template</label>
                             <select name="template_id" id="templateFilter"
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm"
                                 onchange="this.form.submit()" {{ !$selectedClassId ? 'disabled' : '' }}>
                                 <option value="">Pilih Template</option>
                                 @foreach ($templates as $template)
@@ -131,7 +131,7 @@
                         <!-- Reset Button -->
                         <div class="flex items-end">
                             <a href="{{ route('admin.schedules.index') }}"
-                                class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                                class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-gray-600 transition">
                                 <x-heroicon-o-arrow-path class="w-4 h-4 mr-1" />
                                 Reset
                             </a>
@@ -142,7 +142,7 @@
 
             <!-- Schedule Grid -->
             @if ($selectedTemplate)
-                <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-4">
                             <div>
@@ -154,7 +154,7 @@
                                     {{ $selectedTemplate->block->name ?? 'Block' }}
                                     @if ($selectedTemplate->is_active)
                                         <span
-                                            class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
+                                            class="ml-2 inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
                                             Aktif
                                         </span>
                                     @endif
@@ -209,7 +209,7 @@
                                                     class="px-2 py-2 text-sm border-r border-gray-200 dark:border-gray-700 last:border-r-0 align-top min-w-[150px]">
                                                     @if ($cellEntry)
                                                         <div
-                                                            class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-2 relative group">
+                                                            class="bg-indigo-50 dark:bg-indigo-900/30 lg p-2 relative group">
                                                             <div
                                                                 class="font-medium text-indigo-900 dark:text-indigo-100 text-xs">
                                                                 {{ $cellEntry->teacherSubject?->subject?->name ?? '-' }}
@@ -230,12 +230,12 @@
                                                                 class="absolute top-1 right-1 hidden group-hover:flex gap-1">
                                                                 <button type="button"
                                                                     onclick="editEntry('{{ $cellEntry->id }}', '{{ $cellEntry->teacher_subject_id }}', '{{ $cellEntry->room_history_id }}', {{ $dayNum }}, '{{ $period->id }}')"
-                                                                    class="p-1 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded transition-colors">
+                                                                    class="p-1 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50  transition-colors">
                                                                     <x-heroicon-o-pencil class="w-3 h-3" />
                                                                 </button>
                                                                 <button type="button"
                                                                     onclick="deleteEntry('{{ $cellEntry->id }}')"
-                                                                    class="p-1 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded transition-colors">
+                                                                    class="p-1 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50  transition-colors">
                                                                     <x-heroicon-o-trash class="w-3 h-3" />
                                                                 </button>
                                                             </div>
@@ -244,13 +244,13 @@
                                                         @if ($period->is_teaching)
                                                             <button type="button"
                                                                 onclick="addEntry('{{ $selectedTemplateId }}', {{ $dayNum }}, '{{ $period->id }}')"
-                                                                class="w-full h-16 flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors group">
+                                                                class="w-full h-16 flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 lg hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-colors group">
                                                                 <x-heroicon-o-plus
                                                                     class="w-5 h-5 text-gray-400 group-hover:text-indigo-500" />
                                                             </button>
                                                         @else
                                                             <div
-                                                                class="w-full h-16 flex items-center justify-center bg-gray-100 dark:bg-gray-900/50 rounded-lg border border-transparent">
+                                                                class="w-full h-16 flex items-center justify-center bg-gray-100 dark:bg-gray-900/50 lg border border-transparent">
                                                                 <span
                                                                     class="text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500 tracking-tighter">
                                                                     {{ $period->ordinal }}
@@ -269,7 +269,7 @@
                 </div>
             @else
                 <!-- Empty State -->
-                <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                     <div class="p-12 text-center">
                         <x-heroicon-o-calendar-days class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                         <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Pilih Filter</h3>
@@ -303,7 +303,7 @@
                 <input type="hidden" name="period_id" id="addPeriodId">
 
                 <div id="addEntryInfo"
-                    class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3 text-sm text-gray-600 dark:text-gray-400">
+                    class="bg-gray-50 dark:bg-gray-900 lg p-3 text-sm text-gray-600 dark:text-gray-400">
                     <!-- Info will be populated by JS -->
                 </div>
 
@@ -311,7 +311,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mata
                         Pelajaran *</label>
                     <select id="addSubject" required
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Pilih Mata Pelajaran</option>
                     </select>
                 </div>
@@ -320,7 +320,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Guru
                         (Tersedia) *</label>
                     <select name="teacher_subject_id" id="addTeacherSubject" required disabled
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm disabled:opacity-60">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm disabled:opacity-60">
                         <option value="">Pilih mapel terlebih dahulu</option>
                     </select>
                     <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
@@ -332,7 +332,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Ruangan
                         (Opsional)</label>
                     <select name="room_history_id" id="addRoomHistory"
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Tanpa Ruangan</option>
                         @foreach ($roomHistories as $rh)
                             <option value="{{ $rh->id }}">
@@ -345,11 +345,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
                         Simpan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -375,7 +375,7 @@
                 @method('PUT')
 
                 <div id="addEntryInfo"
-                    class="bg-gray-50 dark:bg-gray-900 rounded-lg p-3 text-sm text-gray-600 dark:text-gray-400">
+                    class="bg-gray-50 dark:bg-gray-900 lg p-3 text-sm text-gray-600 dark:text-gray-400">
                     <!-- Info will be populated by JS -->
                 </div>
 
@@ -384,7 +384,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mata
                         Pelajaran *</label>
                     <select id="editSubject"
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Pilih Mata Pelajaran</option>
                     </select>
                 </div>
@@ -393,7 +393,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Guru & Mata
                         Pelajaran *</label>
                     <select name="teacher_subject_id" id="editTeacherSubject" required
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Pilih Guru & Mata Pelajaran</option>
                         @foreach ($teacherSubjects as $ts)
                             <option value="{{ $ts->id }}">
@@ -407,7 +407,7 @@
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Ruangan
                         (Opsional)</label>
                     <select name="room_history_id" id="editRoomHistory"
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Tanpa Ruangan</option>
                         @foreach ($roomHistories as $rh)
                             <option value="{{ $rh->id }}">
@@ -420,11 +420,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
                         Simpan Perubahan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -456,11 +456,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>

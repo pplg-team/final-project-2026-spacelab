@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-4">
             <a href="{{ route('staff.reports.index') }}"
-                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors">
                 <x-heroicon-o-arrow-left class="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </a>
             <div>
@@ -19,9 +19,9 @@
             <!-- Summary Cards -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-rose-100 dark:bg-rose-900/50 rounded-xl">
+                        <div class="p-3 bg-rose-100 dark:bg-rose-900/50 xl">
                             <x-heroicon-o-home-modern class="w-6 h-6 text-rose-600 dark:text-rose-400" />
                         </div>
                         <div>
@@ -40,9 +40,9 @@
                 @endphp
 
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-red-100 dark:bg-red-900/50 rounded-xl">
+                        <div class="p-3 bg-red-100 dark:bg-red-900/50 xl">
                             <x-heroicon-o-fire class="w-6 h-6 text-red-600 dark:text-red-400" />
                         </div>
                         <div>
@@ -53,9 +53,9 @@
                 </div>
 
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-amber-100 dark:bg-amber-900/50 rounded-xl">
+                        <div class="p-3 bg-amber-100 dark:bg-amber-900/50 xl">
                             <x-heroicon-o-chart-bar class="w-6 h-6 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
@@ -66,9 +66,9 @@
                 </div>
 
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl">
+                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 xl">
                             <x-heroicon-o-check-circle class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <div>
@@ -80,7 +80,7 @@
             </div>
 
             <!-- Rooms Grid -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                 <div class="p-6 border-b border-gray-100 dark:border-gray-700">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Detail Penggunaan Ruangan</h3>
                     <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Berdasarkan jadwal aktif saat ini</p>
@@ -118,7 +118,7 @@
                                                 : 'text-emerald-700 dark:text-emerald-300');
                                 @endphp
                                 <div
-                                    class="bg-gradient-to-br {{ $bgClass }} rounded-xl p-5 border {{ $colorClass }}">
+                                    class="bg-gradient-to-br {{ $bgClass }} xl p-5 border {{ $colorClass }}">
                                     <div class="flex items-start justify-between mb-3">
                                         <div>
                                             <h4 class="font-semibold text-gray-900 dark:text-white">{{ $room->name }}
@@ -131,7 +131,7 @@
                                             </p>
                                         </div>
                                         <span
-                                            class="inline-flex items-center px-2 py-1 rounded-md text-xs font-mono font-medium bg-white/50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-300">
+                                            class="inline-flex items-center px-2 py-1 md text-xs font-mono font-medium bg-white/50 dark:bg-gray-900/50 text-gray-700 dark:text-gray-300">
                                             {{ $room->code ?? '-' }}
                                         </span>
                                     </div>
@@ -143,8 +143,8 @@
                                                 jadwal</span>
                                         </div>
                                         <div
-                                            class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
-                                            <div class="{{ $barColor }} h-2.5 rounded-full transition-all duration-500"
+                                            class="w-full bg-gray-200 dark:bg-gray-700 h-2.5 overflow-hidden">
+                                            <div class="{{ $barColor }} h-2.5 transition-all duration-500"
                                                 style="width: {{ $usage['percentage'] }}%"></div>
                                         </div>
                                         <div class="flex items-center justify-between text-xs mt-1">
@@ -183,18 +183,18 @@
             </div>
 
             <!-- Legend -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700 p-4">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700 p-4">
                 <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
                     <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 rounded bg-red-500"></div>
+                        <div class="w-4 h-4  bg-red-500"></div>
                         <span class="text-gray-600 dark:text-gray-400">Tinggi (≥70%) - Perlu perhatian</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 rounded bg-amber-500"></div>
+                        <div class="w-4 h-4  bg-amber-500"></div>
                         <span class="text-gray-600 dark:text-gray-400">Sedang (30-70%) - Normal</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <div class="w-4 h-4 rounded bg-emerald-500"></div>
+                        <div class="w-4 h-4  bg-emerald-500"></div>
                         <span class="text-gray-600 dark:text-gray-400">Rendah (<30%) - Tersedia</span>
                     </div>
                 </div>

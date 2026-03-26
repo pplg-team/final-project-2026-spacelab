@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
       <!-- Brand / Deskripsi -->
       <div class="flex items-start gap-4">
-        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-md flex-shrink-0"></div>
+        <div class="w-10 h-10 bg-gradient-to-br from-primary to-accent md flex-shrink-0"></div>
         <div class="min-w-0">
                 <a href="/" class="flex items-center space-x-2">
                     <x-application-logo />
@@ -33,7 +33,7 @@
         <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
           <span class="sr-only">Crafted with</span>
           <x-heroicon-s-heart class="w-4 h-4 text-red-800 dark:text-red-200" fill="currentColor" />
-          <span>by <a href="https://github.com/habibiahmada" class="underline">Habibi Ahmad Aziz</a></span>
+          <span>by <a href="https://habibiahmada.dev" class="underline">Habibi Ahmad Aziz</a></span>
         </div>
 
         <div class="flex items-center gap-3">

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-4">
             <a href="{{ route('staff.reports.index') }}"
-                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors">
                 <x-heroicon-o-arrow-left class="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </a>
             <div>
@@ -17,7 +17,7 @@
     <div class="py-6">
         <div class="space-y-6">
             <!-- Filter Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+            <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                 <div class="p-6">
                     <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Filter Jadwal</h3>
                     <form method="GET" action="{{ route('staff.reports.schedules') }}"
@@ -27,7 +27,7 @@
                             <label
                                 class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jurusan</label>
                             <select name="major_id" id="majorFilter"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 text-sm"
+                                class="w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 text-sm"
                                 onchange="this.form.submit()">
                                 <option value="">Pilih Jurusan</option>
                                 @foreach ($majors as $major)
@@ -43,7 +43,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kelas</label>
                             <select name="class_id" id="classFilter"
-                                class="w-full rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 text-sm"
+                                class="w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-violet-500 focus:ring-violet-500 text-sm"
                                 onchange="this.form.submit()" {{ !$selectedMajorId ? 'disabled' : '' }}>
                                 <option value="">Pilih Kelas</option>
                                 @foreach ($classes as $class)
@@ -58,13 +58,13 @@
                         <!-- Actions -->
                         <div class="flex items-end gap-2">
                             <a href="{{ route('staff.reports.schedules') }}"
-                                class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                                class="inline-flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition">
                                 <x-heroicon-o-arrow-path class="w-4 h-4 mr-2" />
                                 Reset
                             </a>
                             @if ($selectedClassId && $scheduleData)
                                 <button type="button" onclick="window.print()"
-                                    class="inline-flex items-center px-4 py-2.5 bg-violet-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-violet-700 transition">
+                                    class="inline-flex items-center px-4 py-2.5 bg-violet-600 border border-transparent lg font-medium text-sm text-white hover:bg-violet-700 transition">
                                     <x-heroicon-o-printer class="w-4 h-4 mr-2" />
                                     Cetak
                                 </button>
@@ -77,7 +77,7 @@
             <!-- Schedule Grid -->
             @if ($selectedClassId && $scheduleData !== null)
                 <div
-                    class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden print:shadow-none print:border-0">
+                    class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700 overflow-hidden print:shadow-none print:border-0">
                     <div class="p-6 border-b border-gray-100 dark:border-gray-700 print:p-4">
                         <div class="flex items-center justify-between">
                             <div>
@@ -89,7 +89,7 @@
                                 </p>
                             </div>
                             <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 print:hidden">
+                                class="inline-flex items-center px-3 py-1 text-xs font-medium bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 print:hidden">
                                 Template Aktif
                             </span>
                         </div>
@@ -140,7 +140,7 @@
                                                 class="px-2 py-2 text-sm border-r border-gray-200 dark:border-gray-700 last:border-r-0 align-top min-w-[140px] print:min-w-[100px]">
                                                 @if ($cellEntry)
                                                     <div
-                                                        class="bg-violet-50 dark:bg-violet-900/30 rounded-lg p-2 print:p-1">
+                                                        class="bg-violet-50 dark:bg-violet-900/30 lg p-2 print:p-1">
                                                         <div
                                                             class="font-medium text-violet-900 dark:text-violet-100 text-xs">
                                                             {{ $cellEntry->teacherSubject?->subject?->name ?? '-' }}
@@ -159,7 +159,7 @@
                                                     </div>
                                                 @elseif (!$period->is_teaching)
                                                     <div
-                                                        class="w-full h-12 flex items-center justify-center bg-gray-100 dark:bg-gray-900/50 rounded-lg">
+                                                        class="w-full h-12 flex items-center justify-center bg-gray-100 dark:bg-gray-900/50 lg">
                                                         <span
                                                             class="text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500">
                                                             {{ $period->ordinal }}
@@ -186,7 +186,7 @@
                                 Jadwal Kelas {{ $selectedClass->full_name }}
                             </p>
                             <button type="button" onclick="window.print()"
-                                class="inline-flex items-center px-4 py-2 bg-violet-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-violet-700 transition">
+                                class="inline-flex items-center px-4 py-2 bg-violet-600 border border-transparent lg font-medium text-sm text-white hover:bg-violet-700 transition">
                                 <x-heroicon-o-printer class="w-4 h-4 mr-2" />
                                 Cetak Jadwal
                             </button>
@@ -195,7 +195,7 @@
                 </div>
             @elseif($selectedClassId && $scheduleData === null)
                 <!-- No Schedule Found -->
-                <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+                <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                     <div class="p-12 text-center">
                         <x-heroicon-o-calendar-days class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                         <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Tidak ada jadwal</h3>
@@ -206,7 +206,7 @@
                 </div>
             @else
                 <!-- Empty State -->
-                <div class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700">
+                <div class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700">
                     <div class="p-12 text-center">
                         <x-heroicon-o-funnel class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                         <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Pilih Filter</h3>

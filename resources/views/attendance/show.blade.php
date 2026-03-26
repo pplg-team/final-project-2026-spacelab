@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+        <div class="bg-white overflow-hidden shadow-sm sm:lg p-6">
             <!-- Header dengan Hari dan Tanggal -->
             <div class="mb-8">
                 <h2 class="text-2xl font-semibold mb-2 text-black">Attendance QR Code</h2>
@@ -14,7 +14,7 @@
                 <div class="flex flex-col items-center">
                     
                     <div class="mb-6">
-                        <div id="qrcode" class="border-4 border-gray-300 p-4 bg-white rounded-lg shadow-md"></div>
+                        <div id="qrcode" class="border-4 border-gray-300 p-4 bg-white lg shadow-md"></div>
                     </div>
                     
                     <div class="text-center">
@@ -25,7 +25,7 @@
             @else
                 <!-- Kondisi: QR Code Tidak Ada -->
                 <div class="flex flex-col items-center">
-                    <div class="mb-6 p-6 bg-yellow-50 border border-yellow-200 rounded-lg w-full">
+                    <div class="mb-6 p-6 bg-yellow-50 border border-yellow-200 lg w-full">
                         <div class="flex items-center justify-center">
                             <x-heroicon-o-exclamation-triangle class="w-12 h-12 text-yellow-600 mr-4" />
                             <div>

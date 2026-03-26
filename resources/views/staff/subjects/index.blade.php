@@ -17,7 +17,7 @@
                         </p>
                     </div>
                     <button onclick="openSubjectModal()"
-                        class="inline-flex items-center px-4 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
+                        class="inline-flex items-center px-4 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -29,7 +29,7 @@
             <!-- Alerts -->
             @if (session('success'))
                 <div
-                    class="mb-6 bg-gray-50 dark:bg-gray-800 border-l-4 border-gray-900 dark:border-gray-100 rounded-r-lg p-4">
+                    class="mb-6 bg-gray-50 dark:bg-gray-800 border-l-4 border-gray-900 dark:border-gray-100 r-lg p-4">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-gray-900 dark:text-gray-100 mr-3" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
@@ -42,7 +42,7 @@
 
             @if ($errors->any())
                 <div
-                    class="mb-6 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-600 dark:border-red-400 rounded-r-lg p-4">
+                    class="mb-6 bg-red-50 dark:bg-red-900/20 border-l-4 border-red-600 dark:border-red-400 r-lg p-4">
                     <div class="flex items-start">
                         <svg class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@
                         </div>
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="Cari berdasarkan kode atau nama mata pelajaran..."
-                            class="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200">
+                            class="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-700 lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200">
                     </div>
                 </form>
             </div>
@@ -81,14 +81,14 @@
             <div class="grid grid-cols-1 gap-4">
                 @forelse ($subjects as $subject)
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-200">
+                        class="bg-white dark:bg-gray-800 xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-200">
                         <div class="p-6">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                 <!-- Subject Info -->
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center gap-3 mb-2">
                                         <span
-                                            class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                                            class="inline-flex items-center px-3 py-1 md text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                                             {{ $subject->code }}
                                         </span>
                                         @if ($subject->type)
@@ -128,7 +128,7 @@
                                     <!-- Action Buttons -->
                                     <div class="flex items-center gap-2">
                                         <button onclick='openMajorsModal(@json($subject))'
-                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors duration-200"
                                             title="Kelola Jurusan">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -137,7 +137,7 @@
                                             </svg>
                                         </button>
                                         <button onclick='openTeachersModal(@json($subject))'
-                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors duration-200"
                                             title="Kelola Guru">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -146,7 +146,7 @@
                                             </svg>
                                         </button>
                                         <button onclick='openSubjectModal(@json($subject))'
-                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors duration-200"
                                             title="Edit">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -155,7 +155,7 @@
                                             </svg>
                                         </button>
                                         <button onclick="deleteSubject('{{ $subject->id }}')"
-                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors duration-200"
+                                            class="p-2 text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 lg transition-colors duration-200"
                                             title="Hapus">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -170,7 +170,7 @@
                     </div>
                 @empty
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-12 text-center">
+                        class="bg-white dark:bg-gray-800 xl border border-gray-200 dark:border-gray-700 p-12 text-center">
                         <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -214,7 +214,7 @@
                         Kode Mata Pelajaran
                     </label>
                     <input id="code" name="code" type="text" required
-                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200" />
+                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200" />
                 </div>
 
                 <div>
@@ -222,7 +222,7 @@
                         Nama Mata Pelajaran
                     </label>
                     <input id="name" name="name" type="text" required
-                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200" />
+                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200" />
                 </div>
 
                 <div>
@@ -231,7 +231,7 @@
                     </label>
                     <div class="relative">
                         <select id="type" name="type" required
-                            class="block w-full appearance-none px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200">
+                            class="block w-full appearance-none px-4 py-2.5 border border-gray-300 dark:border-gray-600 lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200">
                             <option value="teori">Teori</option>
                             <option value="praktikum">Praktikum</option>
                             <option value="lainnya">Lainnya</option>
@@ -252,17 +252,17 @@
                         Deskripsi <span class="text-gray-400 text-xs">(Opsional)</span>
                     </label>
                     <textarea id="description" name="description" rows="3"
-                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200"></textarea>
+                        class="block w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-all duration-200"></textarea>
                 </div>
             </div>
 
             <div class="mt-8 flex justify-end gap-3">
                 <button type="button" x-on:click="$dispatch('close')"
-                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
                     Batal
                 </button>
                 <button type="submit"
-                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
                     Simpan
                 </button>
             </div>
@@ -287,13 +287,13 @@
                     Pilih jurusan yang mempelajari mata pelajaran ini
                 </p>
                 <div
-                    class="max-h-80 overflow-y-auto border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50">
+                    class="max-h-80 overflow-y-auto border border-gray-200 dark:border-gray-700 lg p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50">
                     @foreach ($majors as $major)
                         <label
-                            class="flex items-center p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
+                            class="flex items-center p-3 lg hover:bg-white dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
                             <input id="major_chk_{{ $major->id }}" name="majors[]" value="{{ $major->id }}"
                                 type="checkbox"
-                                class="w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 border-gray-300  focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 dark:bg-gray-700 dark:border-gray-600">
                             <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">
                                 {{ $major->name }} <span class="text-gray-400">({{ $major->code }})</span>
                             </span>
@@ -304,11 +304,11 @@
 
             <div class="flex justify-end gap-3">
                 <button type="button" x-on:click="$dispatch('close')"
-                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
                     Batal
                 </button>
                 <button type="submit"
-                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
                     Simpan Perubahan
                 </button>
             </div>
@@ -333,13 +333,13 @@
                     Pilih guru yang mengampu mata pelajaran ini
                 </p>
                 <div
-                    class="max-h-80 overflow-y-auto border border-gray-200 dark:border-gray-700 rounded-lg p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50">
+                    class="max-h-80 overflow-y-auto border border-gray-200 dark:border-gray-700 lg p-4 space-y-3 bg-gray-50 dark:bg-gray-900/50">
                     @foreach ($teachers as $teacher)
                         <label
-                            class="flex items-center p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
+                            class="flex items-center p-3 lg hover:bg-white dark:hover:bg-gray-800 cursor-pointer transition-colors duration-200">
                             <input id="teacher_chk_{{ $teacher->id }}" name="teachers[]"
                                 value="{{ $teacher->id }}" type="checkbox"
-                                class="w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 border-gray-300 rounded focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-gray-900 dark:text-gray-100 bg-gray-100 border-gray-300  focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 dark:bg-gray-700 dark:border-gray-600">
                             <span class="ml-3 text-sm text-gray-700 dark:text-gray-300">
                                 {{ $teacher->user->name }}
                             </span>
@@ -350,11 +350,11 @@
 
             <div class="flex justify-end gap-3">
                 <button type="button" x-on:click="$dispatch('close')"
-                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200">
                     Batal
                 </button>
                 <button type="submit"
-                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
+                    class="px-4 py-2.5 text-sm font-medium text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200">
                     Simpan Perubahan
                 </button>
             </div>

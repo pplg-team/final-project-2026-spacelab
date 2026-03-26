@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center gap-4">
             <a href="{{ route('admin.reports.index') }}"
-                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 lg transition-colors">
                 <x-heroicon-o-arrow-left class="w-5 h-5 text-gray-600 dark:text-gray-400" />
             </a>
             <div>
@@ -19,9 +19,9 @@
             <!-- Summary Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 rounded-xl">
+                        <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 xl">
                             <x-heroicon-o-user-group class="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
                         </div>
                         <div>
@@ -32,9 +32,9 @@
                 </div>
 
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-xl">
+                        <div class="p-3 bg-blue-100 dark:bg-blue-900/50 xl">
                             <x-heroicon-o-clock class="w-6 h-6 text-blue-600 dark:text-blue-400" />
                         </div>
                         <div>
@@ -46,9 +46,9 @@
                 </div>
 
                 <div
-                    class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
+                    class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-100 dark:border-gray-700 p-5">
                     <div class="flex items-center gap-4">
-                        <div class="p-3 bg-violet-100 dark:bg-violet-900/50 rounded-xl">
+                        <div class="p-3 bg-violet-100 dark:bg-violet-900/50 xl">
                             <x-heroicon-o-calculator class="w-6 h-6 text-violet-600 dark:text-violet-400" />
                         </div>
                         <div>
@@ -64,7 +64,7 @@
             <!-- Export Button -->
             <div class="flex justify-end">
                 <a href="{{ route('admin.reports.teachers.export') }}"
-                    class="inline-flex items-center px-4 py-2.5 bg-emerald-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-emerald-700 transition">
+                    class="inline-flex items-center px-4 py-2.5 bg-emerald-600 border border-transparent lg font-medium text-sm text-white hover:bg-emerald-700 transition">
                     <x-heroicon-o-arrow-down-tray class="w-4 h-4 mr-2" />
                     Export CSV
                 </a>
@@ -72,7 +72,7 @@
 
             <!-- Teachers Table -->
             <div
-                class="bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                class="bg-white dark:bg-gray-800 shadow-sm xl border border-gray-100 dark:border-gray-700 overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-900">
@@ -113,11 +113,11 @@
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 @if ($teacher->avatar)
-                                                    <img class="h-10 w-10 rounded-full object-cover"
+                                                    <img class="h-10 w-10 object-cover"
                                                         src="{{ Storage::url($teacher->avatar) }}" alt="">
                                                 @else
                                                     <div
-                                                        class="h-10 w-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+                                                        class="h-10 w-10 bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
                                                         <span
                                                             class="text-sm font-medium text-emerald-600 dark:text-emerald-400">
                                                             {{ strtoupper(substr($teacher->user->name ?? 'T', 0, 1)) }}
@@ -134,7 +134,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
-                                            class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-mono font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                                            class="inline-flex items-center px-2.5 py-0.5 md text-xs font-mono font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                             {{ $teacher->code ?? '-' }}
                                         </span>
                                     </td>
@@ -148,7 +148,7 @@
                                         <div class="flex flex-wrap gap-1">
                                             @forelse($teacher->teacherSubjects->take(3) as $ts)
                                                 <span
-                                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
+                                                    class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300">
                                                     {{ $ts->subject->name ?? '-' }}
                                                 </span>
                                             @empty
@@ -156,7 +156,7 @@
                                             @endforelse
                                             @if ($teacher->teacherSubjects->count() > 3)
                                                 <span
-                                                    class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
+                                                    class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400">
                                                     +{{ $teacher->teacherSubjects->count() - 3 }} lainnya
                                                 </span>
                                             @endif
@@ -173,7 +173,7 @@
                                                         : 'text-emerald-600 bg-emerald-100 dark:bg-emerald-900/50 dark:text-emerald-400');
                                         @endphp
                                         <span
-                                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold {{ $loadColor }}">
+                                            class="inline-flex items-center px-3 py-1 text-sm font-semibold {{ $loadColor }}">
                                             {{ $load }} jam
                                         </span>
                                     </td>
@@ -200,7 +200,7 @@
                                 Menampilkan {{ $teachers->count() }} guru
                             </p>
                             <a href="{{ route('admin.reports.teachers.export') }}"
-                                class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent rounded-lg font-medium text-sm text-white hover:bg-emerald-700 transition">
+                                class="inline-flex items-center px-4 py-2 bg-emerald-600 border border-transparent lg font-medium text-sm text-white hover:bg-emerald-700 transition">
                                 <x-heroicon-o-arrow-down-tray class="w-4 h-4 mr-2" />
                                 Download CSV
                             </a>

@@ -11,7 +11,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
                 <!-- Card 1 -->
                 <div
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                         border border-gray-100 dark:border-gray-800 p-4 md:p-5
                         hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
@@ -23,7 +23,7 @@
                                 {{ now()->translatedformat('H:i, d M Y') }}</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center
                                     border border-gray-100 dark:border-gray-700">
                             <x-heroicon-o-calendar class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" />
                         </div>
@@ -31,7 +31,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                             border border-gray-100 dark:border-gray-800 p-4 md:p-5
                             hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
@@ -42,7 +42,7 @@
                             <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">ruangan</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center
                                     border border-gray-100 dark:border-gray-700">
                             <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" />
                         </div>
@@ -51,7 +51,7 @@
 
                 <!-- Card 3 -->
                 <div
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                         border border-gray-100 dark:border-gray-800 p-4 md:p-5
                         hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
@@ -62,7 +62,7 @@
                             <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">ruangan</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center
                                     border border-gray-100 dark:border-gray-700">
                             <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" />
                         </div>
@@ -70,7 +70,7 @@
                 </div>
                 {{-- card 4 --}}
                 <div
-                    class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                    class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                         border border-gray-100 dark:border-gray-800 p-4 md:p-5
                         hover:shadow-md transition-all duration-150">
                     <div class="flex items-center justify-between gap-4">
@@ -81,7 +81,7 @@
                             <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">ruangan</p>
                         </div>
                         <div
-                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 rounded-lg flex items-center justify-center
+                            class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center
                                     border border-gray-100 dark:border-gray-700">
                             <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100" />
                         </div>
@@ -95,7 +95,7 @@
     <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-6">
         <!-- Rooms in school List - 2/3 width -->
         <div class="col-span-3">
-            <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-900 overflow-hidden shadow-sm sm:lg">
                 <div class="p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
                     {{-- Konten Utama Halaman --}}
                     <div class="flex items-start justify-between mb-4">
@@ -107,9 +107,9 @@
                         <form method="GET" action="{{ url()->current() }}" class="flex items-center gap-2">
                             <input type="text" name="q" value="{{ $q ?? '' }}"
                                 placeholder="Cari nama atau kode ruangan"
-                                class="border border-gray-200 dark:border-gray-700 rounded-md px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100" />
+                                class="border border-gray-200 dark:border-gray-700 md px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100" />
                             <select name="filter"
-                                class="border border-gray-200 dark:border-gray-700 rounded-md px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+                                class="border border-gray-200 dark:border-gray-700 md px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
                                 <option value="">Semua</option>
                                 <option value="occupied" {{ request('filter') === 'occupied' ? 'selected' : '' }}>
                                     Dipakai</option>
@@ -117,13 +117,13 @@
                                 </option>
                             </select>
                             <button type="submit"
-                                class="bg-indigo-600 text-white px-3 py-2 rounded-md text-sm">Cari</button>
+                                class="bg-indigo-600 text-white px-3 py-2 md text-sm">Cari</button>
                         </form>
                     </div>
 
                     {{-- Daftar Ruangan --}}
                     <div
-                        class="overflow-x-auto bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">
+                        class="overflow-x-auto bg-white dark:bg-gray-900 lg border border-gray-200 dark:border-gray-800">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
                             <thead class="bg-gray-50 dark:bg-gray-800">
                                 <tr>
@@ -196,7 +196,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div
-                                                                        class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded font-semibold">
+                                                                        class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1  font-semibold">
                                                                         Sedang berjalan</div>
                                                                 @endif
                                                             </div>
@@ -205,7 +205,7 @@
                                                 </div>
                                             @else
                                                 <span
-                                                    class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs font-semibold">Kosong</span>
+                                                    class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-1  text-xs font-semibold">Kosong</span>
                                             @endif
                                         </td>
                                     </tr>

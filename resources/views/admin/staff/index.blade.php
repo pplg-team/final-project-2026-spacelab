@@ -8,7 +8,7 @@
     <div class="py-6">
         <div class="space-y-6">
             <!-- Header Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-6">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -31,7 +31,7 @@
             <!-- Alert Messages -->
             @if (session('success'))
                 <div id="successAlert"
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle
                             class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
@@ -42,7 +42,7 @@
 
             @if (session('error'))
                 <div id="errorAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -52,7 +52,7 @@
 
             @if ($errors->any())
                 <div id="validationAlert"
-                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                    class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-start">
                         <x-heroicon-o-exclamation-triangle
                             class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -70,19 +70,19 @@
             @endif
 
             <!-- Filter & Search Bar -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-4">
                     <div class="flex flex-col sm:flex-row gap-3">
                         <div class="flex-1">
                             <input type="text" id="searchInput" placeholder="Cari nama atau email staff..."
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-gray-500 dark:focus:border-gray-400 focus:ring-gray-500 dark:focus:ring-gray-400 text-sm">
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Staff Table -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg overflow-hidden">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-900">
@@ -119,7 +119,7 @@
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 h-10 w-10">
                                                 <div
-                                                    class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                                                    class="h-10 w-10 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                                                     <span class="text-sm font-medium text-gray-600 dark:text-gray-400">
                                                         {{ $user->initials() }}
                                                     </span>
@@ -148,24 +148,24 @@
                                     <td class="px-4 py-3 whitespace-nowrap">
                                         <div class="flex items-center gap-2">
                                             <button onclick="viewStaff('{{ $user->id }}')"
-                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 md transition-colors"
                                                 title="Lihat Detail">
                                                 <x-heroicon-o-eye class="w-5 h-5" />
                                             </button>
                                             <button onclick="editStaff('{{ $user->id }}')"
-                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 md transition-colors"
                                                 title="Edit">
                                                 <x-heroicon-o-pencil class="w-5 h-5" />
                                             </button>
                                             <button
                                                 onclick="resetPassword('{{ $user->id }}', '{{ $user->name }}')"
-                                                class="p-1.5 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-900/50 md transition-colors"
                                                 title="Reset Password">
                                                 <x-heroicon-o-key class="w-5 h-5" />
                                             </button>
                                             <button
                                                 onclick="deleteStaff('{{ $user->id }}', '{{ $user->name ?? 'Staff' }}')"
-                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md transition-colors"
+                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 md transition-colors"
                                                 title="Hapus">
                                                 <x-heroicon-o-trash class="w-5 h-5" />
                                             </button>
@@ -259,11 +259,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -341,11 +341,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-gray-800 dark:bg-gray-200 px-4 py-2 text-sm font-semibold text-white dark:text-gray-800 shadow-sm hover:bg-gray-700 dark:hover:bg-gray-300 sm:ml-3 sm:w-auto">
                         Simpan Perubahan
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -368,7 +368,7 @@
                         Apakah Anda yakin ingin mereset password <span id="resetPasswordStaffName"
                             class="font-semibold"></span>?
                         Password akan direset ke default: <code
-                            class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded">staff123</code>
+                            class="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 ">staff123</code>
                     </p>
                 </div>
             </div>
@@ -379,11 +379,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-yellow-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 sm:ml-3 sm:w-auto">
                         Reset Password
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -417,11 +417,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>

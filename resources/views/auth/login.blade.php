@@ -16,7 +16,7 @@
                 </div>
 
                 <!-- Login Form -->
-                <div class="bg-slate-50 dark:bg-slate-900 rounded-lg p-8 border border-slate-200 dark:border-slate-800">
+                <div class="bg-slate-50 dark:bg-slate-900 lg p-8 border border-slate-200 dark:border-slate-800">
                     <form method="POST" action="{{ route('login') }}" class="space-y-5">
                         @csrf
 
@@ -35,7 +35,7 @@
                                     value="{{ old('email') }}"
                                     required 
                                     autofocus
-                                    class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950  placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:border-transparent transition"
+                                    class="block w-full pl-10 pr-3 py-2.5 border border-slate-300 dark:border-slate-700 lg bg-white dark:bg-slate-950  placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:border-transparent transition"
                                     placeholder="nama@email.com">
                             </div>
                             @error('email')
@@ -56,7 +56,7 @@
                                     :type="show ? 'text' : 'password'" 
                                     name="password" 
                                     required
-                                    class="block w-full pl-10 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-950  placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:border-transparent transition"
+                                    class="block w-full pl-10 pr-10 py-2.5 border border-slate-300 dark:border-slate-700 lg bg-white dark:bg-slate-950  placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:border-transparent transition"
                                     placeholder="••••••••">
                                 <button type="button" 
                                     @click="show = !show"
@@ -76,7 +76,7 @@
                                 <input id="remember_me" 
                                     type="checkbox"
                                     name="remember"
-                                    class="h-4 w-4 rounded border-slate-300 dark:border-blue-700 dark:text-blue-700 focus:ring-blue-900 dark:focus:ring-blue-700">
+                                    class="h-4 w-4  border-slate-300 dark:border-blue-700 dark:text-blue-700 focus:ring-blue-900 dark:focus:ring-blue-700">
                                 <span class="ml-2 text-sm text-slate-600 dark:text-slate-400">Ingat saya</span>
                             </label>
 
@@ -90,7 +90,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-500 dark:bg-slate-700 text-white rounded-lg hover:bg-blue-600 dark:hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:ring-offset-2 transition font-medium">
+                            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-500 dark:bg-slate-700 text-white lg hover:bg-blue-600 dark:hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-900 dark:focus:ring-blue-700 focus:ring-offset-2 transition font-medium">
                             <span>Masuk</span>
                         </button>
                     </form>

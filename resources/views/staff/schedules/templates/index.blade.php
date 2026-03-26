@@ -5,7 +5,7 @@
                 {{ __('Template Jadwal') }}
             </h2>
             <a href="{{ route('staff.schedules.index') }}"
-                class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition">
                 <x-heroicon-o-arrow-left class="w-4 h-4 mr-2" />
                 Kembali ke Jadwal
             </a>
@@ -25,7 +25,7 @@
             <!-- Alert Messages -->
             @if (session('success'))
                 <div
-                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+                    class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-check-circle
                             class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" />
@@ -35,7 +35,7 @@
             @endif
 
             @if (session('error'))
-                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 lg p-4">
                     <div class="flex items-center">
                         <x-heroicon-o-x-circle class="w-5 h-5 text-red-600 dark:text-red-400 mr-3 flex-shrink-0" />
                         <p class="text-sm font-medium text-red-800 dark:text-red-200">{{ session('error') }}</p>
@@ -44,7 +44,7 @@
             @endif
 
             <!-- Filter Section -->
-            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                 <div class="p-6">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
@@ -67,7 +67,7 @@
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Filter
                                 Jurusan</label>
                             <select name="major_id" onchange="this.form.submit()"
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                                 <option value="">Semua Jurusan</option>
                                 @foreach ($majors as $major)
                                     <option value="{{ $major->id }}"
@@ -81,7 +81,7 @@
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Filter
                                 Block</label>
                             <select name="block_id" onchange="this.form.submit()"
-                                class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                                class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                                 <option value="">Semua Block</option>
                                 @foreach ($blocks as $block)
                                     <option value="{{ $block->id }}"
@@ -93,7 +93,7 @@
                         </div>
                         <div class="flex items-end">
                             <a href="{{ route('staff.schedules.templates.index') }}"
-                                class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+                                class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-gray-600 transition">
                                 <x-heroicon-o-arrow-path class="w-4 h-4 mr-1" />
                                 Reset
                             </a>
@@ -108,14 +108,14 @@
                     @php
                         $classTemplates = $templates->get($class->id) ?? collect();
                     @endphp
-                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg overflow-hidden">
+                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg overflow-hidden">
                         <div class="p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                             onclick="toggleClass('{{ $class->id }}')">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-4">
                                     <div class="flex-shrink-0">
                                         <div
-                                            class="h-10 w-10 rounded-lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                                            class="h-10 w-10 lg bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
                                             <x-heroicon-o-academic-cap
                                                 class="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
                                         </div>
@@ -177,12 +177,12 @@
                                                     <td class="px-4 py-3 whitespace-nowrap">
                                                         @if ($template->is_active)
                                                             <span
-                                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
+                                                                class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">
                                                                 Aktif
                                                             </span>
                                                         @else
                                                             <span
-                                                                class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                                                                class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
                                                                 Nonaktif
                                                             </span>
                                                         @endif
@@ -195,7 +195,7 @@
                                                         <div class="flex items-center gap-2">
                                                             <!-- View Schedule -->
                                                             <a href="{{ route('staff.schedules.index', ['major_id' => $class->major_id, 'class_id' => $class->id, 'template_id' => $template->id]) }}"
-                                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded-md transition-colors"
+                                                                class="p-1.5 text-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/50 md transition-colors"
                                                                 title="Lihat Jadwal">
                                                                 <x-heroicon-o-calendar class="w-5 h-5" />
                                                             </a>
@@ -207,7 +207,7 @@
                                                                     class="inline">
                                                                     @csrf
                                                                     <button type="submit"
-                                                                        class="p-1.5 text-green-600 hover:bg-green-100 dark:hover:bg-green-900/50 rounded-md transition-colors"
+                                                                        class="p-1.5 text-green-600 hover:bg-green-100 dark:hover:bg-green-900/50 md transition-colors"
                                                                         title="Aktifkan">
                                                                         <x-heroicon-o-check-circle class="w-5 h-5" />
                                                                     </button>
@@ -219,7 +219,7 @@
                                                                     class="inline">
                                                                     @csrf
                                                                     <button type="submit"
-                                                                        class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 rounded-md transition-colors"
+                                                                        class="p-1.5 text-yellow-600 hover:bg-yellow-100 dark:hover:bg-yellow-900/50 md transition-colors"
                                                                         title="Nonaktifkan">
                                                                         <x-heroicon-o-pause-circle class="w-5 h-5" />
                                                                     </button>
@@ -229,7 +229,7 @@
                                                             <!-- Delete -->
                                                             <button type="button"
                                                                 onclick="deleteTemplate('{{ $template->id }}', 'Versi {{ $template->version }}')"
-                                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 rounded-md transition-colors"
+                                                                class="p-1.5 text-red-600 hover:bg-red-100 dark:hover:bg-red-900/50 md transition-colors"
                                                                 title="Hapus">
                                                                 <x-heroicon-o-trash class="w-5 h-5" />
                                                             </button>
@@ -249,7 +249,7 @@
                         </div>
                     </div>
                 @empty
-                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+                    <div class="bg-white dark:bg-gray-800 shadow-sm sm:lg">
                         <div class="p-12 text-center">
                             <x-heroicon-o-academic-cap class="w-12 h-12 text-gray-400 mx-auto mb-3" />
                             <h3 class="text-sm font-medium text-gray-900 dark:text-gray-100">Tidak ada kelas</h3>
@@ -284,7 +284,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Kelas *</label>
                     <select name="class_id" required
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Pilih Kelas</option>
                         @foreach ($classes as $class)
                             <option value="{{ $class->id }}">{{ $class->full_name }}</option>
@@ -295,7 +295,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Block *</label>
                     <select name="block_id" required
-                        class="w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+                        class="w-full md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
                         <option value="">Pilih Block</option>
                         @foreach ($blocks as $block)
                             <option value="{{ $block->id }}"
@@ -313,11 +313,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
                         Buat Template
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>
@@ -351,11 +351,11 @@
                 <div
                     class="bg-gray-50 dark:bg-gray-900 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 -mx-6 -mb-6 mt-6">
                     <button type="submit"
-                        class="inline-flex w-full justify-center rounded-md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                        class="inline-flex w-full justify-center md bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
                         Hapus
                     </button>
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
+                        class="mt-3 inline-flex w-full justify-center md bg-white dark:bg-gray-800 px-4 py-2 text-sm font-semibold text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 sm:mt-0 sm:w-auto">
                         Batal
                     </button>
                 </div>

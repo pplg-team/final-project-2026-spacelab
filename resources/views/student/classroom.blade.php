@@ -8,14 +8,14 @@
     <div class="py-6 sm:py-8">
         <div class="mx-auto px-2 sm:px-4 lg:px-6">
             <!-- Header Card with Classroom Info -->
-            <div class="bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+            <div class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                             border border-gray-100 dark:border-gray-800 p-4 md:p-5
                             hover:shadow-md transition-all duration-150">
                     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-6">
                         <!-- Classroom Info -->
                         <div class="flex-1">
                             <div class="flex items-center gap-3 mb-2">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                                 border border-gray-100 dark:border-gray-800
                                 hover:shadow-md transition-all duration-150 flex items-center justify-center">
                                     <x-heroicon-o-academic-cap class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-200" />
@@ -35,18 +35,18 @@
 
                         <!-- Guardian Info -->
                         @if($guardian)
-                            <div class="flex items-center gap-3 px-3 py-2 sm:px-6 sm:py-4 bg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                            <div class="flex items-center gap-3 px-3 py-2 sm:px-6 sm:py-4 bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                             border border-gray-100 dark:border-gray-800
                             hover:shadow-md transition-all duration-150">
                                 <div class="relative">
-                                    <div class="w-10 h-10 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 font-semibold ring-2 ring-gray-100 dark:ring-gray-700">
+                                    <div class="w-10 h-10 sm:w-14 sm:h-14 overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 font-semibold ring-2 ring-gray-100 dark:ring-gray-700">
                                         @if($guardian->teacher->avatar ?? false)
                                             <img src="{{ Storage::url($guardian->teacher->avatar) }}" alt="Wali Kelas" class="w-full h-full object-cover"/>
                                         @else
                                             <span class="text-lg">{{ $guardian->teacher->initials() }}</span>
                                         @endif
                                     </div>
-                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-gray-400 border-2 border-white dark:border-gray-800 rounded-full"></div>
+                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-gray-400 border-2 border-white dark:border-gray-800 full"></div>
                                 </div>
                                 <div>
                                     <p class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide">Wali Kelas</p>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="px-3 py-2 sm:px-6 sm:py-4 bg-gray-100 dark:bg-gray-700 rounded-xl border border-gray-200 dark:border-gray-600">
+                            <div class="px-3 py-2 sm:px-6 sm:py-4 bg-gray-100 dark:bg-gray-700 xl border border-gray-200 dark:border-gray-600">
                                 <p class="text-sm text-gray-600 dark:text-gray-400">Belum ada wali kelas</p>
                             </div>
                         @endif
@@ -66,7 +66,7 @@
             <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-6">
                 <!-- Students List - 2/3 width -->
                 <div class="lg:col-span-2">
-                    <div class="bbg-white dark:bg-gray-900 shadow-sm rounded-xl overflow-hidden
+                    <div class="bbg-white dark:bg-gray-900 shadow-sm xl overflow-hidden
                             border border-gray-100 dark:border-gray-800
                             hover:shadow-md transition-all duration-150">
                         <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
@@ -75,7 +75,7 @@
                                     <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-200" />
                                     Daftar Teman Kelas
                                 </h3>
-                                <span class="px-2 py-0.5 sm:px-3 sm:py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs sm:text-sm font-medium rounded-full">
+                                <span class="px-2 py-0.5 sm:px-3 sm:py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs sm:text-sm font-medium full">
                                     {{ count($students) }} Siswa
                                 </span>
                             </div>
@@ -97,7 +97,7 @@
                                             </td>
                                             <td class="px-4 py-3 sm:px-6 sm:py-4 whitespace-normal sm:whitespace-nowrap">
                                                 <div class="flex items-center gap-4">
-                                                    <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 font-semibold text-sm shadow-sm">
+                                                    <div class="w-8 h-8 sm:w-10 sm:h-10 overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-200 font-semibold text-sm shadow-sm">
                                                         @if($student->student?->avatar)
                                                             <img src="{{ Storage::url($student->student->avatar) }}" alt="avatar" class="w-full h-full object-cover" />
                                                         @else
@@ -128,10 +128,10 @@
                 <div class="lg:col-span-1">
                     <div class="space-y-6">
                         <!-- Current Day Info -->
-                        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
                             <div class="p-3 sm:p-5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center shadow-sm">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-800 lg flex items-center justify-center shadow-sm">
                                         <x-heroicon-o-calendar class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-200" />
                                     </div>
                                     <div>
@@ -147,10 +147,10 @@
                         </div>
 
                         <!-- Current Class -->
-                        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
                             <div class="p-3 sm:p-5 border-b border-gray-200 dark:border-gray-700">
                                 <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide flex items-center gap-2">
-                                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-pulse"></div>
+                                    <div class="w-2 h-2 bg-gray-400 animate-pulse"></div>
                                     Pelajaran Saat Ini
                                 </h3>
                             </div>
@@ -169,7 +169,7 @@
                                                 <p class="text-sm sm:text-base font-bold text-gray-900 dark:text-white">{{ $currentEntry->subject?->name ?? '-' }}</p>
                                             @else
                                                 <div class="flex items-center gap-2">
-                                                    <p class="px-2 py-1 bg-yellow-200 dark:bg-yellow-700 text-yellow-900 rounded-full font-semibold text-xs">{{ $currentEntry->period?->ordinal ?? 'Pembiasaan' }}</p>
+                                                    <p class="px-2 py-1 bg-yellow-200 dark:bg-yellow-700 text-yellow-900 font-semibold text-xs">{{ $currentEntry->period?->ordinal ?? 'Pembiasaan' }}</p>
                                                 </div>
                                             @endif
                                         </div>
@@ -197,7 +197,7 @@
                         </div>
 
                         <!-- Today's Schedule -->
-                        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+                        <div class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
                             <div class="p-5 border-b border-gray-200 dark:border-gray-700">
                                 <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide">Jadwal Hari Ini</h3>
                             </div>
@@ -207,7 +207,7 @@
                                     <div class="space-y-2 max-h-60 sm:max-h-96 overflow-y-auto">
                                         @foreach($todayEntries as $entry)
                                             @php $entryIsTeaching = $entry->period?->is_teaching ?? true; @endphp
-                                            <div class="p-3 sm:p-4 rounded-xl border transition-colors duration-150 {{ $entryIsTeaching ? 'bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600' : 'bg-yellow-50 dark:bg-yellow-900/10 border-yellow-200 dark:border-yellow-700' }}">
+                                            <div class="p-3 sm:p-4 xl border transition-colors duration-150 {{ $entryIsTeaching ? 'bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600' : 'bg-yellow-50 dark:bg-yellow-900/10 border-yellow-200 dark:border-yellow-700' }}">
                                                 <div class="flex justify-between items-start gap-3">
                                                     <div class="flex-1 min-w-0">
                                                         @if($entryIsTeaching)
@@ -215,7 +215,7 @@
                                                             <p class="text-xs text-gray-600 dark:text-gray-400 mt-1 truncate">{{ $entry->teacher?->user?->name ?? '-' }}</p>
                                                         @else
                                                             <div class="flex items-center gap-2">
-                                                                <p class="px-2 py-1 bg-yellow-200 dark:bg-yellow-700 text-yellow-900 rounded-full font-semibold text-xs">{{ $entry->period?->ordinal ?? 'Pembiasaan' }}</p>
+                                                                <p class="px-2 py-1 bg-yellow-200 dark:bg-yellow-700 text-yellow-900 font-semibold text-xs">{{ $entry->period?->ordinal ?? 'Pembiasaan' }}</p>
                                                             </div>
                                                             @if($entry->period?->description)
                                                                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 truncate">{{ $entry->period->description }}</p>

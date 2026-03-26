@@ -48,7 +48,7 @@ window.viewStaff = async function (id) {
     const content = document.getElementById("viewStaffContent");
     content.innerHTML = `
             <div class="flex items-center mb-4">
-                <div class="h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xl font-medium text-gray-600 dark:text-gray-400">
+                <div class="h-16 w-16 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xl font-medium text-gray-600 dark:text-gray-400">
                     ${
                       data.name
                         ? data.name
