@@ -43,6 +43,22 @@ class Teacher extends Model
     }
 
     /**
+     * Accessor for avatar URL. Handles both local storage and external URLs, with a default fallback.
+     */
+    public function getAvatarUrlAttribute()
+    {
+        if (!$this->avatar) {
+            return asset('assets/images/avatar/default-profile.png');
+        }
+
+        if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+            return $this->avatar;
+        }
+
+        return Storage::url($this->avatar);
+    }
+
+    /**
      * Alias for scheduleEntries to preserve any legacy usage.
      */
     public function timetableEntries(): HasManyThrough

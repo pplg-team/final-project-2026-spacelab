@@ -11,8 +11,8 @@ class PagesController extends Controller
     {
         return view('pages.home',
             [
-                'title' => 'Welcome to Spacelab',
-                'description' => 'SpaceLab is an all-in-one academic schedule and facility management system designed to streamline school operations and enhance productivity.',
+                'title' => 'Spacelab',
+                'description' => 'Manajement akademik berbasis web untuk sekolah.',
             ]
         );
     }

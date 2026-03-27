@@ -28,4 +28,18 @@ class Student extends Model
     {
         return $this->hasMany(ClassHistory::class, 'student_id');
     }
+
+
+    public function getAvatarUrlAttribute()
+{
+    if (!$this->avatar) {
+        return asset('images/default-avatar.png');
+    }
+
+    if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+        return $this->avatar;
+    }
+
+    return Storage::url($this->avatar);
+}
 }
