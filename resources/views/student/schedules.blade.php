@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-black  leading-tight">
+        <h2 class="text-xl font-semibold text-slate-900 ">
             Jadwal Pelajaran
         </h2>
     </x-slot>
@@ -11,374 +11,427 @@
         $dayNames = ['', 'Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu', 'Minggu'];
     @endphp
 
-    <div class="space-y-6 lg:space-y-0 lg:flex lg:items-start lg:gap-6">
-        <main class="lg:flex-1">
-            @if(empty($allSchedules) || count($allSchedules) === 0)
-                {{-- Tampilan jika tidak ada jadwal sama sekali --}}
-                <div class="text-center py-12">
-                    <div class="mx-auto mb-6 text-gray-400  inline-block">
-                        <x-heroicon-o-calendar class="w-16 h-16" />
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-700  mb-2">
-                        Tidak Ada Jadwal
-                    </h3>
-                    <p class="text-gray-500  max-w-md mx-auto">
-                        Belum ada jadwal pelajaran yang tersedia untuk ditampilkan.
-                    </p>
-                </div>
-            @else
-                @foreach($allSchedules as $day => $schedules)
-                    @php
-                        // Pastikan $schedules adalah koleksi yang valid
-                        $schedules = $schedules ?? collect();
+    <div class="py-8 min-h-screen bg-slate-50 ">
+        <main class="mx-auto max-w-7xl px-4 md:px-10 space-y-8">
 
-                        // Process schedules to separate period-only entries from actual classes
-                        $processedSchedules = [];
+            <section class="grid grid-cols-1 xl:grid-cols-12 gap-6">
 
-                        if ($schedules->isNotEmpty()) {
-                            $values = $schedules->values();
-
-                            foreach ($values as $item) {
-                                // Skip jika item null
-                                if (empty($item)) continue;
-
-                                // Check if this is a period-only entry (break time)
-                                $isPeriodOnly = isset($item->is_period_only) && $item->is_period_only;
-
-                                if ($isPeriodOnly) {
-                                    // Add period-only entry as-is
-                                    $processedSchedules[] = (object) [
-                                        'type' => 'period',
-                                        'period' => $item->period ?? null,
-                                        'start_time' => $item->period->start_time ?? $item->period->start_date?->format('H:i:s') ?? null,
-                                        'end_time' => $item->period->end_time ?? $item->period->end_date?->format('H:i:s') ?? null,
-                                        'day_of_week' => $item->day_of_week ?? $day,
-                                        'item' => $item,
-                                    ];
-                                } else {
-                                    // Add timetable entry
-                                    $processedSchedules[] = (object) [
-                                        'type' => 'class',
-                                        'period' => $item->period ?? null,
-                                        'start_time' => $item->period->start_time ?? $item->period->start_date?->format('H:i:s') ?? null,
-                                        'end_time' => $item->period->end_time ?? $item->period->end_date?->format('H:i:s') ?? null,
-                                        'subject' => $item->teacherSubject->subject ?? null,
-                                        'teacher' => $item->teacherSubject->teacher ?? null,
-                                        'template' => $item->template ?? null,
-                                        'roomHistory' => $item->roomHistory ?? null,
-                                        'day_of_week' => $item->day_of_week ?? $day,
-                                        'item' => $item,
-                                    ];
-                                }
-                            }
-                        }
-                    @endphp
-
-                    <div class="mt-4 mb-2 flex items-center gap-2 scroll-mt-28" id="day-{{ $day }}">
-                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300  to-transparent"></div>
-                        <h3 class="text-base md:text-xl font-semibold tracking-wide px-3 py-1 bg-gray-800 text-white shadow-sm">
-                            {{ $dayNames[$day] ?? 'Hari' }}
-                        </h3>
-                        <div class="h-px flex-1 bg-gradient-to-r from-transparent via-gray-300  to-transparent"></div>
-                    </div>
-
-                    @if(empty($processedSchedules) || count($processedSchedules) === 0)
-                        <div class="p-3 mb-3 border lg bg-gray-50  border-gray-200  text-center">
-                            <div class="mx-auto mb-3 text-gray-400  inline-block">
-                                <x-heroicon-o-book-open class="w-8 h-8 text-gray-400 " />
+                <!-- Main Content -->
+                <div class="xl:col-span-9 space-y-8">
+                    @if (empty($allSchedules) || count($allSchedules) === 0)
+                        <div class="border border-slate-200 bg-white p-6 text-center py-12">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-slate-100 mb-4 shadow-sm">
+                                <span class="text-3xl">🗓️</span>
                             </div>
-                            <p class="text-gray-600  font-medium text-sm">
-                                Tidak ada jadwal untuk {{ $dayNames[$day] ?? 'hari ini' }}.
+                            <h4 class="text-lg font-bold text-slate-900 mb-1">
+                                Tidak Ada Jadwal
+                            </h4>
+                            <p class="text-sm text-slate-500">
+                                Belum ada jadwal pelajaran yang tersedia untuk ditampilkan.
                             </p>
                         </div>
                     @else
-                        {{-- Card Grid Layout --}}
-                        <div class="grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 items-stretch mb-4">
-                            @foreach($processedSchedules as $schedule)
-                                @php
-                                    // Handle null values for time
-                                    $startTimeStr = $schedule->start_time ?? null;
-                                    $endTimeStr = $schedule->end_time ?? null;
-                                    $scheduleDay = $schedule->day_of_week ?? $day;
+                        @foreach ($allSchedules as $day => $schedules)
+                            @php
+                                $schedules = $schedules ?? collect();
+                                $processedSchedules = [];
 
-                                    // Convert to Carbon for comparison
-                                    try {
-                                        $startCarbon = $startTimeStr ? \Carbon\Carbon::parse($startTimeStr) : null;
-                                    } catch (\Exception $e) {
-                                        $startCarbon = null;
-                                    }
-                                    try {
-                                        $endCarbon = $endTimeStr ? \Carbon\Carbon::parse($endTimeStr) : null;
-                                    } catch (\Exception $e) {
-                                        $endCarbon = null;
-                                    }
+                                if ($schedules->isNotEmpty()) {
+                                    $values = $schedules->values();
+                                    foreach ($values as $item) {
+                                        if (empty($item)) {
+                                            continue;
+                                        }
 
-                                    // Determine status
-                                    $isOngoing = false;
-                                    $isPast = false;
+                                        $isPeriodOnly = isset($item->is_period_only) && $item->is_period_only;
 
-                                    if ((int) $scheduleDay === (int) $currentDayIndex) {
-                                        if ($startCarbon && $endCarbon && $currentTime) {
-                                            $isOngoing = $currentTime->between($startCarbon, $endCarbon);
-                                            $isPast = $endCarbon->lt($currentTime);
+                                        if ($isPeriodOnly) {
+                                            $processedSchedules[] = (object) [
+                                                'type' => 'period',
+                                                'period' => $item->period ?? null,
+                                                'start_time' =>
+                                                    $item->period->start_time ??
+                                                    ($item->period->start_date?->format('H:i:s') ?? null),
+                                                'end_time' =>
+                                                    $item->period->end_time ??
+                                                    ($item->period->end_date?->format('H:i:s') ?? null),
+                                                'subject' => null,
+                                                'teacher' => null,
+                                                'template' => null,
+                                                'roomHistory' => null,
+                                                'day_of_week' => $item->day_of_week ?? $day,
+                                                'item' => $item,
+                                                'is_period_only' => true,
+                                            ];
+                                        } else {
+                                            $processedSchedules[] = (object) [
+                                                'type' => 'class',
+                                                'period' => $item->period ?? null,
+                                                'start_time' =>
+                                                    $item->period->start_time ??
+                                                    ($item->period->start_date?->format('H:i:s') ?? null),
+                                                'end_time' =>
+                                                    $item->period->end_time ??
+                                                    ($item->period->end_date?->format('H:i:s') ?? null),
+                                                'subject' => $item->teacherSubject->subject ?? null,
+                                                'teacher' => $item->teacherSubject->teacher ?? null,
+                                                'template' => $item->template ?? null,
+                                                'roomHistory' => $item->roomHistory ?? null,
+                                                'day_of_week' => $item->day_of_week ?? $day,
+                                                'item' => $item,
+                                                'is_period_only' => false,
+                                            ];
                                         }
                                     }
-                                @endphp
+                                }
+                            @endphp
 
-                                @if($schedule->type === 'period')
-                                    {{-- PERIOD CARD (Break Time) --}}
-                                    <div class="group relative text-sm">
-                                        <div class="
-                                            relative lg overflow-hidden transition-all duration-150 h-full
-                                            {{ $isOngoing
-                                                ? 'bg-amber-50  border-2 border-amber-200  shadow-lg'
-                                                : ($isPast
-                                                    ? 'bg-gray-50  border border-gray-200  opacity-50'
-                                                    : 'bg-gradient-to-br from-slate-50 to-slate-100   border border-slate-200 ')
-                                            }}
-                                        ">
-                                            {{-- Top Accent Bar --}}
-                                            <div class="h-1 {{ $isOngoing ? 'bg-amber-400  animate-pulse' : 'bg-slate-300 ' }}"></div>
+                            <div id="day-{{ $day }}" class="scroll-mt-24 space-y-4">
+                                <div class="flex items-center gap-3">
+                                    <h2 class="text-xl font-bold text-slate-900 ">
+                                        {{ $dayNames[$day] ?? 'Hari' }}
+                                    </h2>
+                                    <div class="flex-1 h-px bg-slate-200"></div>
+                                </div>
 
-                                            {{-- Status Badge --}}
-                                            @if ($isOngoing)
-                                                <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-amber-500 text-white px-2.5 py-1 shadow text-[10px] font-semibold">
-                                                        BERLANGSUNG
-                                                    </div>
-                                                </div>
-                                            @endif
-
-                                            <div class="p-4">
-                                                {{-- Break Icon & Label --}}
-                                                <div class="flex items-center justify-center mb-3">
-                                                    <div class="bg-slate-200  p-3 full">
-                                                        <svg class="w-6 h-6 text-slate-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-
-                                                <h4 class="text-center text-base font-semibold text-slate-700  mb-3">
-                                                    {{ $schedule->period?->name ?? 'Istirahat' }}
-                                                </h4>
-
-                                                {{-- Time Display --}}
-                                                <div class="bg-white/50  lg p-3 border border-slate-200 ">
-                                                    <div class="flex items-center justify-center gap-3 text-slate-700 ">
-                                                        <div class="text-center">
-                                                            <div class="text-lg font-bold">
-                                                                @if($startTimeStr)
-                                                                    {{ \Carbon\Carbon::parse($startTimeStr)->format('H:i') }}
-                                                                @else
-                                                                    -
-                                                                @endif
-                                                            </div>
-                                                            <div class="text-[10px] opacity-70">Mulai</div>
-                                                        </div>
-
-                                                        <div class="text-slate-400 ">—</div>
-
-                                                        <div class="text-center">
-                                                            <div class="text-lg font-bold">
-                                                                @if($endTimeStr)
-                                                                    {{ \Carbon\Carbon::parse($endTimeStr)->format('H:i') }}
-                                                                @else
-                                                                    -
-                                                                @endif
-                                                            </div>
-                                                            <div class="text-[10px] opacity-70">Selesai</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                @if($schedule->period?->ordinal)
-                                                    <div class="mt-3 text-center">
-                                                        <span class="inline-block px-3 py-1 bg-slate-200  text-slate-600  text-xs font-medium">
-                                                            Jam ke {{ $schedule->period->ordinal }}
-                                                        </span>
-                                                    </div>
-                                                @endif
+                                <div class="border border-slate-200 bg-white">
+                                    <div class="p-4 sm:p-5">
+                                        @if (empty($processedSchedules) || count($processedSchedules) === 0)
+                                            <div class="text-center py-6">
+                                                <p class="text-xs font-semibold text-slate-400">
+                                                    Tidak ada jadwal untuk hari ini.
+                                                </p>
                                             </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    {{-- CLASS CARD (Timetable Entry) --}}
-                                    <div class="group relative text-sm">
-                                        <div class="
-                                            relative lg overflow-hidden transition-all duration-150 h-full
-                                            {{ $isOngoing
-                                                ? 'bg-gray-50  border-2 border-gray-300  shadow-lg shadow-gray-200/40  scale-105'
-                                                : ($isPast
-                                                    ? 'bg-gray-50  border border-gray-200  opacity-60'
-                                                    : 'bg-white  border border-gray-200  hover:shadow-xl  hover:border-gray-300 ')
-                                            }}
-                                        ">
-                                            {{-- Top Accent Bar --}}
-                                            <div class="h-1 {{ $isOngoing ? 'bg-gray-300  animate-pulse' : 'bg-gradient-to-r from-gray-300 to-gray-400  ' }}"></div>
-
-                                            {{-- Status Badge --}}
-                                            @if ($isOngoing)
-                                                <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-gray-800 text-white px-3 py-1 shadow flex items-center gap-2 animate-bounce ">
-                                                        <span class="relative flex h-2.5 w-2.5">
-                                                            <span class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
-                                                            <span class="relative inline-flex h-2.5 w-2.5 bg-white"></span>
-                                                        </span>
-                                                        <span class="text-[11px] font-semibold">BERLANGSUNG</span>
-                                                    </div>
-                                                </div>
-                                            @elseif ($isPast)
-                                                <div class="absolute top-3 right-3 z-10">
-                                                    <div class="bg-gray-400  text-white px-3 py-1 shadow">
-                                                        <span class="text-[11px] font-semibold">SELESAI</span>
-                                                    </div>
-                                                </div>
-                                            @endif
-
-                                            <div class="p-2">
-                                                {{-- Time Display - Horizontal Layout --}}
-                                                <div class="
-                                                    flex items-center justify-between mb-2 px-2 py-1 md
-                                                    {{ $isOngoing
-                                                        ? 'bg-gray-800 text-white shadow-sm'
-                                                        : 'bg-gray-100  text-gray-900 '
-                                                    }}
-                                                ">
-                                                    <div class="text-center min-w-[48px]">
-                                                        <div class="text-sm font-semibold">
-                                                            @if($startTimeStr)
-                                                                {{ \Carbon\Carbon::parse($startTimeStr)->format('H:i') }}
-                                                            @else
-                                                                -
-                                                            @endif
-                                                        </div>
-                                                        <div class="text-[10px] opacity-75 mt-1">Mulai</div>
-                                                    </div>
-
-                                                    <div class="flex-1 flex items-center justify-center px-1">
-                                                        <x-heroicon-o-book-open class="w-4 h-4 text-gray-400 " />
-                                                    </div>
-
-                                                    <div class="text-center min-w-[48px]">
-                                                        <div class="text-sm font-semibold">
-                                                            @if($endTimeStr)
-                                                                {{ \Carbon\Carbon::parse($endTimeStr)->format('H:i') }}
-                                                            @else
-                                                                -
-                                                            @endif
-                                                        </div>
-                                                        <div class="text-[10px] opacity-75 mt-1">Selesai</div>
-                                                    </div>
-                                                </div>
-
-                                                {{-- Subject Info --}}
-                                                <div class="mb-2 pb-2 border-b border-gray-200 ">
-                                                    @if($schedule->period?->ordinal)
-                                                        <div class="mb-2">
-                                                            <span class="inline-block px-2 py-0.5 bg-gray-100  text-[11px] font-semibold text-gray-700 ">
-                                                                Jam ke {{ $schedule->period->ordinal }}
-                                                            </span>
-                                                        </div>
-                                                    @endif
-                                                    <h4 class="text-base md:text-lg font-semibold text-gray-900  mb-1 truncate">
-                                                        {{ $schedule->subject?->name ?? 'Mata Pelajaran' }}
-                                                    </h4>
-                                                    @if($schedule->subject?->code)
-                                                        <span class="inline-flex items-center px-2 py-0.5  text-[11px] font-semibold bg-gray-100 text-gray-700  ">
-                                                            {{ $schedule->subject->code }}
-                                                        </span>
-                                                    @endif
-                                                </div>
-
-                                                {{-- Teacher Info with Avatar --}}
-                                                <div class="mb-2 flex items-center gap-2 p-2 lg border border-gray-100  bg-gray-50 ">
+                                        @else
+                                            <div class="space-y-3">
+                                                @foreach ($processedSchedules as $schedule)
                                                     @php
-                                                        $teacherAvatar = $schedule->teacher?->user?->avatar ?? $schedule->teacher?->avatar ?? asset('images/default-teacher.png');
-                                                        $teacherName = $schedule->teacher?->user?->name ?? $schedule->teacher?->name ?? 'Guru';
+                                                        $startTimeStr = $schedule->start_time ?? null;
+                                                        $endTimeStr = $schedule->end_time ?? null;
+                                                        $scheduleDay = $schedule->day_of_week ?? $day;
+
+                                                        $startCarbon = $startTimeStr
+                                                            ? \Carbon\Carbon::parse($startTimeStr)
+                                                            : null;
+                                                        $endCarbon = $endTimeStr
+                                                            ? \Carbon\Carbon::parse($endTimeStr)
+                                                            : null;
+
+                                                        $isOngoing = false;
+                                                        $isPast = false;
+
+                                                        if ((int) $scheduleDay === (int) $currentDayIndex) {
+                                                            if ($startCarbon && $endCarbon && $currentTime) {
+                                                                $isOngoing = $currentTime->between(
+                                                                    $startCarbon,
+                                                                    $endCarbon,
+                                                                );
+                                                                $isPast = $endCarbon->lt($currentTime);
+                                                            }
+                                                        }
+
+                                                        $isTeaching = $schedule->type === 'class';
+                                                        $period = $schedule->period;
+
+                                                        $formattedStart = $startTimeStr
+                                                            ? \Carbon\Carbon::parse($startTimeStr)->format('H:i')
+                                                            : '-';
+                                                        $formattedEnd = $endTimeStr
+                                                            ? \Carbon\Carbon::parse($endTimeStr)->format('H:i')
+                                                            : '-';
+
+                                                        $subjectName =
+                                                            data_get($schedule, 'subject.name') ??
+                                                            'Pembiasaan / Istirahat';
+                                                        $subjectCode = data_get($schedule, 'subject.code');
+
+                                                        $teacherName =
+                                                            data_get($schedule, 'teacher.user.name') ??
+                                                            (data_get($schedule, 'teacher.name') ?? '-');
+
+                                                        $teacherAvatar =
+                                                            data_get($schedule, 'teacher.user.avatar') ??
+                                                            (data_get($schedule, 'teacher.avatar') ??
+                                                                data_get($schedule, 'teacher.avatar_url'));
+
+                                                        if (
+                                                            $teacherAvatar &&
+                                                            filter_var($teacherAvatar, FILTER_VALIDATE_URL)
+                                                        ) {
+                                                            $teacherAvatarUrl = $teacherAvatar;
+                                                        } elseif (
+                                                            $teacherAvatar &&
+                                                            Storage::disk('public')->exists($teacherAvatar)
+                                                        ) {
+                                                            $teacherAvatarUrl = Storage::url($teacherAvatar);
+                                                        } else {
+                                                            $teacherAvatarUrl = asset('images/default-teacher.png');
+                                                        }
+
+                                                        $className = $schedule->template?->class?->full_name ?? '-';
+                                                        $roomName = $schedule->roomHistory?->room?->name ?? '-';
+                                                        $buildingName =
+                                                            $schedule->roomHistory?->room?->building?->name ?? null;
+
+                                                        $cardClasses = '';
+                                                        if (!$isTeaching) {
+                                                            $cardClasses = 'bg-amber-50 border-amber-200';
+                                                        } elseif ($isOngoing) {
+                                                            $cardClasses = 'bg-sky-50 border-sky-200 shadow-sm';
+                                                        } elseif ($isPast) {
+                                                            $cardClasses = 'bg-slate-50 border-slate-200 opacity-75';
+                                                        } else {
+                                                            $cardClasses = 'bg-white border-slate-200 hover:shadow-sm';
+                                                        }
                                                     @endphp
-                                                    <img src="{{ $teacherAvatar }}"
-                                                        alt="Guru"
-                                                        class="w-8 h-8 object-cover border-2 shadow-sm
-                                                        {{ $isOngoing ? 'border-gray-300 ring-1 ring-gray-200 ' : 'border-gray-200 ' }}"
-                                                        onerror="this.src='{{ asset('images/default-teacher.png') }}'">
-                                                    <div class="flex-1">
-                                                        <p class="text-xs font-medium text-gray-500  mb-1">Guru</p>
-                                                        <p class="font-semibold text-gray-900  text-sm truncate">
-                                                            {{ $teacherName }}
-                                                        </p>
-                                                    </div>
-                                                </div>
 
-                                                {{-- Room Info --}}
-                                                <div class="flex items-center gap-2 p-2 bg-gray-50  lg border border-gray-100 ">
-                                                    <div class="flex-shrink-0 w-8 h-8 bg-gray-600 lg flex items-center justify-center shadow">
-                                                        <x-heroicon-o-building-office-2 class="w-5 h-5 text-white" />
-                                                    </div>
-                                                    <div class="flex-1">
-                                                        <p class="text-xs text-gray-500 ">Ruangan</p>
-                                                        <p class="font-medium text-gray-900  text-xs truncate">
-                                                            {{ $schedule->roomHistory?->room?->name ?? 'Belum ditentukan' }}
-                                                        </p>
-                                                        @if($schedule->roomHistory?->room?->building?->name)
-                                                            <p class="text-xs text-gray-500  mt-0.5">
-                                                                📍 {{ $schedule->roomHistory->room->building->name }}
-                                                            </p>
+                                                    <div class="relative group">
+                                                        @if ($isOngoing)
+                                                            <div
+                                                                class="absolute -left-2 top-0 bottom-0 w-1 h-full bg-sky-400 shadow animate-pulse">
+                                                            </div>
                                                         @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    @endif
-                @endforeach
-            @endif
-        </main>
 
-        {{-- Desktop: Right sidebar --}}
-        <aside class="hidden xl:block w-56 lg:sticky lg:top-28 lg:h-[calc(100vh-7rem)] lg:overflow-auto lg:flex-shrink-0" style="height: calc(100vh - 10rem);">
-            <div class="bg-white  border border-gray-200  lg p-2 shadow-md h-full">
-                @for ($d = 1; $d <= 7; $d++)
-                    @php
-                        $hasSchedule = isset($allSchedules[$d]) && $allSchedules[$d]->isNotEmpty();
-                    @endphp
-                    <a href="#day-{{ $d }}"
-                       class="flex items-center gap-2 px-3 py-2 md transition-colors duration-150 hover:bg-gray-100  {{ $d === $currentDayIndex ? 'bg-gray-100 ' : '' }} {{ !$hasSchedule ? 'opacity-50' : '' }}"
-                       title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
-                        <x-heroicon-o-book-open class="w-4 h-4 {{ $hasSchedule ? 'text-gray-600 ' : 'text-gray-400 ' }}" />
-                        <span class="text-sm {{ $hasSchedule ? 'text-gray-700 ' : 'text-gray-500 ' }}">{{ $dayNames[$d] }}</span>
-                        @if(!$hasSchedule)
-                            <span class="ml-auto text-xs text-gray-400">(kosong)</span>
-                        @endif
-                    </a>
-                @endfor
-            </div>
-        </aside>
+                                                        <div
+                                                            class="relative overflow-hidden border {{ $cardClasses }}">
+                                                            @if ($isOngoing)
+                                                                <div
+                                                                    class="absolute top-0 right-0 bg-sky-500 text-white px-2 py-1 shadow flex items-center gap-1.5 z-10">
+                                                                    <span class="relative flex h-2 w-2">
+                                                                        <span
+                                                                            class="animate-ping absolute inline-flex h-full w-full bg-white opacity-75"></span>
+                                                                        <span
+                                                                            class="relative inline-flex h-2 w-2 bg-white"></span>
+                                                                    </span>
+                                                                    <span
+                                                                        class="text-[9px] font-bold tracking-wide">BERLANGSUNG</span>
+                                                                </div>
+                                                            @endif
+
+                                                            @if ($isPast)
+                                                                <div
+                                                                    class="absolute top-2 right-2 bg-slate-200 text-slate-600 px-2 py-0.5 shadow-sm z-10">
+                                                                    <span
+                                                                        class="text-[9px] font-semibold tracking-wider">SELESAI</span>
+                                                                </div>
+                                                            @endif
+
+                                                            <div class="p-3 sm:p-4">
+                                                                <div class="flex flex-row gap-3 sm:gap-4">
+                                                                    <!-- Left Time Block (Compact) -->
+                                                                    <div class="flex-shrink-0">
+                                                                        <div
+                                                                            class="inline-flex flex-col items-center justify-center p-2 min-w-[70px] sm:min-w-[80px] shadow-sm {{ $isOngoing ? 'bg-sky-500 text-white ring-1 ring-sky-300' : 'bg-slate-100 text-slate-800' }}">
+                                                                            <div
+                                                                                class="text-xl sm:text-2xl font-bold leading-none">
+                                                                                {{ $formattedStart }}
+                                                                            </div>
+                                                                            <div
+                                                                                class="text-[10px] opacity-80 mt-1 mb-0.5">
+                                                                                s.d.</div>
+                                                                            <div
+                                                                                class="text-sm sm:text-base font-semibold leading-none">
+                                                                                {{ $formattedEnd }}
+                                                                            </div>
+                                                                            @if ($period?->ordinal)
+                                                                                <div
+                                                                                    class="mt-2 px-2 py-0.5 bg-white/25 backdrop-blur-sm w-full text-center">
+                                                                                    <span
+                                                                                        class="text-[10px] sm:text-xs font-bold whitespace-nowrap">Jam
+                                                                                        {{ $period->ordinal }}</span>
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Right Details Block (Compact) -->
+                                                                    <div
+                                                                        class="flex-1 min-w-0 flex flex-col justify-center">
+                                                                        <div class="mb-2.5">
+                                                                            @if (!$isTeaching)
+                                                                                <div class="flex items-center gap-2">
+                                                                                    <h4
+                                                                                        class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                                                                                        {{ $period?->name ?? 'Istirahat' }}
+                                                                                    </h4>
+                                                                                </div>
+                                                                            @else
+                                                                                <div
+                                                                                    class="flex flex-wrap items-center gap-2">
+                                                                                    <h4
+                                                                                        class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                                                                                        {{ $subjectName }}
+                                                                                    </h4>
+                                                                                    @if ($subjectCode)
+                                                                                        <span
+                                                                                            class="inline-flex items-center px-2 py-0.5 text-[10px] font-bold bg-sky-100 text-sky-700">
+                                                                                            {{ $subjectCode }}
+                                                                                        </span>
+                                                                                    @endif
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+
+                                                                        <div
+                                                                            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                                                                            @if ($isTeaching)
+                                                                                <!-- Teacher Box -->
+                                                                                <div
+                                                                                    class="flex items-center gap-2.5 bg-white p-2 shadow-sm border border-slate-100">
+                                                                                    <img src="{{ $teacherAvatarUrl }}"
+                                                                                        alt="Guru"
+                                                                                        class="w-8 h-8 object-cover border shadow-sm {{ $isOngoing ? 'border-sky-300' : 'border-slate-200' }}"
+                                                                                        onerror="this.src='{{ asset('images/default-teacher.png') }}'">
+                                                                                    <div class="flex-1 min-w-0">
+                                                                                        <p
+                                                                                            class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-0">
+                                                                                            Pengajar</p>
+                                                                                        <p
+                                                                                            class="font-bold text-xs text-slate-800 truncate">
+                                                                                            {{ $teacherName }}</p>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <!-- Class Box -->
+                                                                                <div
+                                                                                    class="flex items-center gap-2.5 bg-white p-2 shadow-sm border border-slate-100">
+                                                                                    <div
+                                                                                        class="flex-shrink-0 w-8 h-8 bg-slate-100 flex items-center justify-center border border-slate-200 shadow-sm">
+                                                                                        <x-heroicon-s-users
+                                                                                            class="h-4 w-4 text-slate-500" />
+                                                                                    </div>
+                                                                                    <div class="flex-1 min-w-0">
+                                                                                        <p
+                                                                                            class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-0">
+                                                                                            Kelas</p>
+                                                                                        <p
+                                                                                            class="font-bold text-xs text-slate-800 truncate">
+                                                                                            {{ $className }}</p>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <!-- Room Box -->
+                                                                                <div
+                                                                                    class="flex items-center gap-2.5 bg-white p-2 shadow-sm border border-slate-100">
+                                                                                    <div
+                                                                                        class="flex-shrink-0 w-8 h-8 bg-slate-100 flex items-center justify-center border border-slate-200 shadow-sm">
+                                                                                        <x-heroicon-s-map-pin
+                                                                                            class="w-4 h-4 text-slate-500" />
+                                                                                    </div>
+                                                                                    <div class="flex-1 min-w-0">
+                                                                                        <p
+                                                                                            class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-0">
+                                                                                            Ruangan</p>
+                                                                                        <p
+                                                                                            class="font-bold text-xs text-slate-800 truncate">
+                                                                                            {{ $roomName }}
+                                                                                            @if ($buildingName)
+                                                                                                <span
+                                                                                                    class="font-normal text-slate-500">({{ $buildingName }})</span>
+                                                                                            @endif
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @else
+                                                                                <!-- Non-Teaching/Break Box -->
+                                                                                <div
+                                                                                    class="sm:col-span-2 lg:col-span-3 bg-white p-2 shadow-sm border border-slate-100">
+                                                                                    <p
+                                                                                        class="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-0.5">
+                                                                                        Keterangan</p>
+                                                                                    <p
+                                                                                        class="font-bold text-xs text-slate-800">
+                                                                                        {{ $period?->name ?? 'Istirahat / Pembiasaan' }}
+                                                                                    </p>
+                                                                                    @if ($period?->description)
+                                                                                        <p
+                                                                                            class="text-[11px] text-slate-500 mt-0.5">
+                                                                                            {{ $period->description }}
+                                                                                        </p>
+                                                                                    @endif
+                                                                                </div>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+
+                <!-- Right Sidebar Menu -->
+                <aside class="hidden xl:block xl:col-span-3 space-y-6">
+                    <div class="sticky top-8">
+                        <div class="p-5 bg-white border border-slate-200">
+                            <h2 class="text-base font-bold text-slate-900 mb-3">Navigasi Hari</h2>
+                            <div class="space-y-1">
+                                @for ($d = 1; $d <= 7; $d++)
+                                    @php
+                                        $hasSchedule = isset($allSchedules[$d]) && $allSchedules[$d]->isNotEmpty();
+                                        $isActive = $d === $currentDayIndex;
+                                    @endphp
+                                    <a href="#day-{{ $d }}"
+                                        class="flex items-center justify-between px-3 py-2 border-l-4 transition-colors duration-150 
+                                       {{ $isActive ? 'border-sky-500 bg-sky-50' : 'border-transparent hover:bg-slate-50 hover:border-slate-300' }} 
+                                       {{ !$hasSchedule ? 'opacity-50' : '' }}"
+                                        title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
+
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="text-sm font-bold {{ $isActive ? 'text-sky-700' : 'text-slate-600' }}">{{ $dayNames[$d] }}</span>
+                                        </div>
+
+                                        @if (!$hasSchedule)
+                                            <span
+                                                class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Libur</span>
+                                        @elseif($isActive)
+                                            <span class="w-1.5 h-1.5 bg-sky-500"></span>
+                                        @endif
+                                    </a>
+                                @endfor
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </section>
+        </main>
     </div>
 
-    {{-- Mobile: Floating menu --}}
-    @if(!empty($allSchedules) && count($allSchedules) > 0)
+    <!-- Mobile Floating Menu -->
+    @if (!empty($allSchedules) && count($allSchedules) > 0)
         <div class="xl:hidden fixed bottom-4 right-4 z-50 flex items-end justify-end">
             <div class="relative">
-                <button id="dayToggleBtn" aria-expanded="false" aria-controls="dayMenu" class="bg-gray-800 p-3 shadow-lg text-white focus:outline-none">
-                    <x-heroicon-o-book-open class="w-5 h-5 text-white" />
+                <button id="dayToggleBtn" aria-expanded="false" aria-controls="dayMenu"
+                    class="bg-slate-900 p-3 shadow-xl text-white focus:outline-none border border-slate-700">
+                    <x-heroicon-s-list-bullet class="w-6 h-6 text-white" />
                 </button>
-                <div id="dayMenu" class="hidden absolute right-0 bottom-14 w-44 bg-white  border border-gray-200  lg shadow-md p-2">
+                <div id="dayMenu"
+                    class="hidden absolute right-0 bottom-14 w-40 bg-white border border-slate-200 shadow-xl p-1.5">
+                    <div
+                        class="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 mb-1">
+                        Pilih Hari
+                    </div>
                     @for ($d = 1; $d <= 7; $d++)
                         @php
                             $hasSchedule = isset($allSchedules[$d]) && $allSchedules[$d]->isNotEmpty();
+                            $isActive = $d === $currentDayIndex;
                         @endphp
                         <a href="#day-{{ $d }}"
-                           onclick="document.getElementById('dayMenu').classList.add('hidden')"
-                           class="flex items-center gap-2 px-2 py-2 md hover:bg-gray-100  {{ !$hasSchedule ? 'opacity-50' : '' }}"
-                           title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
-                            <x-heroicon-o-book-open class="w-4 h-4 {{ $hasSchedule ? 'text-gray-600 ' : 'text-gray-400 ' }}" />
-                            <span class="text-sm {{ $hasSchedule ? 'text-gray-700 ' : 'text-gray-500 ' }}">{{ $dayNames[$d] }}</span>
-                            @if(!$hasSchedule)
-                                <span class="ml-auto text-xs text-gray-400">(kosong)</span>
+                            onclick="document.getElementById('dayMenu').classList.add('hidden')"
+                            class="flex items-center gap-2 px-3 py-2 hover:bg-slate-50 {{ $isActive ? 'bg-sky-50 text-sky-700 font-bold' : 'text-slate-600' }} {{ !$hasSchedule ? 'opacity-50' : '' }}"
+                            title="{{ !$hasSchedule ? 'Tidak ada jadwal' : '' }}">
+                            <span class="text-xs font-semibold flex-1">{{ $dayNames[$d] }}</span>
+                            @if (!$hasSchedule)
+                                <span class="text-[9px] uppercase font-bold text-slate-400">Libur</span>
                             @endif
                         </a>
                     @endfor
@@ -387,7 +440,6 @@
         </div>
     @endif
 
-    {{-- Mobile menu toggle JS --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var btn = document.getElementById('dayToggleBtn');

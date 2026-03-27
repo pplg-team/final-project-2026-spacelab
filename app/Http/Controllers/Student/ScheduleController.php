@@ -15,6 +15,9 @@ class ScheduleController extends Controller
         $student = $user->student;
         $activeTerm = \App\Models\Term::where('is_active', true)->first();
 
+        $currentTime = Carbon::now();
+        $currentDayIndex = (int) $currentTime->format('N');
+
         // Ambil class history user dengan relasi model
         $classIds = collect();
         if ($student) {
@@ -32,6 +35,8 @@ class ScheduleController extends Controller
                 'student' => $user,
                 'allSchedules' => collect(),
                 'studentClassFullName' => '-',
+                'currentTime' => $currentTime,
+                'currentDayIndex' => $currentDayIndex,
                 'title' => 'Jadwal',
                 'description' => 'Halaman jadwal',
             ]);
@@ -175,6 +180,8 @@ class ScheduleController extends Controller
             'student' => $student,
             'allSchedules' => $allSchedules,
             'studentClassFullName' => $studentClassFullName,
+            'currentTime' => $currentTime,
+            'currentDayIndex' => $currentDayIndex,
             'title' => 'Jadwal',
             'description' => 'Halaman jadwal',
         ]);
