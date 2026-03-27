@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
         subjectsHtml = teacher.subjects
           .map(
             (s) =>
-              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 mr-1 mb-1">${s.name} (${s.code})</span>`,
+              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-blue-100  text-blue-800  mr-1 mb-1">${s.name} (${s.code})</span>`,
           )
           .join("");
       }
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rolesHtml += teacher.role_assignments
           .map(
             (r) =>
-              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 mr-1 mb-1">${r.role} - ${r.major}</span>`,
+              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-purple-100  text-purple-800  mr-1 mb-1">${r.role} - ${r.major}</span>`,
           )
           .join("");
       }
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rolesHtml += teacher.coordinator_assignments
           .map(
             (r) =>
-              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 mr-1 mb-1">${r.role} - ${r.major}</span>`,
+              `<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100  text-green-800  mr-1 mb-1">${r.role} - ${r.major}</span>`,
           )
           .join("");
       }
@@ -160,35 +160,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Nama</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${teacher.name}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Nama</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${teacher.name}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Email</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${teacher.email}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Email</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${teacher.email}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Kode</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${teacher.code || "-"}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Kode</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${teacher.code || "-"}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Telepon</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${teacher.phone || "-"}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Telepon</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${teacher.phone || "-"}</p>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Mata Pelajaran</label>
+                        <label class="block text-sm font-medium text-gray-500  mb-2">Mata Pelajaran</label>
                         <div class="flex flex-wrap">${subjectsHtml}</div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Riwayat Wali Kelas</label>
+                        <label class="block text-sm font-medium text-gray-500  mb-2">Riwayat Wali Kelas</label>
                         <div>${guardianHtml}</div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Jabatan</label>
+                        <label class="block text-sm font-medium text-gray-500  mb-2">Jabatan</label>
                         <div class="flex flex-wrap">${rolesHtml}</div>
                     </div>
                 </div>

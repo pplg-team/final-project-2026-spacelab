@@ -1,6 +1,6 @@
 <x-app-layout title="Absensi" description="Scan QR Code dan Lakukan Absensi">
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Absensi') }}
         </h2>
     </x-slot>
@@ -26,12 +26,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 <!-- Scanner Section -->
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="p-6 text-gray-900 ">
                     <h3 class="text-lg font-medium mb-4">1. Scan QR Code</h3>
                     
                     @if (request()->getScheme() !== 'https' && request()->getHost() !== 'localhost' && request()->getHost() !== '127.0.0.1')
-                        <div class="mb-4 p-3 bg-yellow-50 dark:bg-yellow-900 border border-yellow-200 dark:border-yellow-700 ">
-                            <p class="text-sm text-yellow-800 dark:text-yellow-200">
+                        <div class="mb-4 p-3 bg-yellow-50  border border-yellow-200  ">
+                            <p class="text-sm text-yellow-800 ">
                                 ⚠️ <strong>Peringatan:</strong> Fitur kamera memerlukan koneksi HTTPS. Kamera mungkin tidak berfungsi di HTTP.
                             </p>
                         </div>
@@ -51,8 +51,8 @@
 
 
                 <!-- Form Section -->
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="bg-white  overflow-hidden shadow-sm sm:lg">
+                    <div class="p-6 text-gray-900 ">
                         <h3 class="text-lg font-medium mb-4">2. Konfirmasi Kehadiran</h3>
 
                         <form method="POST" action="{{ route(Auth::user()->role->lower_name . '.attendance.store') }}"
@@ -61,9 +61,9 @@
 
                             <!-- Error Display -->
                             @if ($errors->any())
-                                <div class="mb-4 p-3 bg-red-50 dark:bg-red-900 border border-red-300 dark:border-red-700 ">
-                                    <p class="text-sm font-medium text-red-800 dark:text-red-200 mb-2">❌ Ada kesalahan:</p>
-                                    <ul class="text-sm text-red-700 dark:text-red-300 list-disc list-inside">
+                                <div class="mb-4 p-3 bg-red-50  border border-red-300  ">
+                                    <p class="text-sm font-medium text-red-800  mb-2">❌ Ada kesalahan:</p>
+                                    <ul class="text-sm text-red-700  list-disc list-inside">
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
@@ -74,20 +74,20 @@
                             <!-- Token Input -->
                             <div class="mb-4">
                                 <label for="token"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Token
+                                    class="block text-sm font-medium text-gray-700 ">Token
                                     Sesi</label>
                                 <input type="text" name="token" id="token" readonly
-                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
+                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500    sm:text-sm"
                                     placeholder="Scan QR terlebih dahulu">
                             </div>
 
                             <!-- Selfie (Live Camera) -->
                             <div id="selfie-section" class="mb-4 hidden">
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">3. Ambil
+                                <label class="block text-sm font-medium text-gray-700  mb-2">3. Ambil
                                     Selfie</label>
 
                                 <div id="selfie-container"
-                                    class="relative w-full h-64 bg-gray-200 dark:bg-gray-700 lg overflow-hidden flex items-center justify-center border-2 border-gray-300" style="background: #000;">
+                                    class="relative w-full h-64 bg-gray-200  lg overflow-hidden flex items-center justify-center border-2 border-gray-300" style="background: #000;">
                                     <video id="selfie-video" style="display: block; width: 100%; height: 100%; object-fit: cover;"
                                         autoplay muted playsinline></video>
                                     <canvas id="selfie-canvas"
@@ -125,14 +125,14 @@
 
                             <!-- Native File Fallback (Optional) -->
                             <div id="fallback-section" class="mb-4 hidden">
-                                <div id="fallback-input" class="hidden bg-blue-50 dark:bg-gray-700 border-2 border-blue-300 dark:border-blue-600 p-4 lg">
-                                    <p class="text-sm font-medium text-blue-900 dark:text-blue-300 mb-3">
+                                <div id="fallback-input" class="hidden bg-blue-50  border-2 border-blue-300  p-4 lg">
+                                    <p class="text-sm font-medium text-blue-900  mb-3">
                                         📷 Alternatif: Unggah Foto
                                     </p>
                                     <input type="file" name="selfie_photo" id="selfie_photo_file" accept="image/*" capture="user"
-                                        class="block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-500 lg cursor-pointer bg-gray-50 dark:bg-gray-600 focus:outline-none"
+                                        class="block w-full text-sm text-gray-900  border border-gray-300  lg cursor-pointer bg-gray-50  focus:outline-none"
                                         onchange="checkReadyToSubmit()">
-                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-2">Pilih foto selfie dari galeri atau ambil foto baru</p>
+                                    <p class="text-xs text-gray-600  mt-2">Pilih foto selfie dari galeri atau ambil foto baru</p>
                                 </div>
                             </div>
 
@@ -143,10 +143,10 @@
                             <!-- Status -->
                             <div class="mb-4">
                                 <label for="status"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status
+                                    class="block text-sm font-medium text-gray-700 ">Status
                                     Kehadiran</label>
                                 <select name="status" id="status"
-                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"
+                                    class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500    sm:text-sm"
                                     onchange="toggleAttachment()">
                                     <option value="hadir">Hadir</option>
                                     <option value="izin">Izin</option>
@@ -158,17 +158,17 @@
                             <div id="additional-fields" class="hidden space-y-4">
                                 <div>
                                     <label for="note"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Keterangan /
+                                        class="block text-sm font-medium text-gray-700 ">Keterangan /
                                         Alasan</label>
                                     <textarea name="note" id="note" rows="2"
-                                        class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm"></textarea>
+                                        class="mt-1 block w-full md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500    sm:text-sm"></textarea>
                                 </div>
                                 <div>
                                     <label for="attachment"
-                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bukti (Surat
+                                        class="block text-sm font-medium text-gray-700 ">Bukti (Surat
                                         Dokter/Izin)</label>
                                     <input type="file" name="attachment" id="attachment"
-                                        class="mt-1 block w-full text-sm text-gray-900 dark:text-gray-300 border border-gray-300 lg cursor-pointer bg-gray-50 dark:bg-gray-700 focus:outline-none">
+                                        class="mt-1 block w-full text-sm text-gray-900  border border-gray-300 lg cursor-pointer bg-gray-50  focus:outline-none">
                                 </div>
                             </div>
 

@@ -48,7 +48,7 @@ window.viewStaff = async function (id) {
     const content = document.getElementById("viewStaffContent");
     content.innerHTML = `
             <div class="flex items-center mb-4">
-                <div class="h-16 w-16 bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xl font-medium text-gray-600 dark:text-gray-400">
+                <div class="h-16 w-16 bg-gray-200  flex items-center justify-center text-xl font-medium text-gray-600 ">
                     ${
                       data.name
                         ? data.name
@@ -61,23 +61,23 @@ window.viewStaff = async function (id) {
                     }
                 </div>
                 <div class="ml-4">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">${data.name || "-"}</h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">${data.role || "Staff"}</p>
+                    <h3 class="text-lg font-semibold text-gray-900 ">${data.name || "-"}</h3>
+                    <p class="text-sm text-gray-500 ">${data.role || "Staff"}</p>
                 </div>
             </div>
             
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Email</label>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">${data.email || "-"}</p>
+                    <label class="block text-xs font-medium text-gray-500  mb-1">Email</label>
+                    <p class="text-sm text-gray-900 ">${data.email || "-"}</p>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Terdaftar</label>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">${data.created_at || "-"}</p>
+                    <label class="block text-xs font-medium text-gray-500  mb-1">Terdaftar</label>
+                    <p class="text-sm text-gray-900 ">${data.created_at || "-"}</p>
                 </div>
                 <div class="col-span-2">
-                    <label class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Login Terakhir</label>
-                    <p class="text-sm text-gray-900 dark:text-gray-100">${data.last_login_at || "Belum pernah login"}</p>
+                    <label class="block text-xs font-medium text-gray-500  mb-1">Login Terakhir</label>
+                    <p class="text-sm text-gray-900 ">${data.last_login_at || "Belum pernah login"}</p>
                 </div>
             </div>
         `;

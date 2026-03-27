@@ -1,7 +1,7 @@
 <x-app-layout :title="$title" :description="$description">
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            <h2 class="text-2xl font-bold text-gray-900 ">
                 {{ __('Manajemen Ruangan') }}
             </h2>
         </div>
@@ -11,12 +11,12 @@
         <div class="mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
             <!-- Section 2: Room Summary Table -->
-            <div class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div class="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-800 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <div class="bg-white  xl shadow-sm border border-gray-200  overflow-hidden">
+                <div class="px-6 py-4 bg-gradient-to-r from-purple-50 to-pink-50   border-b border-gray-200 ">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ringkasan Ruangan</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5">Daftar ruangan dengan status terkini dan akses ke kalender</p>
+                            <h3 class="text-lg font-semibold text-gray-900 ">Ringkasan Ruangan</h3>
+                            <p class="text-sm text-gray-600  mt-0.5">Daftar ruangan dengan status terkini dan akses ke kalender</p>
                         </div>
                         <button onclick="openModal('create')"
                             class="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium lg shadow-sm transition-all duration-200 hover:shadow-md">
@@ -28,40 +28,40 @@
 
                 <!-- Table -->
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                        <thead class="bg-gray-50 dark:bg-gray-900">
+                    <table class="min-w-full divide-y divide-gray-200 ">
+                        <thead class="bg-gray-50 ">
                             <tr>
-                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Kode</th>
-                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Nama</th>
-                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Status</th>
-                                <th class="px-6 py-3.5 text-right text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Aksi</th>
+                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700  uppercase tracking-wider">Kode</th>
+                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700  uppercase tracking-wider">Nama</th>
+                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-700  uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3.5 text-right text-xs font-semibold text-gray-700  uppercase tracking-wider">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <tbody class="bg-white  divide-y divide-gray-200 ">
                             @forelse($rooms as $room)
-                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-150">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
+                                <tr class="hover:bg-gray-50  transition-colors duration-150">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 ">
                                         {{ $room->code }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 ">
                                         {{ $room->name }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 dark:text-gray-300">
-                                        <span class="inline-flex items-center px-2 py-1 text-xs font-semibold {{ $room->current_status === 'Occupied' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300' : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' }}">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700 ">
+                                        <span class="inline-flex items-center px-2 py-1 text-xs font-semibold {{ $room->current_status === 'Occupied' ? 'bg-red-100 text-red-700  ' : 'bg-green-100 text-green-700  ' }}">
                                             {{ $room->current_status }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('staff.rooms.history.show', $room->id) }}"
-                                           class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200">Lihat Kalender →</a>
+                                           class="text-indigo-600 hover:text-indigo-900  ">Lihat Kalender →</a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
                                     <td colspan="4" class="px-6 py-12">
-                                        <div class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400">
+                                        <div class="flex flex-col items-center justify-center text-gray-500 ">
                                             <p class="text-base font-medium">Tidak ada ruangan</p>
-                                            <p class="text-sm text-gray-400 dark:text-gray-500 mt-1">Tambahkan ruangan terlebih dahulu</p>
+                                            <p class="text-sm text-gray-400  mt-1">Tambahkan ruangan terlebih dahulu</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -72,7 +72,7 @@
 
                 <!-- Pagination -->
                 @if($rooms->hasPages())
-                    <div class="px-6 py-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                    <div class="px-6 py-4 bg-gray-50  border-t border-gray-200 ">
                         {{ $rooms->links() }}
                     </div>
                 @endif
@@ -86,17 +86,17 @@
             @csrf
             <input type="hidden" name="_method" id="formMethod" value="POST">
 
-            <div class="px-6 py-5 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-800">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white" id="modalTitle">Tambah Alokasi Ruangan</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lengkapi informasi alokasi ruangan</p>
+            <div class="px-6 py-5 border-b border-gray-200  bg-gradient-to-r from-indigo-50 to-blue-50  ">
+                <h3 class="text-xl font-bold text-gray-900 " id="modalTitle">Tambah Alokasi Ruangan</h3>
+                <p class="text-sm text-gray-600  mt-1">Lengkapi informasi alokasi ruangan</p>
             </div>
 
             <div class="px-6 py-5 space-y-5 max-h-[65vh] overflow-y-auto">
                 <!-- Date & Time (moved up) -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 lg border border-gray-200 dark:border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50  lg border border-gray-200 ">
                     <!-- Start DateTime -->
                     <div>
-                        <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 ">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -105,13 +105,13 @@
                             </div>
                         </x-input-label>
                         <input id="start_datetime" name="start_date" type="datetime-local" required
-                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
                     </div>
 
                     <!-- End DateTime -->
                     <div>
-                        <x-input-label for="end_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <x-input-label for="end_datetime" class="text-sm font-semibold text-gray-700 ">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -120,14 +120,14 @@
                             </div>
                         </x-input-label>
                         <input id="end_datetime" name="end_date" type="datetime-local" required
-                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <x-input-error :messages="$errors->get('end_date')" class="mt-2" />
                     </div>
                 </div>
 
                 <!-- Room -->
                 <div>
-                    <x-input-label for="room_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="room_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
@@ -136,7 +136,7 @@
                         </div>
                     </x-input-label>
                     <select name="room_id" id="room_id" required disabled
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Ruangan setelah memilih tanggal & jam</option>
                     </select>
                     <x-input-error :messages="$errors->get('room_id')" class="mt-2" />
@@ -144,7 +144,7 @@
 
                 <!-- Class -->
                 <div>
-                    <x-input-label for="classes_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="classes_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -153,14 +153,14 @@
                         </div>
                     </x-input-label>
                     <select name="classes_id" id="classes_id" disabled
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Kelas setelah memilih Ruangan</option>
                     </select>
                 </div>
 
                 <!-- Teacher -->
                 <div>
-                    <x-input-label for="teacher_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="teacher_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -169,14 +169,14 @@
                         </div>
                     </x-input-label>
                     <select name="teacher_id" id="teacher_id" disabled
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Guru setelah memilih Kelas</option>
                     </select>
                 </div>
 
                 <!-- Term -->
                 <div>
-                    <x-input-label for="terms_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="terms_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -185,7 +185,7 @@
                         </div>
                     </x-input-label>
                     <select name="terms_id" id="terms_id" required
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Tahun Ajaran</option>
                         @foreach ($terms as $term)
                             <option value="{{ $term->id }}" {{ $term->is_active ? 'selected' : '' }}>
@@ -198,7 +198,7 @@
 
                 <!-- Event Type -->
                 <div>
-                    <x-input-label for="event_type" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="event_type" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
@@ -209,17 +209,17 @@
                         <x-text-input id="event_type" name="event_type" type="text" disabled
                             class="mt-2 block w-full lg"
                             placeholder="Contoh: KBM, Rapat, Ujian, Workshop" />
-                        <p class="mt-1.5 text-xs text-gray-500 dark:text-gray-400">Kategori kegiatan yang dilakukan di ruangan</p>
+                        <p class="mt-1.5 text-xs text-gray-500 ">Kategori kegiatan yang dilakukan di ruangan</p>
                 </div>
             </div>
 
-            <div class="px-6 py-4 bg-gray-50 dark:bg-gray-900 flex items-center justify-between gap-3 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-xs text-gray-500 dark:text-gray-400">
+            <div class="px-6 py-4 bg-gray-50  flex items-center justify-between gap-3 border-t border-gray-200 ">
+                <p class="text-xs text-gray-500 ">
                     <span class="text-red-500">*</span> Wajib diisi
                 </p>
                 <div class="flex gap-3">
                     <button type="button" x-on:click="$dispatch('close')"
-                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 lg font-medium text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+                        class="inline-flex items-center gap-2 px-4 py-2.5 bg-white  border-2 border-gray-300  lg font-medium text-sm text-gray-700  hover:bg-gray-50  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>

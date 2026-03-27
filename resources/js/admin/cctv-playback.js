@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return evtHour === hour && evt.event_type !== "offline";
       });
 
-      let bgColor = "bg-gray-300 dark:bg-gray-600"; // No recording
+      let bgColor = "bg-gray-300 "; // No recording
       if (hourSegments.length > 0) {
         bgColor = "bg-green-500 hover:bg-green-600"; // Has recording
       } else if (hourOfflineEvents.length > 0) {
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const isSelected = selectedHour === hour;
       const selectedClass = isSelected
-        ? "ring-2 ring-offset-2 ring-blue-500 dark:ring-blue-400 dark:ring-offset-gray-900"
+        ? "ring-2 ring-offset-2 ring-blue-500  "
         : "";
       hourBlock.className += ` ${bgColor} ${selectedClass}  h-full flex items-center justify-center text-[10px] text-white font-semibold transition`;
       hourBlock.textContent = hour.toString().padStart(2, "0");
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (segmentStateBadge) {
       segmentStateBadge.textContent = "Belum dipilih";
       segmentStateBadge.className =
-        "inline-flex items-center px-2 py-1 text-[11px] font-semibold bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300";
+        "inline-flex items-center px-2 py-1 text-[11px] font-semibold bg-gray-100 text-gray-700  ";
     }
 
     if (segmentStart) segmentStart.textContent = "-";
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (segmentStateBadge) {
       segmentStateBadge.textContent = "Segmen dipilih";
       segmentStateBadge.className =
-        "inline-flex items-center px-2 py-1 text-[11px] font-semibold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300";
+        "inline-flex items-center px-2 py-1 text-[11px] font-semibold bg-emerald-100 text-emerald-700  ";
     }
 
     // Update segment info

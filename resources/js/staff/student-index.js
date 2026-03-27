@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createStudentRow(student) {
     const row = document.createElement("tr");
     row.className =
-      "hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors student-row";
+      "hover:bg-gray-50  transition-colors student-row";
 
     // Avatar
     let avatarHtml = "";
@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
       avatarHtml = `<img class="h-8 w-8 object-cover" src="/storage/${student.avatar}" alt="">`;
     } else {
       avatarHtml = `
-                <div class="h-8 w-8 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                    <span class="text-xs font-medium text-gray-600 dark:text-gray-400">
+                <div class="h-8 w-8 bg-gray-200  flex items-center justify-center">
+                    <span class="text-xs font-medium text-gray-600 ">
                         ${student.name.charAt(0).toUpperCase()}
                     </span>
                 </div>
@@ -183,27 +183,27 @@ document.addEventListener("DOMContentLoaded", function () {
                         ${avatarHtml}
                     </div>
                     <div class="ml-3">
-                        <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        <div class="text-sm font-medium text-gray-900 ">
                             ${escapeHtml(student.name)}
                         </div>
                     </div>
                 </div>
             </td>
-            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 ">
                 ${escapeHtml(student.email)}
             </td>
-            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 ">
                 ${escapeHtml(student.nis)}
             </td>
-            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 ">
                 ${escapeHtml(student.nisn)}
             </td>
             <td class="px-4 py-3 whitespace-nowrap">
-                <span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                <span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100  text-gray-800 ">
                     ${escapeHtml(student.major_code)}
                 </span>
             </td>
-            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-600 ">
                 ${escapeHtml(student.class_name)}
             </td>
             <td class="px-4 py-3 whitespace-nowrap">
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         Lihat
                     </button>
                     <button onclick="editStudent('${student.id}')"
-                        class="inline-flex items-center px-3 py-1.5 bg-yellow-600 hover:bg-yellow-700 dark:text-white text-xs font-medium md transition-colors">
+                        class="inline-flex items-center px-3 py-1.5 bg-yellow-600 hover:bg-yellow-700  text-xs font-medium md transition-colors">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                         Edit
                     </button>
@@ -286,36 +286,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Nama</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.name}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Nama</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.name}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Email</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.email}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Email</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.email}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">NIS</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.nis || "-"}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">NIS</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.nis || "-"}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">NISN</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.nisn}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">NISN</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.nisn}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Jurusan</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.major} (${student.major_code})</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Jurusan</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.major} (${student.major_code})</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Kelas</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.classroom}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Kelas</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.classroom}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Blok</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.block}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Blok</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.block}</p>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Tahun Ajaran</label>
-                            <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${student.term}</p>
+                            <label class="block text-sm font-medium text-gray-500 ">Tahun Ajaran</label>
+                            <p class="mt-1 text-sm text-gray-900 ">${student.term}</p>
                         </div>
                     </div>
                 </div>

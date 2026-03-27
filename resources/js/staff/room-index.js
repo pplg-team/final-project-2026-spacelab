@@ -177,36 +177,36 @@ document.addEventListener("DOMContentLoaded", function () {
       const content = `
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Kode</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.code}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Kode</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.code}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Nama</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.name}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Nama</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.name}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Gedung</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.building_name || "-"}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Gedung</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.building_name || "-"}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Lantai</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.floor ?? "-"}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Lantai</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.floor ?? "-"}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Kapasitas</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.capacity ?? "-"}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Kapasitas</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.capacity ?? "-"}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Tipe</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.type ? room.type.charAt(0).toUpperCase() + room.type.slice(1) : "-"}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Tipe</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.type ? room.type.charAt(0).toUpperCase() + room.type.slice(1) : "-"}</p>
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Status</label>
+                        <label class="block text-sm font-medium text-gray-500 ">Status</label>
                         <p class="mt-1">
                             ${
                               room.is_active
-                                ? '<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200">Aktif</span>'
-                                : '<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">Nonaktif</span>'
+                                ? '<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-green-100  text-green-800 ">Aktif</span>'
+                                : '<span class="inline-flex items-center px-2 py-0.5  text-xs font-medium bg-gray-100  text-gray-800 ">Nonaktif</span>'
                             }
                         </p>
                     </div>
@@ -215,8 +215,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   room.notes
                     ? `
                     <div class="mt-4">
-                        <label class="block text-sm font-medium text-gray-500 dark:text-gray-400">Catatan</label>
-                        <p class="mt-1 text-sm text-gray-900 dark:text-gray-100">${room.notes}</p>
+                        <label class="block text-sm font-medium text-gray-500 ">Catatan</label>
+                        <p class="mt-1 text-sm text-gray-900 ">${room.notes}</p>
                     </div>
                 `
                     : ""

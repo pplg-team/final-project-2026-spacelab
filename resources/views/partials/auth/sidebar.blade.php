@@ -1,6 +1,6 @@
 <!-- Sidebar Navigation -->
 <nav class="px-3 pb-4">
-    <div class="space-y-3 border-t border-slate-200/80 bg-white/80 p-2.5 shadow-sm dark:border-slate-700 dark:bg-slate-900/60">
+    <div class="space-y-3 border-t border-slate-200/80 bg-white/80 p-2.5 shadow-sm  ">
         {{-- Menu dinamis berdasarkan role --}}
         @switch(Auth::user()->role->lower_name)
             @case('admin')
@@ -41,7 +41,7 @@
                 @break
 
             @default
-                <p class="px-3 py-2 text-sm text-slate-500 dark:text-slate-400">{{ __('No navigation available') }}</p>
+                <p class="px-3 py-2 text-sm text-slate-500 ">{{ __('No navigation available') }}</p>
         @endswitch
     </div>
 </nav>

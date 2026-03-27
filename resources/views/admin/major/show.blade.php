@@ -1,6 +1,6 @@
 <x-app-layout :title="$title" :description="$description">
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Lihat Jurusan') }}
         </h2>
     </x-slot>
@@ -8,11 +8,11 @@
         <a href="{{ route('admin.majors.index') }}"
             class="inline-flex items-center gap-2 px-4 py-2 xl
                 bg-gradient-to-r from-gray-800 to-gray-700
-                dark:from-gray-700 dark:to-gray-600
+                 
                 text-white text-sm font-semibold
                 shadow-md hover:shadow-lg
                 hover:from-gray-700 hover:to-gray-600
-                dark:hover:from-gray-600 dark:hover:to-gray-500
+                 
                 transition-all duration-200 focus:outline-none focus:ring-2
                 focus:ring-offset-2 focus:ring-gray-500">
 
@@ -23,16 +23,16 @@
     <div class="py-6">
         <!-- Header Card with Avatar -->
         <div
-            class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150 mb-6">
+            class="bg-white  xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150 mb-6">
             <div
                 class="relative h-40 overflow-hidden xl
                     bg-gradient-to-r from-gray-50 to-gray-100
-                    dark:from-gray-700 dark:to-gray-800
+                     
                     shadow-sm">
 
                 <div
                     class="absolute -bottom-10 -right-10 w-44 h-44
-                        bg-gray-200/60 dark:bg-gray-600/40
+                        bg-gray-200/60 
                         blur-3xl full">
                 </div>
 
@@ -40,7 +40,7 @@
                 <div
                     class="absolute bottom-0 left-0 right-0 h-px
                         bg-gradient-to-r from-transparent via-gray-300 to-transparent
-                        dark:via-gray-600">
+                        ">
                 </div>
             </div>
             <div class="px-6 pb-6">
@@ -49,34 +49,34 @@
                     <div class="relative mb-4 sm:mb-0">
                         <img src="{{ $major && $major->logo ? Storage::url($major->logo) : asset('assets/images/avatar/default-profile.png') }}"
                             alt="Avatar of username"
-                            class="w-32 h-32 object-cover border-4 border-white dark:border-gray-800 shadow-lg">
+                            class="w-32 h-32 object-cover border-4 border-white  shadow-lg">
                     </div>
 
                     <!-- Name and Role -->
                     <div class="sm:ml-6 text-center sm:text-left flex-1 z-0">
-                        <h3 class="text-4xl font-bold text-gray-900 dark:text-gray-100">
+                        <h3 class="text-4xl font-bold text-gray-900 ">
                             {{ $major?->name ?? '— Tidak ada jurusan —' }}
                         </h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                        <p class="text-sm text-gray-500  mt-1">
                             {{ $major?->code ?? '' }}
                         </p>
                         <div class="mt-3">
                             <span
-                                class="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                                class="inline-flex items-center px-3 py-1 text-xs font-medium bg-gray-100  text-gray-700  border border-gray-200 ">
                                 {{ $major?->slogan ?? 'Tidak ada deskripsi.' }}
                             </span>
                         </div>
                         <div class="mt-3 flex flex-wrap gap-3">
                             @if ($major?->contact_email)
                                 <a href="mailto:{{ $major->contact_email }}"
-                                    class="inline-flex items-center gap-2 px-3 py-2 lg text-xs font-medium bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    class="inline-flex items-center gap-2 px-3 py-2 lg text-xs font-medium bg-gray-50  text-gray-700  border border-gray-200  hover:bg-gray-100  transition-colors">
                                     <x-heroicon-o-envelope class="w-4 h-4" />
                                     {{ $major->contact_email }}
                                 </a>
                             @endif
                             @if ($major?->website)
                                 <a href="{{ $major->website }}" target="_blank"
-                                    class="inline-flex items-center gap-2 px-3 py-2 lg text-xs font-medium bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                                    class="inline-flex items-center gap-2 px-3 py-2 lg text-xs font-medium bg-gray-50  text-gray-700  border border-gray-200  hover:bg-gray-100  transition-colors">
                                     <x-heroicon-o-globe-alt class="w-4 h-4" />
                                     {{ $major->website }}
                                 </a>
@@ -89,7 +89,7 @@
                         <div class="mb-4">
                             <p>
                                 <span
-                                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                                    class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium bg-gray-100  text-gray-700  border border-gray-200 ">
 
                                     {{ $activeTerm
                                         ? 'Semester ' . ucfirst($activeTerm->kind) . ' Tahun Ajaran ' . $activeTerm->tahun_ajaran
@@ -100,14 +100,14 @@
                             </p>
                         </div>
                         <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'edit-major-modal')"
-                            class="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-700 border border-transparent lg font-medium text-sm text-white hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-150 shadow-sm mt-5">
+                            class="inline-flex items-center px-4 py-2 bg-gray-800  border border-transparent lg font-medium text-sm text-white hover:bg-gray-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-150 shadow-sm mt-5">
                             <x-heroicon-o-pencil class="w-5 h-5 mr-3" />
                             Edit Profil
                         </button>
                     </div>
                 </div>
                 <div class="mt-6">
-                    <p class="mt-6 text-gray-600 dark:text-gray-300 text-justify">
+                    <p class="mt-6 text-gray-600  text-justify">
                         {{ $major?->description ?? 'Detail jurusan belum di atur.' }}
                     </p>
                 </div>
@@ -119,89 +119,89 @@
     <div class="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-4">
 
         <article role="article" aria-label="Pelajaran Hari Ini"
-            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Total Kelas</p>
-                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">
+                    <p class="text-xs md:text-sm text-gray-500  mb-1">Total Kelas</p>
+                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 ">
                         {{ $stats['class_count'] ?? 0 }}</h3>
                 </div>
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                    class="bg-gray-50  p-2 md:p-3 lg flex items-center justify-center border border-gray-100 ">
                     <span class="sr-only">Icon</span>
-                    <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
+                    <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 "
                         aria-hidden="true" />
                 </div>
             </div>
         </article>
 
         <article role="article" aria-label="Pelajaran Hari Ini"
-            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Total Siswa</p>
-                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">
+                    <p class="text-xs md:text-sm text-gray-500  mb-1">Total Siswa</p>
+                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 ">
                         {{ $stats['student_count'] ?? 0 }}</h3>
-                    <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Siswa</p>
+                    <p class="text-[10px] md:text-xs text-gray-400  mt-2">Siswa</p>
                 </div>
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                    class="bg-gray-50  p-2 md:p-3 lg flex items-center justify-center border border-gray-100 ">
                     <span class="sr-only">Icon</span>
-                    <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
+                    <x-heroicon-o-book-open class="w-5 h-5 md:w-6 md:h-6 text-gray-500 "
                         aria-hidden="true" />
                 </div>
             </div>
         </article>
 
         <article role="article" aria-label="Jumlah Ruangan"
-            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Jumlah ruangan</p>
-                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white">
+                    <p class="text-xs md:text-sm text-gray-500  mb-1">Jumlah ruangan</p>
+                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 ">
                         {{ $stats['room_count'] ?? 0 }}</h3>
-                    <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">jurusan</p>
+                    <p class="text-[10px] md:text-xs text-gray-400  mt-2">jurusan</p>
                 </div>
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                    class="bg-gray-50  p-2 md:p-3 lg flex items-center justify-center border border-gray-100 ">
                     <span class="sr-only">Icon</span>
-                    <x-heroicon-o-building-office-2 class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
+                    <x-heroicon-o-building-office-2 class="w-5 h-5 md:w-6 md:h-6 text-gray-500 "
                         aria-hidden="true" />
                 </div>
             </div>
         </article>
 
         <article role="article" aria-label="Total Pelajaran Jurusan"
-            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Pelajaran Jurusan</p>
-                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">
+                    <p class="text-xs md:text-sm text-gray-500  mb-1">Pelajaran Jurusan</p>
+                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900  truncate">
                         {{ $subjectCount ?? ($majorSubjects->count() ?? 0) }}</h3>
-                    <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Mapel</p>
+                    <p class="text-[10px] md:text-xs text-gray-400  mt-2">Mapel</p>
                 </div>
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                    class="bg-gray-50  p-2 md:p-3 lg flex items-center justify-center border border-gray-100 ">
                     <span class="sr-only">Icon</span>
-                    <x-heroicon-o-academic-cap class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
+                    <x-heroicon-o-academic-cap class="w-5 h-5 md:w-6 md:h-6 text-gray-500 "
                         aria-hidden="true" />
                 </div>
             </div>
         </article>
 
         <article role="article" aria-label="Jumlah Guru Jurusan"
-            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
             <div class="flex items-center justify-between gap-4">
                 <div class="min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Guru Jurusan</p>
-                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">
+                    <p class="text-xs md:text-sm text-gray-500  mb-1">Guru Jurusan</p>
+                    <h3 class="text-sm md:text-2xl font-extrabold text-gray-900  truncate">
                         {{ $teacherCount ?? (is_countable($teachers) ? count($teachers) : 0) }}</h3>
-                    <p class="text-[10px] md:text-xs text-gray-400 dark:text-gray-500 mt-2">Guru</p>
+                    <p class="text-[10px] md:text-xs text-gray-400  mt-2">Guru</p>
                 </div>
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 p-2 md:p-3 lg flex items-center justify-center border border-gray-100 dark:border-gray-700">
+                    class="bg-gray-50  p-2 md:p-3 lg flex items-center justify-center border border-gray-100 ">
                     <span class="sr-only">Icon</span>
-                    <x-heroicon-o-user-group class="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-100"
+                    <x-heroicon-o-user-group class="w-5 h-5 md:w-6 md:h-6 text-gray-500 "
                         aria-hidden="true" />
                 </div>
             </div>
@@ -214,12 +214,12 @@
         <div class="lg:col-span-2">
             <div>
                 <div
-                    class="bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
-                    <div class="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-800">
+                    class="bg-white  xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150">
+                    <div class="p-4 sm:p-6 border-b border-gray-100 ">
                         <div class="flex items-center justify-between">
                             <h3
-                                class="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                                <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-200" />
+                                class="text-sm sm:text-lg font-semibold text-gray-900  flex items-center gap-2">
+                                <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 " />
                                 Daftar Kelas jurusan ini
                             </h3>
                         </div>
@@ -227,13 +227,13 @@
                             @if ($classes->isEmpty())
                                 <p class="text-sm text-gray-500">Tidak ada kelas untuk jurusan ini.</p>
                             @else
-                                <ul role="list" class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <ul role="list" class="divide-y divide-gray-100 ">
                                     @foreach ($classes as $class)
                                         <li class="py-3 flex items-center justify-between">
                                             <div class="min-w-0">
-                                                <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                                <div class="text-sm font-medium text-gray-900 ">
                                                     {{ $class->full_name }}</div>
-                                                <div class="text-xs text-gray-500 dark:text-gray-400">Siswa:
+                                                <div class="text-xs text-gray-500 ">Siswa:
                                                     {{ $class->students_count ?? 0 }}</div>
                                             </div>
                                             <div class="flex-shrink-0 text-xs text-gray-400">
@@ -252,12 +252,12 @@
                     </div>
                 </div>
                 <div
-                    class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
-                    <div class="p-4 sm:p-6 border-b border-gray-100 dark:border-gray-800">
+                    class="mt-10 bg-white  xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150">
+                    <div class="p-4 sm:p-6 border-b border-gray-100 ">
                         <div class="flex items-center justify-between">
                             <h3
-                                class="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                                <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-200" />
+                                class="text-sm sm:text-lg font-semibold text-gray-900  flex items-center gap-2">
+                                <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 " />
                                 Daftar Guru jurusan
                             </h3>
                         </div>
@@ -265,17 +265,17 @@
                             @if ($teachers->isEmpty())
                                 <p class="text-sm text-gray-500">Belum ada guru yang terhubung ke jurusan ini.</p>
                             @else
-                                <ul role="list" class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <ul role="list" class="divide-y divide-gray-100 ">
                                     @foreach ($teachers as $t)
                                         <li class="py-3 flex items-center justify-between">
                                             <div class="flex items-center gap-3">
                                                 <img src="{{ $t->teacher?->avatar ?? ($t->avatar ?? asset('assets/images/avatar/default-profile.png')) }}"
                                                     alt="{{ $t->user?->name ?? 'Guru' }}"
-                                                    class="w-10 h-10 object-cover border border-gray-200 dark:border-gray-700 shadow-sm" />
+                                                    class="w-10 h-10 object-cover border border-gray-200  shadow-sm" />
                                                 <div class="min-w-0">
-                                                    <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                                    <div class="text-sm font-medium text-gray-900 ">
                                                         {{ $t->user?->name ?? '—' }}</div>
-                                                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                                                    <div class="text-xs text-gray-500 ">
                                                         {{ $t->code ?? '' }}</div>
                                                 </div>
                                             </div>
@@ -297,24 +297,24 @@
         <div class="lg:col-span-1">
             <div class="space-y-6">
                 <div
-                    class="bg-white  dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                    class="bg-white   xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150">
                     <!-- Current Day Info -->
                     <div
-                        class="p-3 mb-5 sm:p-5 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+                        class="p-3 mb-5 sm:p-5 bg-white  border-b border-gray-100 ">
                         <div class="flex items-center gap-3">
                             <div
-                                class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100 dark:bg-gray-700 lg flex items-center justify-center shadow-sm">
+                                class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100  lg flex items-center justify-center shadow-sm">
                                 <x-heroicon-o-calendar
-                                    class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-200" />
+                                    class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 " />
                             </div>
                             <div>
                                 <p
-                                    class="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">
+                                    class="text-xs font-medium text-gray-600  uppercase tracking-wide">
                                     Hari Ini</p>
                                 <div class="flex justify-between items-center gap-4">
-                                    <p class="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-900 ">
                                         {{ now()->translatedFormat('l, d F Y') }}</p>
-                                    <p class="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white">
+                                    <p class="text-xs sm:text-sm font-semibold text-gray-900 ">
                                         {{ now()->translatedFormat('H:i') }}</p>
                                 </div>
                             </div>
@@ -322,25 +322,25 @@
                     </div>
                     <div x-data="{ roleType: '', roleLabel: '' }">
                         <article role="article" aria-label="Kepala Jurusan"
-                            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150 mb-6">
+                            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150 mb-6">
                             <div class="flex items-center justify-between gap-4">
                                 <div class="min-w-0">
-                                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Kepala Jurusan
+                                    <p class="text-xs md:text-sm text-gray-500  mb-1">Kepala Jurusan
                                     </p>
                                     <h3
-                                        class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">
+                                        class="text-sm md:text-2xl font-extrabold text-gray-900  truncate">
                                         {{ $assignment?->head?->user?->name ?? 'Belum di atur' }}
                                     </h3>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <button
                                         @click="roleType = 'head'; roleLabel = 'Kepala Jurusan'; $dispatch('open-modal', 'role-assignment-modal')"
-                                        class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                                        class="text-gray-400 hover:text-gray-600 ">
                                         <x-heroicon-o-pencil class="w-5 h-5" />
                                     </button>
                                     <div class="flex-shrink-0">
                                         <div
-                                            class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
+                                            class="bg-gray-50  p-1 md:p-2 border border-gray-100 ">
                                             <img src="{{ $assignment?->head?->user?->avatar ? asset($assignment->head->user->avatar) : asset('assets/images/avatar/default-profile.png') }}"
                                                 alt="Avatar Guru"
                                                 class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
@@ -351,25 +351,25 @@
                         </article>
 
                         <article role="article" aria-label="Kepala Program"
-                            class="bg-white dark:bg-gray-900 shadow-sm xl overflow-hidden border border-gray-100 dark:border-gray-800 p-4 md:p-5 hover:shadow-md transition-all duration-150">
+                            class="bg-white  shadow-sm xl overflow-hidden border border-gray-100  p-4 md:p-5 hover:shadow-md transition-all duration-150">
                             <div class="flex items-center justify-between gap-4">
                                 <div class="min-w-0">
-                                    <p class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">Kepala Program
+                                    <p class="text-xs md:text-sm text-gray-500  mb-1">Kepala Program
                                     </p>
                                     <h3
-                                        class="text-sm md:text-2xl font-extrabold text-gray-900 dark:text-white truncate">
+                                        class="text-sm md:text-2xl font-extrabold text-gray-900  truncate">
                                         {{ $assignment?->programCoordinator?->user?->name ?? 'Belum di atur' }}
                                     </h3>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <button
                                         @click="roleType = 'coordinator'; roleLabel = 'Kepala Program'; $dispatch('open-modal', 'role-assignment-modal')"
-                                        class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                                        class="text-gray-400 hover:text-gray-600 ">
                                         <x-heroicon-o-pencil class="w-5 h-5" />
                                     </button>
                                     <div class="flex-shrink-0">
                                         <div
-                                            class="bg-gray-50 dark:bg-gray-800 p-1 md:p-2 border border-gray-100 dark:border-gray-700">
+                                            class="bg-gray-50  p-1 md:p-2 border border-gray-100 ">
                                             <img src="{{ $assignment?->programCoordinator?->user?->avatar ? asset($assignment->programCoordinator->user->avatar) : asset('assets/images/avatar/default-profile.png') }}"
                                                 alt="Avatar Guru"
                                                 class="w-8 h-8 md:w-10 md:h-10 object-cover shadow" />
@@ -381,17 +381,17 @@
                     </div>
                     <!-- Perusahaan -->
                     <div
-                        class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
+                        class="mt-10 bg-white  xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150">
                         <div
-                            class="p-3 sm:p-5 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+                            class="p-3 sm:p-5 border-b border-gray-100  flex justify-between items-center">
                             <h3
-                                class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide flex items-center gap-2">
-                                <x-heroicon-o-building-office class="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                                class="text-sm font-semibold text-gray-900  uppercase tracking-wide flex items-center gap-2">
+                                <x-heroicon-o-building-office class="w-4 h-4 text-gray-500 " />
                                 Perusahaan Mitra
                             </h3>
                             <button x-data=""
                                 x-on:click.prevent="$dispatch('open-modal', 'add-company-modal')"
-                                class="text-xs flex items-center gap-1 px-3 py-1.5 lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                class="text-xs flex items-center gap-1 px-3 py-1.5 lg bg-gray-100  text-gray-700  hover:bg-gray-200  transition-colors">
                                 <x-heroicon-o-plus class="w-4 h-4" />
                                 Tambah Mitra
                             </button>
@@ -405,18 +405,18 @@
                                     @foreach ($companies as $rel)
                                         @php $company = $rel->company; @endphp
                                         <div
-                                            class="border border-gray-200 dark:border-gray-700 lg p-4 hover:shadow-md transition-all duration-150 relative">
+                                            class="border border-gray-200  lg p-4 hover:shadow-md transition-all duration-150 relative">
                                             <!-- Action Buttons (Top Right) -->
                                             <div class="absolute top-4 right-4 flex items-center gap-2">
                                                 <button x-data=""
                                                     @click="$dispatch('open-modal', 'edit-company-modal-{{ $rel->id }}')"
-                                                    class="text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                                                    class="text-gray-400 hover:text-blue-600  transition-colors"
                                                     title="Edit">
                                                     <x-heroicon-o-pencil class="w-4 h-4" />
                                                 </button>
                                                 <button x-data=""
                                                     @click="$dispatch('open-modal', 'delete-company-modal-{{ $rel->id }}')"
-                                                    class="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                                                    class="text-gray-400 hover:text-red-600  transition-colors"
                                                     title="Hapus">
                                                     <x-heroicon-o-trash class="w-4 h-4" />
                                                 </button>
@@ -427,7 +427,7 @@
                                                 <div class="flex-shrink-0">
                                                     <img src="{{ $company && $company->logo ? asset($company->logo) : asset('assets/images/company/default.png') }}"
                                                         alt="{{ $company?->name ?? 'Perusahaan' }}"
-                                                        class="w-16 h-16 object-contain lg border border-gray-200 dark:border-gray-600 bg-white p-2" />
+                                                        class="w-16 h-16 object-contain lg border border-gray-200  bg-white p-2" />
                                                 </div>
 
                                                 <!-- Company Details -->
@@ -435,18 +435,18 @@
                                                     <div class="flex items-start justify-between gap-2">
                                                         <div>
                                                             <h4
-                                                                class="text-sm font-semibold text-gray-900 dark:text-white">
+                                                                class="text-sm font-semibold text-gray-900 ">
                                                                 {{ $company?->name ?? 'Nama Perusahaan' }}
                                                             </h4>
-                                                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
+                                                            <p class="text-xs text-gray-500  mt-0.5">
                                                                 {{ $rel->partnership_type ?? 'Jenis Kemitraan' }}
                                                             </p>
                                                         </div>
                                                         <span
                                                             class="inline-flex items-center px-2.5 py-0.5 text-xs font-medium
-                                                            {{ $rel->status === 'active' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : '' }}
-                                                            {{ $rel->status === 'pending' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' : '' }}
-                                                            {{ $rel->status === 'inactive' ? 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300' : '' }}">
+                                                            {{ $rel->status === 'active' ? 'bg-green-100 text-green-800  ' : '' }}
+                                                            {{ $rel->status === 'pending' ? 'bg-yellow-100 text-yellow-800  ' : '' }}
+                                                            {{ $rel->status === 'inactive' ? 'bg-gray-100 text-gray-800  ' : '' }}">
                                                             {{ ucfirst($rel->status) }}
                                                         </span>
                                                     </div>
@@ -454,7 +454,7 @@
                                                     <!-- Partnership Period -->
                                                     @if ($rel->start_date || $rel->end_date)
                                                         <div
-                                                            class="mt-2 flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                                                            class="mt-2 flex items-center gap-2 text-xs text-gray-600 ">
                                                             <x-heroicon-o-calendar class="w-3.5 h-3.5" />
                                                             <span>
                                                                 @if ($rel->start_date)
@@ -474,14 +474,14 @@
                                                     <div class="mt-3 flex flex-wrap gap-2">
                                                         @if ($company?->website)
                                                             <a href="{{ $company->website }}" target="_blank"
-                                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 md text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 md text-xs font-medium bg-gray-100  text-gray-700  hover:bg-gray-200  transition-colors">
                                                                 <x-heroicon-o-globe-alt class="w-3.5 h-3.5" />
                                                                 Website
                                                             </a>
                                                         @endif
                                                         @if ($rel->document_link)
                                                             <a href="{{ $rel->document_link }}" target="_blank"
-                                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 md text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-200 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 md text-xs font-medium bg-blue-100  text-blue-700  hover:bg-blue-200  transition-colors">
                                                                 <x-heroicon-o-document-text class="w-3.5 h-3.5" />
                                                                 Dokumen MoU/MoA
                                                             </a>
@@ -499,11 +499,11 @@
                                                 @csrf
                                                 @method('PUT')
 
-                                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                                <h2 class="text-lg font-medium text-gray-900 ">
                                                     {{ __('Edit Mitra Perusahaan') }}
                                                 </h2>
 
-                                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                <p class="mt-1 text-sm text-gray-600 ">
                                                     {{ __('Perbarui informasi kemitraan dengan perusahaan ini.') }}
                                                 </p>
 
@@ -513,7 +513,7 @@
                                                         <x-input-label for="company_id_{{ $rel->id }}"
                                                             value="{{ __('Perusahaan') }}" />
                                                         <select id="company_id_{{ $rel->id }}" name="company_id"
-                                                            class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"
+                                                            class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm"
                                                             required>
                                                             @foreach ($allCompanies as $comp)
                                                                 <option value="{{ $comp->id }}"
@@ -565,7 +565,7 @@
                                                         <x-input-label for="status_{{ $rel->id }}"
                                                             value="{{ __('Status') }}" />
                                                         <select id="status_{{ $rel->id }}" name="status"
-                                                            class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm">
+                                                            class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm">
                                                             <option value="active"
                                                                 {{ $rel->status == 'active' ? 'selected' : '' }}>Aktif
                                                             </option>
@@ -612,11 +612,11 @@
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                                                <h2 class="text-lg font-medium text-gray-900 ">
                                                     {{ __('Hapus Mitra Perusahaan') }}
                                                 </h2>
 
-                                                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                                                <p class="mt-1 text-sm text-gray-600 ">
                                                     {{ __('Apakah Anda yakin ingin menghapus kemitraan dengan') }}
                                                     <strong>{{ $company?->name ?? 'perusahaan ini' }}</strong>?
                                                     {{ __('Tindakan ini tidak dapat dibatalkan.') }}
@@ -628,7 +628,7 @@
                                                     </x-secondary-button>
 
                                                     <button type="submit"
-                                                        class="ml-3 inline-flex items-center px-4 py-2 bg-red-600 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                                        class="ml-3 inline-flex items-center px-4 py-2 bg-red-600 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 active:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2  transition ease-in-out duration-150">
                                                         {{ __('Hapus') }}
                                                     </button>
                                                 </div>
@@ -641,16 +641,16 @@
                     </div>
                     {{-- Daftar Mapel Jurusan --}}
                     <div
-                        class="mt-10 bg-white dark:bg-gray-900 xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-all duration-150">
-                        <div class="p-3 sm:p-5 border-b border-gray-100 dark:border-gray-800">
+                        class="mt-10 bg-white  xl shadow-sm border border-gray-100  overflow-hidden hover:shadow-md transition-all duration-150">
+                        <div class="p-3 sm:p-5 border-b border-gray-100 ">
                             <h3
-                                class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wide flex items-center gap-2">
+                                class="text-sm font-semibold text-gray-900  uppercase tracking-wide flex items-center gap-2">
                                 Pelajaran Jurusan
                             </h3>
 
                             <div class="flex items-center gap-2">
                                 <a href="{{ "#" }}"
-                                    class="ml-auto inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                                    class="ml-auto inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-500 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2  transition ease-in-out duration-150">
                                     {{ __('Tambah') }}
                                 </a>
                             </div>
@@ -660,13 +660,13 @@
                                 <p class="text-sm text-gray-500">Belum ada pelajaran yang ditetapkan untuk jurusan ini.
                                 </p>
                             @else
-                                <ul role="list" class="divide-y divide-gray-100 dark:divide-gray-800">
+                                <ul role="list" class="divide-y divide-gray-100 ">
                                     @foreach ($majorSubjects as $ms)
                                         <li class="py-3 flex items-center justify-between">
                                             <div class="min-w-0">
-                                                <div class="text-sm font-medium text-gray-900 dark:text-white">
+                                                <div class="text-sm font-medium text-gray-900 ">
                                                     {{ $ms->subject?->name ?? '—' }}</div>
-                                                <div class="text-xs text-gray-500 dark:text-gray-400">Kode:
+                                                <div class="text-xs text-gray-500 ">Kode:
                                                     {{ $ms->subject?->code ?? '—' }}</div>
                                             </div>
                                         </li>
@@ -687,11 +687,11 @@
             @csrf
             @method('PUT')
 
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 class="text-lg font-medium text-gray-900 ">
                 {{ __('Edit Jurusan') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            <p class="mt-1 text-sm text-gray-600 ">
                 {{ __('Perbarui informasi detail jurusan ini.') }}
             </p>
 
@@ -724,7 +724,7 @@
                 <div class="sm:col-span-6">
                     <x-input-label for="description" value="{{ __('Deskripsi') }}" />
                     <textarea id="description" name="description" rows="3"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm">{{ old('description', $major->description) }}</textarea>
+                        class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm">{{ old('description', $major->description) }}</textarea>
                     <x-input-error class="mt-2" :messages="$errors->get('description')" />
                 </div>
 
@@ -748,9 +748,9 @@
                 <div class="sm:col-span-6">
                     <x-input-label for="logo" value="{{ __('Logo') }}" />
                     <input id="logo" name="logo" type="file"
-                        class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 lg cursor-pointer bg-gray-50  focus:outline-none   "
                         accept="image/*">
-                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF
+                    <p class="mt-1 text-sm text-gray-500 " id="file_input_help">SVG, PNG, JPG or GIF
                         (MAX. 2MB).</p>
                     <x-input-error class="mt-2" :messages="$errors->get('logo')" />
                 </div>
@@ -774,11 +774,11 @@
             class="p-6">
             @csrf
 
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 class="text-lg font-medium text-gray-900 ">
                 {{ __('Tambah Mitra Perusahaan') }}
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            <p class="mt-1 text-sm text-gray-600 ">
                 {{ __('Pilih perusahaan yang sudah ada untuk dijadikan mitra jurusan ini.') }}
             </p>
 
@@ -787,7 +787,7 @@
                 <div>
                     <x-input-label for="company_id" value="{{ __('Perusahaan') }}" />
                     <select id="company_id" name="company_id"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm"
+                        class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm"
                         required>
                         <option value="">-- Pilih Perusahaan --</option>
                         @foreach ($allCompanies as $comp)
@@ -824,7 +824,7 @@
                 <div>
                     <x-input-label for="status" value="{{ __('Status') }}" />
                     <select id="status" name="status"
-                        class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm">
+                        class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm">
                         <option value="active">Aktif</option>
                         <option value="pending">Menunggu Konfirmasi</option>
                         <option value="inactive">Tidak Aktif</option>
@@ -862,18 +862,18 @@
 
             <input type="hidden" name="role_type" x-model="roleType">
 
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            <h2 class="text-lg font-medium text-gray-900 ">
                 {{ __('Atur Penugasan') }}: <span x-text="roleLabel"></span>
             </h2>
 
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            <p class="mt-1 text-sm text-gray-600 ">
                 {{ __('Pilih guru untuk posisi ini. Hanya guru yang eligible (tidak memiliki tugas rangkap di jurusan lain) yang ditampilkan.') }}
             </p>
 
             <div class="mt-6">
                 <x-input-label for="teacher_id" value="{{ __('Pilih Guru') }}" />
                 <select id="teacher_id" name="teacher_id"
-                    class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 md shadow-sm">
+                    class="mt-1 block w-full border-gray-300    focus:border-indigo-500  focus:ring-indigo-500  md shadow-sm">
                     <option value="">-- Kosongkan Posisi --</option>
                     @foreach ($eligibleTeachers as $teacher)
                         <option value="{{ $teacher->id }}">

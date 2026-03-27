@@ -10,7 +10,7 @@
     @include('partials.meta.guest-head')
 </head>
 
-<body class="min-h-screen bg-neskar-blue-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans">
+<body class="min-h-screen bg-neskar-blue-50 text-slate-900   font-sans">
 
     <!-- NAV -->
     @include('partials.guest.navbar')

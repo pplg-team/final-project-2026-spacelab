@@ -1,10 +1,10 @@
 <x-app-layout :title="$title" :description="$description">
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            <h2 class="text-2xl font-bold text-gray-900 ">
                 {{ __('Kalender Ruangan') }}
             </h2>
-            <a href="{{ route('admin.rooms.history') }}" class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200">
+            <a href="{{ route('admin.rooms.history') }}" class="text-indigo-600 hover:text-indigo-900  ">
                 ← Kembali ke daftar ruangan
             </a>
         </div>
@@ -12,8 +12,8 @@
 
     <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden p-6">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">{{ $room->code }} - {{ $room->name }}</h3>
+            <div class="bg-white  xl shadow-sm border border-gray-200  overflow-hidden p-6">
+                <h3 class="text-lg font-semibold text-gray-900  mb-4">{{ $room->code }} - {{ $room->name }}</h3>
                 <div id="calendar"></div>
             </div>
         </div>
@@ -26,16 +26,16 @@
             <input type="hidden" name="_method" id="formMethod" value="POST">
             <input type="hidden" name="room_id" value="{{ $room->id }}">
 
-            <div class="px-6 py-5 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-gray-800">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white" id="modalTitle">Tambah Alokasi Ruangan</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lengkapi informasi alokasi ruangan</p>
+            <div class="px-6 py-5 border-b border-gray-200  bg-gradient-to-r from-indigo-50 to-blue-50  ">
+                <h3 class="text-xl font-bold text-gray-900 " id="modalTitle">Tambah Alokasi Ruangan</h3>
+                <p class="text-sm text-gray-600  mt-1">Lengkapi informasi alokasi ruangan</p>
             </div>
 
             <div class="px-6 py-5 space-y-5 max-h-[65vh] overflow-y-auto">
                 <!-- Date & Time fields copied from index with slight modifications -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50 dark:bg-gray-900/50 lg border border-gray-200 dark:border-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-gray-50  lg border border-gray-200 ">
                     <div>
-                        <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <x-input-label for="start_datetime" class="text-sm font-semibold text-gray-700 ">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -44,12 +44,12 @@
                             </div>
                         </x-input-label>
                         <input id="start_datetime" name="start_date" type="datetime-local" required
-                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <x-input-error :messages="$errors->get('start_date')" class="mt-2" />
                     </div>
 
                     <div>
-                        <x-input-label for="end_datetime" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        <x-input-label for="end_datetime" class="text-sm font-semibold text-gray-700 ">
                             <div class="flex items-center gap-2">
                                 <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -58,14 +58,14 @@
                             </div>
                         </x-input-label>
                         <input id="end_datetime" name="end_date" type="datetime-local" required
-                            class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                            class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <x-input-error :messages="$errors->get('end_date')" class="mt-2" />
                     </div>
                 </div>
 
                 <!-- other fields (class, teacher, term) copied from index modal -->
                 <div>
-                    <x-input-label for="classes_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="classes_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -74,7 +74,7 @@
                         </div>
                     </x-input-label>
                     <select name="classes_id" id="classes_id"
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Kelas</option>
                         @foreach($classrooms as $classroom)
                             <option value="{{ $classroom->id }}">{{ $classroom->full_name }}</option>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div>
-                    <x-input-label for="teacher_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="teacher_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -92,7 +92,7 @@
                         </div>
                     </x-input-label>
                     <select name="teacher_id" id="teacher_id"
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Guru</option>
                         @foreach($teachers as $teacher)
                             <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div>
-                    <x-input-label for="terms_id" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="terms_id" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -110,7 +110,7 @@
                         </div>
                     </x-input-label>
                     <select name="terms_id" id="terms_id" required
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                         <option value="">Pilih Tahun Ajaran</option>
                         @foreach ($terms as $term)
                             <option value="{{ $term->id }}" {{ $term->is_active ? 'selected' : '' }}>
@@ -123,7 +123,7 @@
 
                 <!-- Event type optional -->
                 <div>
-                    <x-input-label for="event_type" class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                    <x-input-label for="event_type" class="text-sm font-semibold text-gray-700 ">
                         <div class="flex items-center gap-2">
                             <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m-8 4h6m-6 4h4"></path>
@@ -132,12 +132,12 @@
                         </div>
                     </x-input-label>
                     <input type="text" name="event_type" id="event_type"
-                        class="mt-2 block w-full lg border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 shadow-sm focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-indigo-500 dark:focus:ring-indigo-500 transition-colors">
+                        class="mt-2 block w-full lg border-gray-300    shadow-sm focus:border-indigo-500  focus:ring-indigo-500  transition-colors">
                 </div>
             </div>
 
-            <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 text-right">
-                <button type="button" class="px-4 py-2 mr-2 lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300" onclick="closeModal('historyModal')">Batal</button>
+            <div class="px-6 py-4 border-t border-gray-200  text-right">
+                <button type="button" class="px-4 py-2 mr-2 lg bg-gray-200  text-gray-700 " onclick="closeModal('historyModal')">Batal</button>
                 <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium lg shadow-sm transition-all duration-200 hover:shadow-md">
                     <span id="modalSubmit">Simpan</span>
                 </button>

@@ -1,6 +1,6 @@
 <x-app-layout title="Kelola Absensi" description="Monitoring & Statistik Kehadiran Harian">
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Kelola Absensi') }}
         </h2>
     </x-slot>
@@ -14,52 +14,52 @@
         </div>
 
         <!-- Staff -->
-        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-blue-500">
-            <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Staff Hadir
+        <div class="bg-white  lg shadow-md p-4 border-l-4 border-blue-500">
+            <div class="text-xs text-gray-500  font-semibold uppercase tracking-wider mb-1">Staff Hadir
             </div>
             <div class="flex items-end gap-2">
-                <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['staff'] }}</span>
+                <span class="text-2xl font-bold text-gray-900 ">{{ $stats['staff'] }}</span>
                 <span class="text-sm text-gray-500 mb-1">/ {{ $counts['staff'] }}</span>
             </div>
         </div>
 
         <!-- Guru -->
-        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-green-500">
-            <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Guru Hadir
+        <div class="bg-white  lg shadow-md p-4 border-l-4 border-green-500">
+            <div class="text-xs text-gray-500  font-semibold uppercase tracking-wider mb-1">Guru Hadir
             </div>
             <div class="flex items-end gap-2">
-                <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['guru'] }}</span>
+                <span class="text-2xl font-bold text-gray-900 ">{{ $stats['guru'] }}</span>
                 <span class="text-sm text-gray-500 mb-1">/ {{ $counts['guru'] }}</span>
             </div>
         </div>
 
         <!-- Siswa -->
-        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-purple-500">
-            <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Siswa
+        <div class="bg-white  lg shadow-md p-4 border-l-4 border-purple-500">
+            <div class="text-xs text-gray-500  font-semibold uppercase tracking-wider mb-1">Siswa
                 Hadir</div>
             <div class="flex items-end gap-2">
-                <span class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['siswa'] }}</span>
+                <span class="text-2xl font-bold text-gray-900 ">{{ $stats['siswa'] }}</span>
                 <span class="text-sm text-gray-500 mb-1">/ {{ $counts['siswa'] }}</span>
             </div>
         </div>
 
         <!-- Total -->
-        <div class="bg-white dark:bg-gray-800 lg shadow-md p-4 border-l-4 border-gray-500">
-            <div class="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wider mb-1">Total
+        <div class="bg-white  lg shadow-md p-4 border-l-4 border-gray-500">
+            <div class="text-xs text-gray-500  font-semibold uppercase tracking-wider mb-1">Total
                 Hadir</div>
-            <div class="text-2xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['total'] }}</div>
+            <div class="text-2xl font-bold text-gray-900 ">{{ $stats['total'] }}</div>
         </div>
     </div>
 
     <!-- 2. Chart & Activation -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <!-- Weekly Chart -->
-        <div class="lg:col-span-2 bg-white dark:bg-gray-800 lg shadow-md p-6">
+        <div class="lg:col-span-2 bg-white  lg shadow-md p-6">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3 mb-4">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Grafik Status Absensi Mingguan
+                    <h3 class="text-lg font-semibold text-gray-800 ">Grafik Status Absensi Mingguan
                     </h3>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Periode: {{ $chartWeekLabel }}</p>
+                    <p class="text-sm text-gray-500 ">Periode: {{ $chartWeekLabel }}</p>
                 </div>
 
                 <form method="GET" class="flex flex-wrap gap-2 items-center">
@@ -69,10 +69,10 @@
                     <input type="hidden" name="search" value="{{ request('search') }}">
 
                     <input type="date" name="chart_week" value="{{ $chartFilters['week'] }}"
-                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
 
                     <select name="chart_role"
-                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
                         <option value="">Semua Role</option>
                         <option value="Staff" {{ $chartFilters['role'] === 'Staff' ? 'selected' : '' }}>Staff</option>
                         <option value="Guru" {{ $chartFilters['role'] === 'Guru' ? 'selected' : '' }}>Guru</option>
@@ -80,7 +80,7 @@
                     </select>
 
                     <select name="chart_status"
-                        class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                        class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
                         <option value="">Semua Status</option>
                         <option value="hadir" {{ $chartFilters['status'] === 'hadir' ? 'selected' : '' }}>Hadir</option>
                         <option value="izin" {{ $chartFilters['status'] === 'izin' ? 'selected' : '' }}>Izin</option>
@@ -89,7 +89,7 @@
                     </select>
 
                     <button type="submit"
-                        class="bg-gray-200 dark:bg-gray-700 px-3 py-2 md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
+                        class="bg-gray-200  px-3 py-2 md hover:bg-gray-300  text-sm transition text-gray-700 ">
                         Filter Grafik
                     </button>
                 </form>
@@ -101,12 +101,12 @@
         </div>
 
         <!-- Activation Card -->
-        <div class="bg-white dark:bg-gray-800 lg shadow-md p-6 flex flex-col justify-between">
+        <div class="bg-white  lg shadow-md p-6 flex flex-col justify-between">
             <div>
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Aktivasi Absensi Hari Ini</h3>
+                <h3 class="text-lg font-semibold text-gray-800  mb-4">Aktivasi Absensi Hari Ini</h3>
                 <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2">
-                        <span class="text-gray-600 dark:text-gray-400">Status Absensi</span>
+                    <div class="flex justify-between items-center border-b border-gray-200  pb-2">
+                        <span class="text-gray-600 ">Status Absensi</span>
                         @if ($isAbsensiActive)
                             <span
                                 class="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold">AKTIF</span>
@@ -116,18 +116,18 @@
                         @endif
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600 dark:text-gray-400">Sesi Aktif</span>
-                        <span class="text-xl font-bold text-gray-900 dark:text-gray-100">{{ $activeSessionsCount }}
+                        <span class="text-gray-600 ">Sesi Aktif</span>
+                        <span class="text-xl font-bold text-gray-900 ">{{ $activeSessionsCount }}
                             Kelas</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600 dark:text-gray-400">Dibuka pada</span>
-                        <span class="text-xl font-bold text-gray-900 dark:text-gray-100">{{ $sessionOpenedToday }}
+                        <span class="text-gray-600 ">Dibuka pada</span>
+                        <span class="text-xl font-bold text-gray-900 ">{{ $sessionOpenedToday }}
                         </span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-600 dark:text-gray-400">Ditutup pada</span>
-                        <span class="text-xl font-bold text-gray-900 dark:text-gray-100">{{ $sessionClosedToday }}
+                        <span class="text-gray-600 ">Ditutup pada</span>
+                        <span class="text-xl font-bold text-gray-900 ">{{ $sessionClosedToday }}
                         </span>
                     </div>
                 </div>
@@ -152,12 +152,12 @@
                 @elseif ($sessionTodayExists && $isAbsensiActive)
                     <div class="space-y-4">
                         <div
-                            class="bg-gray-50 dark:bg-gray-900/50 p-4 lg flex flex-col items-center border border-gray-100 dark:border-gray-700">
+                            class="bg-gray-50  p-4 lg flex flex-col items-center border border-gray-100 ">
                             <div id="qrcode" class="bg-white p-2  shadow-sm mb-3"></div>
-                            <div class="bg-indigo-50 dark:bg-indigo-900/30 p-2  w-full text-center">
+                            <div class="bg-indigo-50  p-2  w-full text-center">
                                 <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 italic">Token Harian
                                     Aktif</p>
-                                <p class="text-sm font-bold text-indigo-700 dark:text-indigo-300 break-all font-mono"
+                                <p class="text-sm font-bold text-indigo-700  break-all font-mono"
                                     id="token-display">
                                     {{ $activeSessionToken }}
                                 </p>
@@ -180,10 +180,10 @@
     </div>
 
     <!-- 3. Monitoring Table -->
-    <div class="bg-white dark:bg-gray-800 lg shadow-md overflow-hidden">
+    <div class="bg-white  lg shadow-md overflow-hidden">
         <div
-            class="p-6 border-b border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Monitoring Absensi</h3>
+            class="p-6 border-b border-gray-200  flex flex-col md:flex-row justify-between items-center gap-4">
+            <h3 class="text-lg font-semibold text-gray-800 ">Monitoring Absensi</h3>
 
             <!-- Filters -->
             <form method="GET" class="flex flex-wrap gap-2 items-center">
@@ -192,10 +192,10 @@
                 <input type="hidden" name="chart_status" value="{{ $chartFilters['status'] }}">
 
                 <input type="date" name="date" value="{{ request('date', date('Y-m-d')) }}"
-                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
 
                 <select name="role"
-                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
                     <option value="">Semua Role</option>
                     <option value="Staff" {{ request('role') == 'Staff' ? 'selected' : '' }}>Staff</option>
                     <option value="Guru" {{ request('role') == 'Guru' ? 'selected' : '' }}>Guru</option>
@@ -203,7 +203,7 @@
                 </select>
 
                 <select name="status"
-                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
                     <option value="">Semua Status</option>
                     <option value="hadir" {{ request('status') == 'hadir' ? 'selected' : '' }}>Hadir</option>
                     <option value="izin" {{ request('status') == 'izin' ? 'selected' : '' }}>Izin</option>
@@ -212,18 +212,18 @@
                 </select>
 
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama..."
-                    class="md border-gray-300 dark:bg-gray-700 dark:border-gray-600 text-sm focus:ring-indigo-500 focus:border-indigo-500 dark:text-gray-300">
+                    class="md border-gray-300   text-sm focus:ring-indigo-500 focus:border-indigo-500 ">
 
                 <button type="submit"
-                    class="bg-gray-200 dark:bg-gray-700 px-3 py-2 md hover:bg-gray-300 dark:hover:bg-gray-600 text-sm transition text-gray-700 dark:text-gray-300">
+                    class="bg-gray-200  px-3 py-2 md hover:bg-gray-300  text-sm transition text-gray-700 ">
                     Filter
                 </button>
             </form>
         </div>
 
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead class="bg-gray-50 dark:bg-gray-900">
+            <table class="min-w-full divide-y divide-gray-200 ">
+                <thead class="bg-gray-50 ">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama
                         </th>
@@ -241,12 +241,12 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                <tbody class="bg-white  divide-y divide-gray-200 ">
                     @forelse($records as $record)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <div class="text-sm font-medium text-gray-900 dark:text-gray-100">
+                                    <div class="text-sm font-medium text-gray-900 ">
                                         {{ $record->user->name }}
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@
                                     {{ $record->user->role->name }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
                                 @if ($record->user->role->name == 'Siswa')
                                     {{ $record->attendanceSession->timetableEntry->template->class->full_name ?? '-' }}
                                 @else
@@ -277,10 +277,10 @@
                                     {{ ucfirst($record->status) }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
                                 {{ $record->scanned_at ? \Carbon\Carbon::parse($record->scanned_at)->format('H:i') : '-' }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
                                 @if ($record->latitude && $record->longitude)
                                     <a href="https://maps.google.com/?q={{ $record->latitude }},{{ $record->longitude }}"
                                         target="_blank"
@@ -322,7 +322,7 @@
             </table>
         </div>
 
-        <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+        <div class="p-4 border-t border-gray-200 ">
             {{ $records->links() }}
         </div>
     </div>
@@ -339,9 +339,9 @@
         <!-- Modal -->
         <div x-show="open" x-transition @click.outside="open = false"
             class="fixed inset-0 flex items-center justify-center p-4">
-            <div class="bg-white dark:bg-gray-800 lg shadow-xl max-w-md w-full p-6">
+            <div class="bg-white  lg shadow-xl max-w-md w-full p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100" x-text="'Detail Absensi: ' + name">
+                    <h3 class="text-lg font-bold text-gray-900 " x-text="'Detail Absensi: ' + name">
                     </h3>
                     <button @click="open = false" class="text-gray-500 hover:text-gray-700">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -396,8 +396,7 @@
                             display: true,
                             position: 'top',
                             labels: {
-                                color: document.documentElement.classList.contains('dark') ? '#9CA3AF' :
-                                    '#4B5563'
+                                color: '#4B5563'
                             }
                         }
                     },
@@ -406,12 +405,10 @@
                             beginAtZero: true,
                             stacked: true,
                             grid: {
-                                color: document.documentElement.classList.contains('dark') ? '#374151' :
-                                    '#e5e7eb'
+                                color: '#e5e7eb'
                             },
                             ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#9CA3AF' :
-                                    '#4B5563'
+                                color: '#4B5563'
                             }
                         },
                         x: {
@@ -420,8 +417,7 @@
                                 display: false
                             },
                             ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#9CA3AF' :
-                                    '#4B5563'
+                                color: '#4B5563'
                             }
                         }
                     }

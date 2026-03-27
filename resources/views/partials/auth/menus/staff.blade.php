@@ -1,7 +1,7 @@
 @php
-    $sectionTitleClass = 'px-3 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400 dark:text-slate-500 mb-1';
-    $linkClass = 'flex items-center gap-2.5 xl px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white';
-    $activeClass = 'bg-slate-200 text-slate-900 shadow-sm dark:bg-slate-800 dark:text-white';
+    $sectionTitleClass = 'px-3 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400  mb-1';
+    $linkClass = 'flex items-center gap-2.5 xl px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900   ';
+    $activeClass = 'bg-slate-200 text-slate-900 shadow-sm  ';
 @endphp
 
 <div class="space-y-4">
