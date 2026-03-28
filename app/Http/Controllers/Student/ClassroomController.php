@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\ClassHistory;
 use App\Models\GuardianClassHistory;
+use App\Models\Student;
 use App\Models\Term;
 use App\Models\TimetableEntry;
 use Carbon\Carbon;
@@ -37,12 +38,17 @@ class ClassroomController extends Controller
         $currentEntry = null;
 
         if ($classroom) {
-            // Ambil semua siswa di kelas dengan relasi student.user
-            $classmatesQuery = ClassHistory::where('class_id', $classroom->id);
-            if ($activeTerm) {
-                $classmatesQuery->where('terms_id', $activeTerm->id);
-            }
-            $students = $classmatesQuery->with('student.user')->get()->map(fn ($ch) => $ch->student->user);
+            // Ambil semua siswa di kelas dengan relasi student.user melalui Student -> classHistories dengan pagination
+            $studentQuery = Student::whereHas('classHistories', function ($q) use ($classroom, $activeTerm) {
+                $q->where('class_id', $classroom->id);
+                if ($activeTerm) {
+                    $q->where('terms_id', $activeTerm->id);
+                }
+            })->with('user')->orderBy('nis', 'asc');
+
+            $totalStudents = $studentQuery->count();
+
+            $students = $studentQuery->paginate(7);
 
             // Ambil wali kelas dengan relasi teacher.user
             $guardian = GuardianClassHistory::where('class_id', $classroom->id)
@@ -168,6 +174,7 @@ class ClassroomController extends Controller
         return view('student.classroom', [
             'classroom' => $classroom,
             'students' => $students,
+            'totalStudents' => $totalStudents,
             'guardian' => $guardian,
             'todayEntries' => $todayEntries,
             'currentEntry' => $currentEntry,

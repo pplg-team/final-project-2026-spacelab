@@ -14,7 +14,6 @@ Route::middleware(['auth', 'role:Siswa'])
     ->group(function () {
         Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('index');
         Route::get('/schedules', [StudentScheduleController::class, 'index'])->name('schedules.index');
-        Route::get('/rooms', [StudentRoomController::class, 'index'])->name('rooms.index');
         Route::get('/classes', [StudentClassroomController::class, 'index'])->name('classroom.index');
         Route::get('/profile', [StudentProfileController::class, 'index'])->name('profile.index');
         Route::get('/profile', [StudentProfileController::class, 'index'])->name('profile.index');

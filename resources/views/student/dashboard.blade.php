@@ -1,4 +1,4 @@
-﻿<x-app-layout>
+﻿<x-app-layout :title="'Dashboard Siswa - ' . Auth::user()->name" :description="'Lihat ringkasan jadwal, absensi, dan informasi penting lainnya untuk hari ini.'">
     <x-slot name="header">
         <h2 class="text-xl font-semibold text-slate-900 ">
             Dashboard Siswa
@@ -71,7 +71,7 @@
 
             <!-- Stats -->
             <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <article class=p-5 bg-white  border border-slate-200  shadow-sm">
+                <article class="p-5 bg-white border border-slate-200  shadow-sm">
                     <div class="flex items-center justify-between mb-4">
                         <div class="w-10 h-10 bg-sky-50  flex items-center justify-center">
                             <x-heroicon-s-book-open class="w-5 h-5 text-sky-500" />
@@ -85,7 +85,7 @@
                     </p>
                 </article>
 
-                <article class=p-5 bg-white  border border-slate-200  shadow-sm">
+                <article class="p-5 bg-white  border border-slate-200  shadow-sm">
                     <div class="flex items-center justify-between mb-4">
                         <div class="w-10 h-10 bg-indigo-50  flex items-center justify-center">
                             <x-heroicon-s-clock class="w-5 h-5 text-indigo-500" />
@@ -100,7 +100,7 @@
                 </article>
 
                 {{-- statistik absensi berupa streak, achievement dan jumlah (hardcode) --}}
-                <article class=p-5 bg-white  border border-slate-200  shadow-sm">
+                <article class="p-5 bg-white  border border-slate-200  shadow-sm">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <div class="flex items-center justify-between mb-3">
@@ -137,12 +137,12 @@
             <!-- Jadwal -->
             <section class="grid grid-cols-1 xl:grid-cols-12 gap-8">
 
-                <div class="xl:col-span-8 space-y-6">
-                    <h2 class="text-2xl font-bold text-slate-900 ">
+                <div class="xl:col-span-8 space-y-6 ">
+                    <h2 class="text-2xl font-bold text-slate-900 border-b border-slate-200  pb-2">
                         Jadwal Hari Ini
                     </h2>
 
-                    <div class=border border-slate-200  bg-white ">
+                    <div class="bg-white  shadow-sm border border-slate-200">
                         <div class="p-6">
                             @if ($schedulesToday->isEmpty())
                                 <div class="text-center py-12">
@@ -402,7 +402,7 @@
 
                 <!-- Sidebar -->
                 <aside class="xl:col-span-4 space-y-6">
-                    <div class=p-6 bg-white  border border-slate-200 ">
+                    <div class="p-6 bg-white border border-slate-200 ">
                         <div class="flex items-center justify-between mb-6">
                             <h2 class="text-lg font-bold text-slate-900 ">Absensi &amp; Konsistensi</h2>
                             <span

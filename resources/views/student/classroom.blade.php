@@ -1,248 +1,277 @@
-<x-app-layout>
+<x-app-layout :title="'Ruang Kelas Saya - ' . ($classroom?->full_name ?? 'Tidak Diketahui')" :description="'Lihat detail ruang kelas, wali kelas, dan daftar siswa dalam kelas.'">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Ruang Kelas Saya') }}
         </h2>
     </x-slot>
 
-    <div class="py-6 sm:py-8">
-        <div class="mx-auto px-2 sm:px-4 lg:px-6">
-            <!-- Header Card with Classroom Info -->
-            <div class="bg-white  shadow-sm xl overflow-hidden
-                            border border-gray-100  p-4 md:p-5
-                            hover:shadow-md transition-all duration-150">
-                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 sm:gap-6">
-                        <!-- Classroom Info -->
-                        <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-2">
-                                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white  shadow-sm xl overflow-hidden
-                                border border-gray-100 
-                                hover:shadow-md transition-all duration-150 flex items-center justify-center">
-                                    <x-heroicon-o-academic-cap class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 " />
-                                </div>
-                                <div>
-                                    <h3 class="text-lg sm:text-2xl font-bold text-gray-900  leading-tight">
-                                        {{ $classroom?->full_name ?? 'Belum ada kelas' }}
-                                    </h3>
-                                    @if($classroom)
-                                        <p class="text-xs sm:text-sm text-gray-600  mt-1">
-                                            {{ $classroom->major?->name ?? '' }}
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Guardian Info -->
-                        @if($guardian)
-                            <div class="flex items-center gap-3 px-3 py-2 sm:px-6 sm:py-4 bg-white  shadow-sm xl overflow-hidden
-                            border border-gray-100 
-                            hover:shadow-md transition-all duration-150">
-                                <div class="relative">
-                                    <div class="w-10 h-10 sm:w-14 sm:h-14 overflow-hidden bg-gray-100  flex items-center justify-center text-gray-700  font-semibold ring-2 ring-gray-100 ">
-                                        @if($guardian->teacher->avatar ?? false)
-                                            <img src="{{ Storage::url($guardian->teacher->avatar) }}" alt="Wali Kelas" class="w-full h-full object-cover"/>
-                                        @else
-                                            <span class="text-lg">{{ $guardian->teacher->initials() }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-gray-400 border-2 border-white  full"></div>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-medium text-gray-500  uppercase tracking-wide">Wali Kelas</p>
-                                    <p class="text-sm sm:text-base font-semibold text-gray-900  mt-0.5 max-w-xs sm:max-w-sm truncate">{{ $guardian->teacher->user->name }}</p>
-                                </div>
-                            </div>
-                        @else
-                            <div class="px-3 py-2 sm:px-6 sm:py-4 bg-gray-100  xl border border-gray-200 ">
-                                <p class="text-sm text-gray-600 ">Belum ada wali kelas</p>
-                            </div>
-                        @endif
+    <div class="py-6 min-h-screen bg-slate-50">
+        <!-- Class Header -->
+        <section
+            class="p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white border border-slate-200">
+            <div class="flex items-center gap-6">
+                <div class="w-20 h-20 bg-primary border border-slate-200 flex items-center justify-center text-primary">
+                    <x-heroicon-o-academic-cap class="w-10 h-10" />
+                </div>
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight">
+                        {{ $classroom?->full_name ?? 'Belum Ada Kelas' }}</h1>
+                    <p class="text-sky-300 font-medium">
+                        {{ $classroom?->major?->name ?? ($classroom?->major?->code ?? 'Jurusan Tidak Diketahui') }}
+                    </p>
+                    <div class="mt-2 flex items-center gap-2 text-on-surface-variant text-sm">
+                        <x-heroicon-o-map-pin class="w-4 h-4 text-slate-400" />
+                        {{ $classroom?->building?->name ?? 'Lokasi belum tersedia' }}
                     </div>
                 </div>
             </div>
-
-            <!-- Main Content Grid -->
-            <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-6">
-                <!-- Students List - 2/3 width -->
-                <div class="lg:col-span-2">
-                    <div class="bbg-white  shadow-sm xl overflow-hidden
-                            border border-gray-100 
-                            hover:shadow-md transition-all duration-150">
-                        <div class="p-4 sm:p-6 border-b border-gray-200 ">
-                            <div class="flex items-center justify-between">
-                                <h3 class="text-sm sm:text-lg font-semibold text-gray-900  flex items-center gap-2">
-                                    <x-heroicon-o-users class="w-4 h-4 sm:w-5 sm:h-5 text-gray-700 " />
-                                    Daftar Teman Kelas
-                                </h3>
-                                <span class="px-2 py-0.5 sm:px-3 sm:py-1 bg-gray-100  text-gray-700  text-xs sm:text-sm font-medium full">
-                                    {{ count($students) }} Siswa
-                                </span>
-                            </div>
+            <div class="flex items-center gap-4 bg-white p-4 border border-slate-200">
+                <div class="text-right">
+                    <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold">Wali Kelas</p>
+                    <p class="text-on-surface font-semibold">
+                        {{ $guardian?->teacher?->user?->name ?? 'Belum ditugaskan' }}</p>
+                </div>
+                <div class="w-12 h-12 border-2 border-primary/30 p-0.5">
+                    <img class="w-full h-full object-cover" alt="Foto profil wali kelas"
+                        src="{{ $guardian?->teacher?->avatar_url ?? asset('assets/images/avatar/default-profile.png') }}" />
+                </div>
+            </div>
+        </section>
+        <!-- Stats Grid -->
+        @php
+            $studentCollection =
+                $students instanceof \Illuminate\Pagination\AbstractPaginator
+                    ? $students->getCollection()
+                    : collect($students);
+            $femaleStudents = $studentCollection
+                ->filter(fn($student) => optional($student->user)->gender === 'female')
+                ->count();
+            $maleStudents = $studentCollection
+                ->filter(fn($student) => optional($student->user)->gender === 'male')
+                ->count();
+            $attendanceRate = $totalStudents > 0 ? round(($todayEntries->count() / $totalStudents) * 100) : 0;
+        @endphp
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 py-5">
+            <div class="p-6 flex items-center gap-4 border border-slate-200 bg-white">
+                <div class="w-12 h-12 bg-sky-400 flex items-center justify-center text-sky-300">
+                    <x-heroicon-o-user-group class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Jumlah Siswa</p>
+                    <p class="text-2xl font-bold">{{ $totalStudents }}</p>
+                </div>
+            </div>
+            <div class="p-6 flex items-center gap-4 border border-slate-200 bg-white">
+                <div class="w-12 h-12 bg-pink-400 flex items-center justify-center text-pink-300">
+                    <x-heroicon-s-user-circle class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Perempuan</p>
+                    <p class="text-2xl font-bold">{{ $femaleStudents }}</p>
+                </div>
+            </div>
+            <div class="p-6 flex items-center gap-4 border border-slate-200 bg-white">
+                <div class="w-12 h-12 bg-blue-400 flex items-center justify-center text-blue-300">
+                    <x-heroicon-s-user-circle class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Laki-laki</p>
+                    <p class="text-2xl font-bold">{{ $maleStudents }}</p>
+                </div>
+            </div>
+            <div class="p-6 flex items-center gap-4 border border-slate-200 bg-white">
+                <div class="w-12 h-12 bg-emerald-400 flex items-center justify-center text-emerald-300">
+                    <x-heroicon-s-check-circle class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                    <p class="text-xs text-slate-400 uppercase tracking-wider">Kehadiran Hari Ini</p>
+                    <p class="text-2xl font-bold">{{ $attendanceRate }}%</p>
+                </div>
+            </div>
+        </section>
+        <!-- Layout Split -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Student List (Main) -->
+            <div class="lg:col-span-2 space-y-2 border border-slate-200 bg-white p-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-semibold">Daftar Siswa</h3>
+                    <div class="flex gap-2">
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+                                <x-heroicon-s-magnifying-glass class="w-4 h-4" />
+                            </span>
+                            <input
+                                class="bg-surface-container border border-slate-200 pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary/50 w-64 transition-all"
+                                placeholder="Cari siswa..." type="text" />
                         </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-200 ">
-                                <thead class="bg-gray-50 ">
-                                    <tr>
-                                        <th class="px-4 py-3 sm:px-6 sm:py-4 text-left text-xs font-semibold text-gray-600  uppercase tracking-wider">No</th>
-                                        <th class="px-4 py-3 sm:px-6 sm:py-4 text-left text-xs font-semibold text-gray-600  uppercase tracking-wider">Siswa</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white  divide-y divide-gray-100 ">
-                                    @forelse($students as $index => $student)
-                                        <tr class="transition-colors duration-150">
-                                            <td class="px-4 py-3 sm:px-6 sm:py-4 whitespace-nowrap">
-                                                <span class="text-sm font-medium text-gray-500 ">{{ $index + 1 }}</span>
-                                            </td>
-                                            <td class="px-4 py-3 sm:px-6 sm:py-4 whitespace-normal sm:whitespace-nowrap">
-                                                <div class="flex items-center gap-4">
-                                                    <div class="w-8 h-8 sm:w-10 sm:h-10 overflow-hidden bg-gray-100  flex items-center justify-center text-gray-700  font-semibold text-sm shadow-sm">
-                                                        @if($student->student?->avatar)
-                                                            <img src="{{ Storage::url($student->student->avatar) }}" alt="avatar" class="w-full h-full object-cover" />
-                                                        @else
-                                                            {{ $student->initials() }}
-                                                        @endif
-                                                    </div>
-                                                    <span class="text-sm sm:text-base font-medium text-gray-900  truncate">{{ $student->name }}</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="2" class="px-4 sm:px-6 py-6 text-center">
-                                                <div class="flex flex-col items-center gap-2">
-                                                    <x-heroicon-o-user-group class="w-8 h-8 sm:w-12 sm:h-12 text-gray-300 " />
-                                                    <p class="text-sm text-gray-500 ">Belum ada siswa di kelas ini</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
+                        <button class="px-4 py-2 text-sm flex items-center gap-2 hover:bg-white/10 transition-colors">
+                            <x-heroicon-o-funnel class="w-4 h-4 text-slate-400" />
+                            Filter
+                        </button>
                     </div>
                 </div>
-
-                <!-- Schedule Sidebar - 1/3 width -->
-                <div class="lg:col-span-1">
-                    <div class="space-y-6">
-                        <!-- Current Day Info -->
-                        <div class="bg-white  xl shadow-sm border border-gray-200  overflow-hidden">
-                            <div class="p-3 sm:p-5 bg-white  border-b border-gray-200 ">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-100  lg flex items-center justify-center shadow-sm">
-                                        <x-heroicon-o-calendar class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 " />
-                                    </div>
-                                    <div>
-                                        <p class="text-xs font-medium text-gray-600  uppercase tracking-wide">Hari Ini</p>
-                                        <div class="flex justify-between items-center gap-4">
-                                            <p class="text-xs sm:text-sm font-semibold text-gray-900 ">{{ now()->translatedFormat('l, d F Y') }}</p>
-                                            <p class="text-xs sm:text-sm font-semibold text-gray-900 ">{{ now()->translatedFormat('H:i') }}</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Current Class -->
-                        <div class="bg-white  xl shadow-sm border border-gray-200  overflow-hidden">
-                            <div class="p-3 sm:p-5 border-b border-gray-200 ">
-                                <h3 class="text-sm font-semibold text-gray-900  uppercase tracking-wide flex items-center gap-2">
-                                    <div class="w-2 h-2 bg-gray-400 animate-pulse"></div>
-                                    Pelajaran Saat Ini
-                                </h3>
-                            </div>
-
-                            @if($currentEntry)
-                                @php $curIsTeaching = $currentEntry->period?->is_teaching ?? true; @endphp
-                                <div class="p-3 sm:p-5">
-                                    <div class="space-y-2">
-                                        <div class="flex items-center gap-2 text-sm text-gray-600 ">
-                                            <x-heroicon-o-clock class="w-4 h-4" />
-                                            <span>{{ optional($currentEntry->period)->start_time ? \Carbon\Carbon::parse(optional($currentEntry->period)->start_time)->format('H:i') : '-' }} - {{ optional($currentEntry->period)->end_time ? \Carbon\Carbon::parse(optional($currentEntry->period)->end_time)->format('H:i') : '-' }}</span>
-                                        </div>
-
-                                        <div>
-                                            @if($curIsTeaching)
-                                                <p class="text-sm sm:text-base font-bold text-gray-900 ">{{ $currentEntry->subject?->name ?? '-' }}</p>
-                                            @else
-                                                <div class="flex items-center gap-2">
-                                                    <p class="px-2 py-1 bg-yellow-200  text-yellow-900 font-semibold text-xs">{{ $currentEntry->period?->ordinal ?? 'Pembiasaan' }}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <div class="pt-3 border-t border-gray-100  space-y-2">
-                                            @if($curIsTeaching)
-                                                <div class="flex items-center gap-2 text-sm text-gray-600 ">
-                                                    <x-heroicon-o-user class="w-4 h-4" />
-                                                    <span>{{ $currentEntry->teacher?->user?->name ?? '-' }}</span>
-                                                </div>
-                                            @endif
-                                            <div class="flex items-center gap-2 text-sm text-gray-600 ">
-                                                <x-heroicon-c-globe-asia-australia class="w-5 h-5" />
-                                                <span>{{ $currentEntry->roomHistory?->room?->name ?? '-' }}</span>
+                <div class="overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="border-b border-slate-200">
+                            <tr>
+                                <th class="font-semibold text-slate-300">No</th>
+                                <th class="font-semibold text-slate-300">Nama Siswa</th>
+                                <th class="font-semibold text-slate-300">NIS</th>
+                                <th class="font-semibold text-slate-300 text-right">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            @forelse($students as $index => $student)
+                                <tr class="group">
+                                    <td class="text-slate-400">
+                                        {{ str_pad(($students->firstItem() ?? 0) + $index, 2, '0', STR_PAD_LEFT) }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="w-10 h-10 bg-surface-container-highest flex items-center justify-center overflow-hidden border border-white/10">
+                                                <img class="w-full h-full object-cover"
+                                                    alt="Foto siswa {{ $student->user->name ?? 'Tanpa Nama' }}"
+                                                    src="{{ $student->avatar ?? asset('assets/images/avatar/default-profile.png') }}" />
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-on-surface">
+                                                    {{ $student->user->name ?? '-' }}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="p-4 sm:p-6 text-center">
-                                    <x-heroicon-o-x-circle class="w-12 h-12 text-gray-300  mx-auto mb-3" />
-                                    <p class="text-sm text-gray-500 ">Tidak ada pelajaran sedang berlangsung</p>
-                                </div>
-                            @endif
+                                    </td>
+                                    <td class="text-slate-400">{{ $student->nis ?? '-' }}</td>
+                                    <td class="text-right">
+                                        <span
+                                            class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium bg-emerald-400/10 text-emerald-300">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                            Hadir
+                                        </span>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" class="px-6 py-8 text-center text-slate-400">Belum ada siswa
+                                        dalam kelas.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4 flex justify-end">
+                    {{ $students->links() }}
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <aside class="space-y-8">
+                <!-- Pelajaran Saat Ini -->
+                @php
+                    $nextEntry = null;
+                    if (!$currentEntry && $todayEntries->isNotEmpty()) {
+                        $nextEntry = $todayEntries->first(
+                            fn($entry) => !method_exists($entry, 'isPast') || !$entry->isPast($currentTime),
+                        );
+                    }
+                @endphp
+                <section class="space-y-4 border border-slate-200 bg-white p-6">
+                    <h3 class="text-lg font-semibold flex items-center gap-2">
+                        <x-heroicon-s-clock class="w-5 h-5 text-sky-300" />
+                        Pelajaran Saat Ini
+                    </h3>
+                    <div class="glass-elevated p-6 border-l-4 border-l-primary relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 -mr-16 -mt-16 blur-3xl"></div>
+                        <p class="text-slate-400 text-sm mb-1">Status Sesi</p>
+                        @if ($currentEntry)
+                            <p class="text-on-surface font-medium">
+                                {{ optional($currentEntry->teacherSubject->subject)->name ?? 'Sesi berjalan' }}
+                                oleh
+                                {{ optional($currentEntry->teacherSubject->teacher->user)->name ?? 'Pengajar belum ditetapkan' }}
+                            </p>
+                            <p class="text-xs text-slate-400">
+                                {{ optional($currentEntry->period)->start_time ?? '-' }} -
+                                {{ optional($currentEntry->period)->end_time ?? '-' }}</p>
+                        @else
+                            <p class="text-on-surface font-medium italic">Tidak ada pelajaran sedang berlangsung</p>
+                            <p class="text-xs text-slate-400">
+                                {{ $nextEntry ? 'Berikutnya: ' . (optional($nextEntry->period)->start_time ?? '-') . ' - ' . (optional($nextEntry->period)->end_time ?? '-') . ' (' . (optional($nextEntry->teacherSubject->subject)->name ?? '-') . ')' : 'Tidak ada jadwal lagi hari ini' }}
+                            </p>
+                        @endif
+                        <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                            <span
+                                class="text-xs text-slate-500">{{ $currentTime->translatedFormat('l, d F Y') }}</span>
                         </div>
-
-                        <!-- Today's Schedule -->
-                        <div class="bg-white  xl shadow-sm border border-gray-200  overflow-hidden">
-                            <div class="p-5 border-b border-gray-200 ">
-                                <h3 class="text-sm font-semibold text-gray-900  uppercase tracking-wide">Jadwal Hari Ini</h3>
-                            </div>
-
-                            <div class="p-3 sm:p-5">
-                                @if($todayEntries->isNotEmpty())
-                                    <div class="space-y-2 max-h-60 sm:max-h-96 overflow-y-auto">
-                                        @foreach($todayEntries as $entry)
-                                            @php $entryIsTeaching = $entry->period?->is_teaching ?? true; @endphp
-                                            <div class="p-3 sm:p-4 xl border transition-colors duration-150 {{ $entryIsTeaching ? 'bg-gray-50  border-gray-100  hover:border-gray-300 ' : 'bg-yellow-50  border-yellow-200 ' }}">
-                                                <div class="flex justify-between items-start gap-3">
-                                                    <div class="flex-1 min-w-0">
-                                                        @if($entryIsTeaching)
-                                                            <p class="text-sm font-semibold text-gray-900  truncate">{{ $entry->subject?->name ?? '-' }}</p>
-                                                            <p class="text-xs text-gray-600  mt-1 truncate">{{ $entry->teacher?->user?->name ?? '-' }}</p>
-                                                        @else
-                                                            <div class="flex items-center gap-2">
-                                                                <p class="px-2 py-1 bg-yellow-200  text-yellow-900 font-semibold text-xs">{{ $entry->period?->ordinal ?? 'Pembiasaan' }}</p>
-                                                            </div>
-                                                            @if($entry->period?->description)
-                                                                <p class="text-xs text-gray-500  mt-1 truncate">{{ $entry->period->description }}</p>
-                                                            @endif
-                                                        @endif
-                                                    </div>
-                                                    <div class="flex-shrink-0">
-                                                        <div class="text-xs font-medium text-gray-600  text-right">
-                                                            <div>{{ optional($entry->period)->start_time ? \Carbon\Carbon::parse(optional($entry->period)->start_time)->format('H:i') : '-' }}</div>
-                                                            <div>{{ optional($entry->period)->end_time ? \Carbon\Carbon::parse(optional($entry->period)->end_time)->format('H:i') : '-' }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
+                    </div>
+                </section>
+                <!-- Jadwal Hari Ini -->
+                <section class="space-y-4 border border-slate-200 bg-white p-6">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <x-heroicon-o-calendar class="w-5 h-5 text-sky-300" />
+                            Jadwal Hari Ini
+                        </h3>
+                        <span class="text-xs text-slate-500">{{ $currentTime->translatedFormat('l, d F') }}</span>
+                    </div>
+                    <div class="space-y-3">
+                        @forelse($todayEntries as $entry)
+                            @php
+                                $period = optional($entry->period);
+                                $subject = optional(optional($entry->teacherSubject)->subject);
+                                $teacher = optional(optional($entry->teacherSubject)->teacher->user);
+                                $isOngoing = method_exists($entry, 'isOngoing') && $entry->isOngoing($currentTime);
+                                $isPast = method_exists($entry, 'isPast') && $entry->isPast($currentTime);
+                            @endphp
+                            <div
+                                class="p-4 flex items-start gap-4 hover:bg-white/5 transition-all cursor-pointer {{ $isPast ? 'opacity-60' : '' }}">
+                                <div class="flex flex-col items-center">
+                                    <span class="text-xs font-bold text-white">{{ $period->start_time ?? '-' }}</span>
+                                    <div class="w-px h-8 bg-white/10 my-1"></div>
+                                    <span class="text-xs text-slate-500">{{ $period->end_time ?? '-' }}</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4
+                                        class="text-sm font-semibold {{ $isOngoing ? 'text-emerald-300' : 'text-primary' }} transition-colors">
+                                        {{ $subject->name ?? 'Mata Pelajaran tidak tersedia' }}</h4>
+                                    <p class="text-xs text-slate-400">
+                                        {{ $teacher->name ?? 'Pengajar belum ditetapkan' }}</p>
+                                </div>
+                                @if ($isOngoing)
+                                    <x-heroicon-s-check-circle class="w-4 h-4 text-emerald-400" />
+                                @elseif($isPast)
+                                    <x-heroicon-o-clock class="w-4 h-4 text-slate-500" />
                                 @else
-                                    <div class="py-6 sm:py-8 text-center">
-                                        <x-heroicon-o-calendar-days class="w-12 h-12 text-gray-300  mx-auto mb-3" />
-                                        <p class="text-sm text-gray-500 ">Tidak ada jadwal untuk hari ini</p>
-                                    </div>
+                                    <x-heroicon-o-arrow-right class="w-4 h-4 text-blue-300" />
                                 @endif
                             </div>
+                        @empty
+                            <div class="text-slate-400 text-sm">Belum ada jadwal untuk hari ini.</div>
+                        @endforelse
+                    </div>
+                    <a href="{{ route('siswa.schedules.index') }}"
+                        class="w-full py-3 text-sm font-medium text-center transition-colors border-dashed border-slate-200">Lihat
+                        Jadwal Pelajaran</a>
+                </section>
+                <!-- Gender Distribution -->
+                <section class="p-6 space-y-4 border border-slate-200 bg-white">
+                    <h3 class="text-sm font-semibold uppercase tracking-widest">Distribusi Gender
+                    </h3>
+                    <div class="flex h-4 w-full bg-white/5 overflow-hidden border border-white/10">
+                        <div class="bg-pink-400 w-[51%] h-full shadow-[0_0_15px_rgba(244,114,182,0.3)]"
+                            title="Perempuan"></div>
+                        <div class="bg-blue-400 w-[49%] h-full shadow-[0_0_15px_rgba(96,165,250,0.3)]"
+                            title="Laki-laki"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-medium">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-pink-400"></div>
+                            <span>51% Perempuan</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-blue-400"></div>
+                            <span>49% Laki-laki</span>
                         </div>
                     </div>
-                </div>
-            </div>
+                </section>
+            </aside>
         </div>
     </div>
 </x-app-layout>

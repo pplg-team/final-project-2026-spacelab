@@ -158,7 +158,7 @@ window.addEventListener('resize', () => checkScreen())"
 
         <!-- Topbar -->
         <div
-            class="flex sticky top-0 justify-between items-center py-2 px-4 border-b border-slate-200 gap-4 bg-white z-10 transition-all duration-200">
+            class="flex sticky top-0 z-20 justify-between items-center py-2 px-4 border-b border-slate-200 gap-4 bg-white transition-all duration-200">
             <button @click="sidebarOpen = true"
                 class="p-2 md lg:hidden hover:bg-slate-200 transition-all duration-200">
                 <x-heroicon-o-bars-3 class="w-6 h-6" />
@@ -179,7 +179,7 @@ window.addEventListener('resize', () => checkScreen())"
         </div>
 
         <!-- Scrollable Content -->
-        <div class="flex-1 p-6">
+        <div class="flex-1 p-6  bg-slate-50">
             {{ $slot }}
         </div>
     </main>
