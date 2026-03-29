@@ -19,7 +19,7 @@ class TeacherController extends Controller
             ->with([
                 'user:id,name,email',
                 'subjects:id,name,code',
-                'guardianClassHistories.class:id',
+                'guardianClassHistories.class:id,level,major_id,rombel',
                 'roleAssignments.major:id,name',
                 'asCoordinatorAssignments.major:id,name',
             ])
@@ -104,7 +104,7 @@ class TeacherController extends Controller
                     'user:id,name,email',
                     'subjects:id,name,code',
                     'guardianClassHistories:id,class_id,teacher_id,started_at,ended_at',
-                    'guardianClassHistories.class:id,full_name,major_id',
+                    'guardianClassHistories.class:id,level,major_id,rombel',
                     'guardianClassHistories.class.major:id,name',
                     'roleAssignments:id,teacher_id,major_id',
                     'roleAssignments.major:id,name',
