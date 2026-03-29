@@ -40,7 +40,7 @@ class ReportController extends Controller
 
         $majors = Major::select('id', 'code', 'name')->orderBy('code')->paginate(50);
 
-        $studentDistribution = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $studentDistribution = Classroom::select('id', 'major_id', 'level', 'rombel')
             ->withCount(['classHistories' => function ($query) use ($activeTerm) {
                 if ($activeTerm) {
                     $query->whereHas('block', function ($q) use ($activeTerm) {
@@ -79,7 +79,7 @@ class ReportController extends Controller
         $students = collect();
 
         if ($selectedMajorId) {
-            $classes = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+            $classes = Classroom::select('id', 'major_id', 'level', 'rombel')
                 ->where('major_id', $selectedMajorId)
                 ->orderBy('level')
                 ->orderBy('rombel')
@@ -102,7 +102,7 @@ class ReportController extends Controller
                 ->sortBy('user.name');
         }
 
-        $selectedClass = $selectedClassId ? Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $selectedClass = $selectedClassId ? Classroom::select('id', 'major_id', 'level', 'rombel')
             ->with('major:id,name,code')
             ->find($selectedClassId) : null;
 
@@ -176,7 +176,7 @@ class ReportController extends Controller
         ];
 
         if ($selectedMajorId) {
-            $classes = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+            $classes = Classroom::select('id', 'major_id', 'level', 'rombel')
                 ->where('major_id', $selectedMajorId)
                 ->orderBy('level')
                 ->orderBy('rombel')
@@ -209,7 +209,7 @@ class ReportController extends Controller
             }
         }
 
-        $selectedClass = $selectedClassId ? Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $selectedClass = $selectedClassId ? Classroom::select('id', 'major_id', 'level', 'rombel')
             ->with('major:id,name,code')
             ->find($selectedClassId) : null;
 
@@ -273,7 +273,7 @@ class ReportController extends Controller
             return back()->with('error', 'Pilih kelas terlebih dahulu');
         }
 
-        $classroom = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $classroom = Classroom::select('id', 'major_id', 'level', 'rombel')
             ->with('major:id,name')
             ->find($classId);
 
@@ -373,3 +373,4 @@ class ReportController extends Controller
         return response()->stream($callback, 200, $headers);
     }
 }
+

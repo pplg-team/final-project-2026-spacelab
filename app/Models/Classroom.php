@@ -20,9 +20,6 @@ class Classroom extends Model
         'rombel',
     ];
 
-    // Ensure the full_name accessor is included when the model is serialized to JSON
-    protected $appends = ['full_name'];
-
     public function major()
     {
         return $this->belongsTo(Major::class, 'major_id');

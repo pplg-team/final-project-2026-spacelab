@@ -74,7 +74,7 @@ class ClassroomController extends Controller
 
     public function show($id)
     {
-        $classroom = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $classroom = Classroom::select('id', 'major_id', 'level', 'rombel')
             ->with('major:id,name,code')
             ->findOrFail($id);
 
@@ -196,3 +196,4 @@ class ClassroomController extends Controller
             ->with('success', 'Kelas berhasil dihapus.');
     }
 }
+

@@ -21,7 +21,7 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $majors = Major::select('id', 'name', 'code')->orderBy('name')->paginate(50);
-        $classrooms = Classroom::select('id', 'major_id', 'level', 'rombel', 'full_name')
+        $classrooms = Classroom::select('id', 'major_id', 'level', 'rombel')
             ->with('major:id,name,code')
             ->orderBy('level')
             ->orderBy('rombel')
@@ -245,3 +245,4 @@ class StudentController extends Controller
         }
     }
 }
+
